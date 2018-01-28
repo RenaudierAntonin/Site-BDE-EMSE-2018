@@ -1,0 +1,36 @@
+body{
+	background-color: white;
+}
+.logo{
+	display: block;
+	height: auto;
+	width: auto;
+	max-height: 100px;
+	padding-left: 42%;
+} 
+.nom_liste{
+	display: block;
+	height: auto;
+	width: auto;
+	max-height: 30px;
+	padding-left: 43%;
+}
+
+.menu{
+	padding: 0px;
+	margin: 0px;
+}
+.menu li{
+	display: inline-block;
+	background-color: gray;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin: 0px;
+}
+
+li a{
+	padding: 10px;
+	text-decoration: none;
+}
