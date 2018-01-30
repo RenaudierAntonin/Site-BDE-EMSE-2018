@@ -22,7 +22,9 @@ function Tourelle(frequence, vitesse, force, terrain, emplacement, aire){
 			var d = Norme(this.emplacement.coordonnees, this.monstre.coordonnees);		
 
 			if (d < distance && d < this.aireDetection){
+
 				this.cible = monstre;
+				distance = d;
 			}
 		}
 	}
@@ -94,17 +96,45 @@ function Monstre(vitesse, force, type, vie, terrain, valeurXP){
 	this.coordonnees;
 	this.type = type;
 	this.vie = vie;
+	this.parselle = terrain.parselles[0];
+	this.avancement = 0;
 
 	this.avancer = function(){ // le monstre avance sur la parselle sur laqelle il se trouve avec une certaine vitesse, disjonction de cas selon le sens de la parselle
+				var i
+				switch(this.parselle){
 
+					case 'haut':
+
+					break;
+
+					case 'bas':
+
+					break;
+
+					case 'doite':
+
+					break;
+
+					case 'gauche':
+
+					break;
+
+					default:
+						alert('formation chemin impossible');
+					break;
+			}
 	}
 
 	this.blesser = function(projectile){
+
 		this.vie -= projectile.degat;
-		if (this.vie <= 0){ // quand le monstre n'a plus de vie, on le tue c'est à dire on
-			var i = terrain.monstres.indexOf(this);
+
+		if (this.vie <= 0){ // quand le monstre n'a plus de vie
+
+			var i = terrain.monstres.indexOf(this);// on le tue c'est à dire on le supprime du tableau des monstres
 			terrain.monstres.splice(i,1);
-			projectile.tourelle.setXP(valeurXP);
+			projectile.tourelle.setXP(valeurXP); // et on donne ses xp à la tourelle qui l'a tué
+			projectile.tourelle.cible = false;
 		}
 	}
 
@@ -118,38 +148,19 @@ function Monstre(vitesse, force, type, vie, terrain, valeurXP){
 	}
 };
 
-function Chemin(début, construction){ // c'est le chemin sur lequel vont avancer les monstres
+function Chemin(debut, construction){ // c'est le chemin sur lequel vont avancer les monstres
 
-	this.parselles = []; // on va essayer de contruire un chemin assez simplement avec une suite d'instructions : va à droite en au en bas...
+	this.parselles = Convertir_chemin(construction); // on va essayer de contruire un chemin assez simplement avec une suite d'instructions : va à droite en au en bas...
 
 	this.dessiner = function(context){
 
 		var caseActuelle = debut;
 
-		for(var i = 0; i<parselles.length; i++){
+		for(var i = 0; i<this.parselles.length; i++){
 
-			switch(parselles[i]){
 
-				case 'haut':
-
-				break;
-
-				case 'bas':
-
-				break;
-
-				case 'doite':
-
-				break;
-
-				case 'gauche':
-
-				break;
-
-				default:
-					alert('formation chemin impossible');
-				break;
-			}
+			// on dessine la case actuelle et on calcule la suivante
+			
 		}
 	}
 };
@@ -159,7 +170,9 @@ function Terrain(context){ // l'objet qui contient tous les autres, le plan quoi
 	this.tourelles = []; // tableau listant tous les objets tourelles
 	this.monstres = []; // etc...
 	this.chemins = [];
-	this.cases = [[]];
+	var n = nbCasesLargeur;
+	var m = (n * canvas.width) / canvas.height;
+	this.cases = initCases(n,m);
 	this.projectiles = [];
 
 	this.dessiner = function(context){ // on dessine chaque élément, l'ordre est important ! on ne va pas dessiner le chemin par dessu le monstre par exemple
@@ -167,34 +180,69 @@ function Terrain(context){ // l'objet qui contient tous les autres, le plan quoi
 		this.context.clearRect(0, 0, canvas.width, canvas.height); // efface l'image précedente avant de tout redessiner
 
 		for(var i = 0; i<this.cases.length; i++){
+			for(var i )
 
 			this.cases[i].dessiner(context);
 		}
+
 		for(var i = 0; i<this.chemins.length; i++){
 
 			this.chemins[i].dessiner(context);
 		}
+
 		for(var i = 0; i<this.tourelles.length; i++){
 
 			this.tourelles[i].dessiner(context);
 		}
+
 		for(var i = 0; i<this.monstres.length; i++){
 
 			this.monstres[i].dessiner(context);
 		}
+
 		for(var i = 0; i<this.projectiles.length; i++){
 
 			this.projectiles[i].dessiner(context);
 		}
 	}
 
+	this.update = function(){ // fait avancer les monstres, les projectiles, tirer ou cibler les tourelles
+		
+		var tourelle; // evite de la déclarer à chaque passage de boucle
+
+		for(var i = 0; i<this.tourelles.length; i++){
+
+			tourelle = this.tourelles.[i];
+
+			if (tourelle.cible){
+
+				tourelle.tirer() 
+			}
+
+			else{ 
+
+				tourelle.cibler() 
+			}
+		}
+
+		for(var i = 0; i<this.monstres.length; i++){
+
+			this.monstres[i].avancer();
+		}
+
+		for(var i = 0; i<this.projectiles.length; i++){
+
+			this.projectiles[i].avancer();
+		}
+
+	}
 };
 
-function Case(terrain, coordonnees, disponible, type){ // on découpe le plan en carré de taille egale sur lequel on peut placer nos objets
+function Case(terrain, coordonnees){ // on découpe le plan en carré de taille egale sur lequel on peut placer nos objets
 
 	this.coordonnees = coordonnees;
-	this.disponible = disponible; //booléen qui indique si on peut y placer une tourelle ou non
-	this.type = type; // pour le dessin de la case, herbe, roche, eau, parselle ...
+	this.disponible = true; //booléen qui indique si on peut y placer une tourelle ou non
+	this.type; // pour le dessin de la case, herbe, roche, eau, parselle ...
 
 	this.dessiner = function(context){
 		
@@ -210,8 +258,8 @@ function Coordonnees(x,y, terrain){ // cet objet simple permet simplifier le cod
 
 	this.findCase = function(){ // retourne la case correspondant au coordonnées (on peut utiliser la matrice terrain.cases en trouvant d'abord les coordonées dans cette matrice)
 		
-		var i = this.x / Taille_Case;
-		var j = this.y / Taille_Case;
+		var i = this.x / Taille_Cases;
+		var j = this.y / Taille_Cases;
 		return(terrain.cases[i][j]);
 	}
 
