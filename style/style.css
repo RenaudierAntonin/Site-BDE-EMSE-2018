@@ -6,15 +6,15 @@ body{
 	display: block;
 	height: auto;
 	width: auto;
-	max-height: 100px;
-	padding-left: 42%;
+	max-height: 200px;
+	margin: auto;
 } 
 .nom_liste{
 	display: block;
 	height: auto;
 	width: auto;
-	max-height: 30px;
-	padding-left: 43%;
+	max-height: 50px;
+	margin: auto;
 }
 
 .logo-container{
@@ -51,4 +51,34 @@ li a{
 	padding: 10px;
 	color:white;
 	text-decoration: none;
+}
+
+.formulaire{
+	padding: 10px;
+	background-color: #FFBF00;
+	width: 500px;
+	margin: 0 auto;
+	list-style: none;
+}
+
+.texte{
+	padding: 10px;
+}
+
+input[type=text]{
+	border: none;
+    padding: 16px 16px;
+    margin: 5px 5px;
+    width: 467px;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 16px;
+    text-decoration: none;
+    margin: 5px 5px;
+    cursor: pointer;
+    width: 100%;
 }
