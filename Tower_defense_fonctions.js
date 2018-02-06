@@ -1,11 +1,9 @@
-function lancerJeu(time, terrain){
-
-	return(setInterval(run, time, terrain));
-}
-
-
+  
 
 function run(terrain){
+
+	terrain.update();
+	terrain.dessiner(context);
 
 
 }
@@ -65,26 +63,9 @@ function Convertir_chemin(chemin){ // renvoie un tableau de coordonnées corresp
 					alert('formation chemin impossible');
 				}
 
-		convert.push(new Coordonnees(x,y));
+		convert.push(new Coordonnees(x,y, terrain));
 	}
 
 	return(convert);
 }
 
-function initCases(n,m, terrain){ // retourne une matrice de taille m*n remplie de cases vierges
-
-	var matrice = [];
-	var x;
-	var y;
-	for(var i = 0; i < n; i++){
-
-		matrice.push([]);
-		y = (i * Taille_Cases) + (Taille_Cases / 2);
-
-		for(var j = 0; j < m; j++){ 
-
-			x = (j * Taille_Cases) + (Taille_Cases / 2);
-			matrice[i].push(new Case(terrain, new coordonnee(x,y)));
-		}
-	}
-}

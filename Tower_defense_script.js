@@ -1,31 +1,36 @@
 window.onload = Tower_defense_script;
-
+// utiliser des images, et tetes du bureau en boss
 
 function Tower_defense_script(){
 
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");
 	
-	var nbCasesLargeur = 20;
-	var Taille_Cases = canvas.width / nbCasesLargeur;
+	nbCasesLargeur = 20;
+	Taille_Cases = canvas.width / nbCasesLargeur; 
 	var time = 100 ;
-	var jeu = lancerJeu(time, terrain);
+	var terrain  = new Terrain(context);
+
+	initialisation(terrain, 1);
+
+	var jeu = setInterval(run, time, terrain);
 
 	
 
 
-	bouton_play = document.getElementById("Play_Pause");
+	var bouton_play = document.getElementById("Play_Pause");
 
 	bouton_play.addEventListener('click',function(){
 
 		if (jeu){
 			//transformer l'image du bouton play
 			clearInterval(jeu);
+			jeu = false;
 		}
 
 		else{
 			//transformer l'image du bouton play
-			lancerJeu(time, terrain);
+			jeu = setInterval(run, time, terrain);
 		}
 		
 
