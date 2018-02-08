@@ -8,17 +8,15 @@ function Tower_defense_script(){
 	
 	nbCasesLargeur = 20;
 	Taille_Cases = canvas.width / nbCasesLargeur; 
-	var time = 100 ;
+	var time = 50 ;
 	var terrain  = new Terrain(context);
 
 	initialisation(terrain, 1);
 
+
 	var jeu = setInterval(run, time, terrain);
 
-	
-
-
-	var bouton_play = document.getElementById("Play_Pause");
+	/*var bouton_play = document.getElementById("Play_Pause");
 
 	bouton_play.addEventListener('click',function(){
 
@@ -34,7 +32,7 @@ function Tower_defense_script(){
 		}
 		
 
-	});
+	});*/
 
 
 
