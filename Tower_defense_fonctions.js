@@ -20,10 +20,10 @@ function Norme(coordonnee1,coordonnee2){ // calcule la norme d'une coordonnée, 
 	else{
 
 		dx = coordonnee1.x - coordonnee2.x;
-		dy = coordonnee2.y - coordonnee2.y;
+		dy = coordonnee1.y - coordonnee2.y;
 	}
 
-	var d = Math.sqrt(pow(dx,2) + pow(dy,2));
+	var d = Math.sqrt(Math.pow(dx,2) + Math.pow(dy,2));
 	
 	return d;
 }
@@ -68,3 +68,10 @@ function Convertir_chemin(chemin){ // renvoie un tableau de coordonnées corresp
 	return(convert);
 }
 
+function findCase(coordonnees){ // retourne la case correspondant au coordonnées (on peut utiliser la matrice terrain.cases en trouvant d'abord les coordonées dans cette matrice)
+		
+		var i = Math.floor(coordonnees.x / Taille_Cases);
+		var j = Math.floor(coordonnees.y / Taille_Cases);
+		 
+		return(terrain.cases[i][j]);
+}

@@ -6,16 +6,15 @@
 	function Mobile(){
 		this.x
 		this.y
-
-		this.findCase(){
 	
 		}
 	};
  */
 
-function Tourelle(frequence, vitesse, force, terrain, emplacement, aire){
-
-	this.frequence = frequence; // frequence de tir
+function Tourelle(frequenceTir, vitesse, force, terrain, emplacement, aire){
+	
+	var comptInit = 1000 / frequenceTir;
+	this.compteur = 0; // frequence est le nb de tir par sec
 	this.vitesse  = vitesse; // vitesse absolue des balles
 	this.force = force;
 	this.cible = false; // le monstre cible
@@ -24,18 +23,19 @@ function Tourelle(frequence, vitesse, force, terrain, emplacement, aire){
 	this.xp = 0;
 	this.aireDetection = aire; // aire de détéction de la tourelle, elle ne peut rien viser au dela
 	this.direction = {x: 1, y: 0};
+	this.coordonnees = this.emplacement.coordonnees;
 
 	this.cibler = function(){
 
 		var distance = Infinity;
 
-		for (var i = 0; i<this.terrain.monstres.length; i++){ // on parcour tout les monstres et on cible le plus proche si il est dans la zone de détéction
+		for (var i = 0; i<terrain.monstres.length; i++){ // on parcour tout les monstres et on cible le plus proche si il est dans la zone de détéction
 
-			var monstre = monstres[i]
-			var d = Norme(this.emplacement.coordonnees, this.monstre.coordonnees);		
+			var monstre = terrain.monstres[i];
+			var d = Norme(this.coordonnees, monstre.coordonnees);		
 
 			if (d < distance && d < this.aireDetection){
-
+		
 				this.cible = monstre;
 				distance = d;
 			}
@@ -43,14 +43,20 @@ function Tourelle(frequence, vitesse, force, terrain, emplacement, aire){
 	}
 
 	this.tirer = function(){
+ 		
+ 		var d = Norme(this.coordonnees, this.cible.coordonnees); // c'est simplement la distance entre la tourelle et la cible
+		this.direction.x = (this.cible.coordonnees.x - this.coordonnees.x)/ d;
+		this.direction.y = (this.cible.coordonnees.y - this.coordonnees.y)/ d;
 
-		var d = Norme(this.emplacement.coordonnees, this.cible.coordonnees); // c'est simplement la distance entre la tourelle et la cible
-		this.direction.x = Math.abs(this.emplacement.coordonnees.x - this.cible.coordonnees.x) / d;
-		this.direction.y = Math.abs(this.emplacement.coordonnees.y - this.cible.coordonnees.y) / d;
-		var Vx = vitesse * this.direction.x; // calcul des coordonnées de vitesse pour la balle en fonction de la position du monstre 
-		var Vy = vitesse * this.direction.y;
-		var vitesseProjectile = {x: Vx, y: Vy};
-		this.terrain.projectiles.push(new Projectile(vitesseProjectile, this.force, this.emplacement.coordonnees));
+		
+ 		if (this.compteur === 0){
+
+ 			var vitesseProjectile = {x: this.vitesse * this.direction.x, y : this.vitesse * this.direction.y};// calcul des coordonnées de vitesse pour la balle en fonction de la position du monstre
+			terrain.projectiles.push(new Projectile(this, vitesseProjectile, terrain, this.cible));
+			this.compteur = comptInit;
+ 		}
+
+		this.compteur--;
 
 		if (d > this.aireDetection){ // on verifie que le monstre est bien dans la zone de tir avant le prochain tir
 
@@ -83,15 +89,21 @@ function Tourelle(frequence, vitesse, force, terrain, emplacement, aire){
 	this.dessiner = function(){
 
 		context.beginPath();
-		context.arc(this.coordonnees.x, this.coordonnees.y, 5, 0, Math.PI*2, false);
+		context.arc(this.coordonnees.x, this.coordonnees.y, 15, 0, Math.PI*2, false);
 		context.fillStyle  = "#0F0";
-		context.fill(); 
+		context.fill();
+		context.closePath();
+		context.beginPath(); 
+		context.arc(this.coordonnees.x, this.coordonnees.y, this.aireDetection, 0, Math.PI*2, false);
+		context.strokeStyle  = "black";
+		context.stroke();
+		context.closePath();
 
 	}
 
 	this.supprimer = function(){
 
-		i = terrain.tourelles.indexOf(this);
+		var i = terrain.tourelles.indexOf(this);
 		terrain.tourelles.splice(i,1);
 		delete (this);
 	}
@@ -99,19 +111,38 @@ function Tourelle(frequence, vitesse, force, terrain, emplacement, aire){
 
 
 
-function Projectile(vitesse, degat, coordonnes, tourelle){
+function Projectile(tourelle, vitesse, terrain, cible){
 
+	this.coordonnees = { x : tourelle.coordonnees.x, y : tourelle.coordonnees.y };
 	this.vitesse = vitesse; // objet avec 2 propriétés : x et y
-	this.coordonnees = coordonnees;
-	this.degat = degat;
-	this.tourelle = tourelle
+	this.v = tourelle.vitesse;
+	this.degat = tourelle.force;
+	this.tourelle = tourelle;
+	this.cible = cible;
 
 	this.avancer = function(){
+
+		if (terrain.monstres.indexOf(this.cible) != -1){ // c'est gitan mais ça permet de regler un probleme incompris de suppression de monstre non désirée
+
+			var d = Norme(this.coordonnees, this.cible.coordonnees); // c'est simplement la distance entre la tourelle et la cible
+			var dx = (this.cible.coordonnees.x - this.coordonnees.x)/ d;
+			var dy = (this.cible.coordonnees.y - this.coordonnees.y)/ d;
+			this.vitesse.x =  this.v * dx
+			this.vitesse.y = this.v * dy;// calcul des coordonnées de vitesse pour la balle en fonction de la position du monstre
+		}
 
 		this.coordonnees.x += vitesse.x; // on ajoute directement les coordonnées de vitesse
 		this.coordonnees.y += vitesse.y; // il faut imaginer que c'est en fait Vx*t commen en physique, mais on à pas de temps ici, ce sera des boucles d'execution donc dans notre monde dt est un entier vala
 	
-	// il faut l'effacer lorsqu'il touche un monstre ou sort du canvas, et blesser le monstre
+		if (this.coordonnees.x > canvas.width || this.coordonnees.x < 0 || this.coordonnees.y > canvas.height || this.coordonnees.y < 0){// il faut l'effacer lorsqu'il touche un monstre ou sort du canvas, et blesser le monstre
+		
+			this.supprimer();
+		}
+		else if (d < Taille_Monstres){
+
+			this.cible.blesser(this);
+			this.supprimer();
+		}
 	}
 
 	this.dessiner = function(){
@@ -124,7 +155,7 @@ function Projectile(vitesse, degat, coordonnes, tourelle){
 
 	this.supprimer = function(){
 
-		i = terrain.projectiles.indexOf(this);
+		var i = terrain.projectiles.indexOf(this);
 		terrain.projectiles.splice(i,1); // PROBLEME ! le for dans l'update risque de buger
 		delete (this);
 	}
@@ -153,12 +184,13 @@ function Monstre(vitesse, force, type, vie, terrain, valeurXP, coordonnees){
 
 			this.avancement.parselle++;
 
-			if (this.avancement.parselle > terrain.chemin.parselles.length){ // si le chemin est terminé, on réduit la vie du joueur
+			if (this.avancement.parselle >= terrain.chemin.parselles.length){ // si le chemin est terminé, on réduit la vie du joueur
 
 					joueur.vie -= this.force;
 					this.supprimer();
+
 			}
-			else{ // la parselle a deja ete incremente dans le if precedant
+			else{ 
 
 				this.avancement.av -= Taille_Cases;
 				this.direction = terrain.chemin.parselles[this.avancement.parselle];
@@ -169,13 +201,13 @@ function Monstre(vitesse, force, type, vie, terrain, valeurXP, coordonnees){
 	this.blesser = function(projectile){
 
 		this.vie -= projectile.degat; 
-		projectile.supprimer(); // est ce l'instance ? ou une copie ?
 
 		if (this.vie <= 0){ // quand le monstre n'a plus de vie
 
 			projectile.tourelle.setXP(valeurXP); // et on donne ses xp à la tourelle qui l'a tué
 			projectile.tourelle.cible = false;
 			this.supprimer();// on le tue c'est à dire on le supprime du tableau des monstres, PROBLEME ! le for dans l'update risque de buger
+
 		}
 	}
 
@@ -183,7 +215,7 @@ function Monstre(vitesse, force, type, vie, terrain, valeurXP, coordonnees){
 
 		context.beginPath();
 		context.fillStyle  = "#00F";
-		context.arc(this.coordonnees.x, this.coordonnees.y, 15, 0, Math.PI*2, false);
+		context.arc(this.coordonnees.x, this.coordonnees.y, Taille_Monstres, 0, Math.PI*2, false);
 		context.fill();
 		context.closePath();
 		// ajouter une fonction qui rajoute la barre de vie
@@ -191,7 +223,17 @@ function Monstre(vitesse, force, type, vie, terrain, valeurXP, coordonnees){
 
 	this.supprimer = function(){
 
-		i = terrain.monstres.indexOf(this);
+		for(var k = 0; k< terrain.tourelles.length; k++){
+
+			if(this === terrain.tourelles[k].cible){
+
+				terrain.tourelles[k].cible = false;
+			}
+		}
+		var i = terrain.monstres.indexOf(this);
+
+		console.log(this);
+
 		terrain.monstres.splice(i,1);
 		delete (this);
 	}
@@ -209,18 +251,18 @@ function Terrain(){ // l'objet qui contient tous les autres, le plan quoi
 
 	var n = nbCasesLargeur;
 	var m = (n * canvas.width) / canvas.height;
-	var x;
-	var y;
+	var x0;
+	var y0;
 
 	for(var i = 0; i < n; i++){
 
 		this.cases.push([]);
-		x = Math.floor((i * Taille_Cases) + (Taille_Cases / 2));
+		x0 = Math.floor((i * Taille_Cases) + (Taille_Cases / 2));
 
 		for(var j = 0; j < m; j++){ 
 
-			y = Math.floor((j * Taille_Cases) + (Taille_Cases / 2));
-			this.cases[i].push(new Case(this, new Coordonnees(x,y, this)));
+			y0 = Math.floor((j * Taille_Cases) + (Taille_Cases / 2));
+			this.cases[i].push(new Case(this, {x : x0, y: y0}));
 		}
 	}
 
@@ -276,6 +318,12 @@ function Terrain(){ // l'objet qui contient tous les autres, le plan quoi
 		for(var i = 0; i<this.projectiles.length; i++){
 
 			this.projectiles[i].avancer();
+
+			/*if(projectil.colision){
+				projectiles.splice(i,1).supprimer
+				i--
+				j--
+			} */
 		}
 
 	}
@@ -299,19 +347,6 @@ function Case(terrain, coordonnees){ // on découpe le plan en carrés de taille
 };
 
 
-function Coordonnees(x,y, terrain){ // cet objet simple permet simplifier le code
-
-	this.x = x;
-	this.y = y;
-
-	this.findCase = function(){ // retourne la case correspondant au coordonnées (on peut utiliser la matrice terrain.cases en trouvant d'abord les coordonées dans cette matrice)
-		
-		var i = Math.floor(this.x / Taille_Cases);
-		var j = Math.floor(this.y / Taille_Cases);
-		 
-		return(terrain.cases[i][j]);
-	}
-};
 
 function Niveau(){
 

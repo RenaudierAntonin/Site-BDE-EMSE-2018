@@ -8,8 +8,10 @@ function Tower_defense_script(){
 	
 	nbCasesLargeur = 20;
 	Taille_Cases = canvas.width / nbCasesLargeur; 
-	var time = 50 ;
+	Taille_Monstres = 15;
+	time = 50 ;
 	var terrain  = new Terrain(context);
+	joueur = {vie : 100, money :1000};
 
 	initialisation(terrain, 1);
 
