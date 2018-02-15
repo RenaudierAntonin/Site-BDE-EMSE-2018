@@ -3,13 +3,75 @@
 <html>
 
 	<head>
+		<meta charset="utf-8" />
 		<title>Tower defense</title>
+		<style>
+		.right {
+ 			float:right;
+		}
+		.canvas {
+			float:left;
+ 			margin-right: 10px;
+		}
+		.tower {
+ 			display:inline-block;
+ 			padding: 5px;
+ 			border: 1px solid;
+		}
+		</style>
 	</head>
 	
 	<body>
 		
-		<canvas id="canvas" width="1200" height="600" style="border: 1px solid black;"></canvas>
-		
+		<canvas id="canvas" class='canvas' width="1000" height="600" style="border: 1px solid black;"></canvas>
+		<p>
+		<div id = "tourelle1" class='tower' style='background-color: green;' onclick='selectionnerTourelle(1);'>
+
+			Tour 1
+			<br>
+			Portée: 
+			<br>
+			Puissance: 
+			<br>
+			Cadence: 
+			<br>
+			Prix: 
+		</div>
+		</p>
+		<p>
+		<div id = "tourelle2" class='tower' style='background-color: brown;' onclick='selectionnerTourelle(2);'>
+				Tour 2
+				<br>
+				Portée: 
+				<br>
+				Puissance: 
+				<br>
+				Cadence: 
+				<br>
+				Prix: 
+			</div>
+		</p>
+		<p>
+		<div id = "tourelle3" class='tower' style='background-color:aqua;' onclick='selectionnerTourelle(3);'>
+			Tour 3
+			<br>
+			Portée:
+			<br>
+			Puissance:
+			<br>
+			Cadence: 
+			<br>
+			Prix:  
+			</div>
+		</p>
+		<div> 
+			Vie :  <span id = "vie"> 100 </span>
+			<br>
+			Score :  <span id = "score"> 0 </span>
+			<br>
+			Argent :  <span id = "money"> 0 </span>
+		</div>
+
 		<script src="Tower_defense_classes.js"></script>
 		<script src="Tower_defense_fonctions.js"></script>
 		<script src="Tower_defense_script.js"></script>

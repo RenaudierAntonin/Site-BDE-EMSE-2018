@@ -5,19 +5,42 @@ function Tower_defense_script(){
 
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");
+	Money = document.getElementById("money");
+	Vie = document.getElementById("vie");
+	Score = document.getElementById("score");
 	
+	lvl = 1; // niveau actuel
+	souris = { x : 0, y : 0}; // position de la souris
+	type = 0; // type de monstre utilise dans la fonction generer
+	
+	FPS = 20;
 	nbCasesLargeur = 20;
 	Taille_Cases = canvas.width / nbCasesLargeur; 
-	Taille_Monstres = 15;
-	time = 50 ;
-	var terrain  = new Terrain(context);
-	joueur = {vie : 100, money :1000};
+	Taille_Monstres = 0.3 * Taille_Cases;
+	time = Math.floor(1000/FPS) ;
+	terrain  = new Terrain();
+	joueur = {vie : 100, money : 1000, score : 0};
+	tourelleSelectionnee = false;
 
-	initialisation(terrain, 1);
+	initialisation(terrain);
+
+	var jeu = setInterval(run, time);
+
+	canvas.addEventListener('mousedown', function() {
+
+  		if(tourelleSelectionnee && tourelleSelectionnee.emplacement.disponible) {
+
+    		terrain.tourelles.push(tourelleSelectionnee.copie());
+    		joueur.money -= tourelleSelectionnee.prix;
+    		tourelleSelectionnee.emplacement.libre = false;
+    		tourelleSelectionnee = false;
+
+  	}
+
+  	canvas.addEventListener('mousemove', sourisPos, false); 
 
 
-	var jeu = setInterval(run, time, terrain);
-
+});
 	/*var bouton_play = document.getElementById("Play_Pause");
 
 	bouton_play.addEventListener('click',function(){

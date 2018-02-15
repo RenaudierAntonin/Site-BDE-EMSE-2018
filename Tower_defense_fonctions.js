@@ -1,9 +1,17 @@
-  
-
-function run(terrain){
+function run(){
 
 	terrain.update();
 	terrain.dessiner(context);
+
+	if (tourelleSelectionnee){
+
+		tourelleSelectionnee.dessiner();
+	}
+
+	genererMonstre();
+	Money.innerText = joueur.money;
+	Vie.innerText = joueur.vie;
+	Score.innerText = joueur.score;
 }
 
 function Norme(coordonnee1,coordonnee2){ // calcule la norme d'une coordonnée, si l'argument facultatif coordonnee2 est ecrit : calule la distance entre les 2
@@ -74,4 +82,84 @@ function findCase(coordonnees){ // retourne la case correspondant au coordonnée
 		var j = Math.floor(coordonnees.y / Taille_Cases);
 		 
 		return(terrain.cases[i][j]);
+}
+
+function sourisPos(e) {
+  var rect = canvas.getBoundingClientRect();
+  souris = {
+    x : e.clientX - rect.left,
+    y : e.clientY - rect.top
+  };
+
+  if (tourelleSelectionnee){
+
+  	tourelleSelectionnee.emplacement = findCase(souris);
+  }
+} 
+
+function selectionnerTourelle(n){
+
+	switch (n){
+
+		case 1:
+
+			var frequenceTir = 100;
+ 			var vitesse = 10;
+			var force = 100;
+			var emplacement = findCase(souris);
+			var aire = 100;
+			var prix = 10;
+			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix);
+
+		break;
+
+		case 2:
+
+			var frequenceTir = 100;
+ 			var vitesse = 10;
+			var force = 100;
+			var emplacement = findCase(souris);
+			var aire = 100;
+			var prix = 10;
+			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix);
+	
+		break;
+
+		case 3:
+
+			var frequenceTir = 3;
+ 			var vitesse = 10;
+			var force = 100;
+			var emplacement = findCase(souris);
+			var aire = 100;
+			var prix = 10;
+			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix);
+
+		break;
+
+		case 4: 
+			
+			//tourelleSelectionnee = {frequenceTir : , vitesse : , force : , emplacement : , aire : , prix : };
+
+		break;
+	}
+}
+
+function genererMonstre(){
+
+	var r = Math.random();
+
+	if (type < Monstres.length){
+
+		if (Monstres[type].nb <= 0){
+			
+			type++;
+		}
+		if (r < proba){
+
+			var monstre = Monstres[type];
+			terrain.monstres.push(new Monstre(monstre.vitesse, monstre.force, monstre.type, monstre.vie, monstre.valeurXP, monstre.valeurMoney, {x : monstre.coordonnees.x, y : monstre.coordonnees.y}));
+			monstre.nb--;
+		}
+	}
 }
