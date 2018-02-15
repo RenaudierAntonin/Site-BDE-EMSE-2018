@@ -92,7 +92,7 @@ input[type=button], input[type=submit], input[type=reset] {
 
 
 .grid-element{
-	margin: 10px;
+	margin: 2px;
 	height: 200px;
 	width: 300px;
 	text-align: center;
@@ -104,4 +104,10 @@ a{
 	padding: 0px;
 	text-decoration: none;
 	color: black;
+}
+
+.grid-element img{
+	max-height: 120px;
+	height: auto;
+	width: auto;
 }
