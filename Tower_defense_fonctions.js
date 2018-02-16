@@ -1,11 +1,11 @@
 function run(){
 
 	terrain.update();
-	terrain.dessiner(context);
+	terrain.dessiner();
 
 	if (tourelleSelectionnee){
 
-		tourelleSelectionnee.dessiner();
+		tourelleSelectionnee.dessiner(); 
 	}
 
 	genererMonstre();
@@ -99,7 +99,7 @@ function sourisPos(e) {
 
 function selectionnerTourelle(n){
 
-	switch (n){
+	switch (n){ // changer les couleurs pour les differentes tourelles
 
 		case 1:
 
@@ -109,7 +109,7 @@ function selectionnerTourelle(n){
 			var emplacement = findCase(souris);
 			var aire = 100;
 			var prix = 10;
-			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix);
+			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, "#33FF00");
 
 		break;
 
@@ -121,25 +121,31 @@ function selectionnerTourelle(n){
 			var emplacement = findCase(souris);
 			var aire = 100;
 			var prix = 10;
-			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix);
+			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, "red");
 	
 		break;
 
 		case 3:
 
-			var frequenceTir = 3;
+			var frequenceTir = 50;
  			var vitesse = 10;
 			var force = 100;
 			var emplacement = findCase(souris);
 			var aire = 100;
 			var prix = 10;
-			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix);
+			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, "blue");
 
 		break;
 
 		case 4: 
 			
-			//tourelleSelectionnee = {frequenceTir : , vitesse : , force : , emplacement : , aire : , prix : };
+			var frequenceTir = 50;
+ 			var vitesse = 10;
+			var force = 100;
+			var emplacement = findCase(souris);
+			var aire = 100;
+			var prix = 10;
+			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, "#660099");
 
 		break;
 	}
@@ -158,7 +164,7 @@ function genererMonstre(){
 		if (r < proba){
 
 			var monstre = Monstres[type];
-			terrain.monstres.push(new Monstre(monstre.vitesse, monstre.force, monstre.type, monstre.vie, monstre.valeurXP, monstre.valeurMoney, {x : monstre.coordonnees.x, y : monstre.coordonnees.y}));
+			terrain.monstres.push(new Monstre(monstre.vitesse, monstre.force, monstre.type, monstre.vie, monstre.valeurXP, monstre.valeurMoney, {x : monstre.coordonnees.x, y : monstre.coordonnees.y}, monstre.couleur));
 			monstre.nb--;
 		}
 	}

@@ -8,7 +8,7 @@ function Tower_defense_script(){
 	Money = document.getElementById("money");
 	Vie = document.getElementById("vie");
 	Score = document.getElementById("score");
-	
+
 	lvl = 1; // niveau actuel
 	souris = { x : 0, y : 0}; // position de la souris
 	type = 0; // type de monstre utilise dans la fonction generer
@@ -19,7 +19,9 @@ function Tower_defense_script(){
 	Taille_Monstres = 0.3 * Taille_Cases;
 	time = Math.floor(1000/FPS) ;
 	terrain  = new Terrain();
+
 	joueur = {vie : 100, money : 1000, score : 0};
+	
 	tourelleSelectionnee = false;
 
 	initialisation(terrain);

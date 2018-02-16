@@ -11,7 +11,7 @@
 	};
  */
 
-function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix){
+function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, couleur){
 	
 	var comptInit = 1000 / frequenceTir; // a modifier lorsqu'on modifiera la frequence de tir
 	this.compteur = 0; // frequence est le nb de tir par sec
@@ -25,6 +25,7 @@ function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix){
 	this.direction = {x: 1, y: 0};
 	this.coordonnees = this.emplacement.coordonnees;
 	this.prix = prix;
+	this.couleur = couleur;
 
 	this.cibler = function(){
 
@@ -50,7 +51,7 @@ function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix){
 		this.direction.y = (this.cible.coordonnees.y - this.coordonnees.y)/ d;
 
 		
- 		if (this.compteur === 0){
+ 		if (this.compteur <= 0){
 
  			var vitesseProjectile = {x: this.vitesse * this.direction.x, y : this.vitesse * this.direction.y};// calcul des coordonnées de vitesse pour la balle en fonction de la position du monstre
 			terrain.projectiles.push(new Projectile(this, vitesseProjectile, this.cible));
@@ -96,7 +97,7 @@ function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix){
 		context.closePath();
 		context.beginPath();
 		context.arc(this.emplacement.coordonnees.x, this.emplacement.coordonnees.y, 15, 0, Math.PI*2, false);
-		context.fillStyle  = "#0F0";
+		context.fillStyle  = this.couleur;
 		context.fill();
 		context.closePath();
 		
@@ -118,7 +119,8 @@ function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix){
 	var emplacement = findCase({ x : this.emplacement.coordonnees.x, y : this.emplacement.coordonnees.y});
 	var aire = this.aire; 
 	var prix = this.prix;
-	return (new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix));
+	var couleur = this.couleur;
+	return (new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, couleur));
 	}
 };
 
@@ -177,7 +179,7 @@ function Projectile(tourelle, vitesse, cible){
 
 
 
-function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees){
+function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees, couleur){
 
 	this.vitesse = vitesse;
 	this.force = force;
@@ -229,7 +231,7 @@ function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees){
 	this.dessiner = function(){
 
 		context.beginPath();
-		context.fillStyle  = "#00F";
+		context.fillStyle  = couleur;
 		context.arc(this.coordonnees.x, this.coordonnees.y, Taille_Monstres, 0, Math.PI*2, false);
 		context.fill();
 		context.closePath();
