@@ -99,6 +99,17 @@ input[type=button], input[type=submit], input[type=reset] {
 	background-color: blue;
 }
 
+@keyframes test{
+	from {background-color: blue;}
+	to {background-color: green;}
+}
+.grid-element:hover{
+	animation-name: test;
+	animation-duration: 0.9s;
+	animation-fill-mode: forwards;
+}
+
+
 a{
 	margin: 0px;
 	padding: 0px;
@@ -106,11 +117,14 @@ a{
 	color: black;
 }
 
+
+
 .grid-element img{
 	max-height: 120px;
 	height: auto;
 	width: auto;
 }
+
 
 table, th, td{
 	border: 1px solid black;
@@ -140,4 +154,20 @@ td{
 	max-height: 30px;
 	height: auto;
 	width: auto;
+}
+
+.social{
+	display: inline-block;
+	padding: 10px;
+	max-height: 50px;
+	height: auto;
+	width: auto;
+}
+
+.social-container{
+	text-align: center;
+}
+
+.credits{
+	text-align: center;	
 }
