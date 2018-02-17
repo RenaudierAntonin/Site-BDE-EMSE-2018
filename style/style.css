@@ -25,30 +25,38 @@ body{
 }
 
 .menu-container{
-	display: inline-block;
+	display: block;
+	text-align: center;
 	background-color: #6E0B14;
 	padding: 0px;
 	margin: 0px;
 	width: 100%;
 }
+.menu{
+	display: inline-block;
+	padding: 0;
+	margin:0;
+}
 .menu li{
 	display: inline-block;
-	float: left;
 	background-color: #6E0B14;
-	padding-bottom: 16px;
-	padding-left: 0px;
-	padding-right: 0px;
+	padding: 10px;
 	list-style: none;
 	margin: 0px;
 }
 
 .menu li :hover{
+	display: inline-block;
+	width: 100%;
 	background-color: #FFBF00;
 	color: black;
 }
 
-li a{
-	padding: 10px;
+.menu li a{
+	display: block;
+	margin:0px;
+	padding:0px;
+	text-align: center;
 	color:white;
 	text-decoration: none;
 }
@@ -147,7 +155,6 @@ td{
 	text-align: center;
 	height: 60px;
 	width: 80px;
-	background-color: green;
 }
 
 .jeu img{
@@ -170,4 +177,12 @@ td{
 
 .credits{
 	text-align: center;	
+}
+
+.game-container{
+	margin-top: -10px;
+	padding-top: 10px;
+	display: block;
+	float: left;
+	background-color: green;
 }
