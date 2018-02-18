@@ -30,32 +30,34 @@ body{
 	background-color: #6E0B14;
 	padding: 0px;
 	margin: 0px;
+	height: 39px;
 	width: 100%;
 }
 .menu{
 	display: inline-block;
 	padding: 0;
 	margin:0;
+	height: 40px;
 }
 .menu li{
 	display: inline-block;
 	background-color: #6E0B14;
-	padding: 10px;
 	list-style: none;
-	margin: 0px;
 }
 
 .menu li :hover{
 	display: inline-block;
-	width: 100%;
 	background-color: #FFBF00;
 	color: black;
 }
 
+.menu li a:hover{
+	text-align: center;
+}
 .menu li a{
 	display: block;
 	margin:0px;
-	padding:0px;
+	padding:10px;
 	text-align: center;
 	color:white;
 	text-decoration: none;
@@ -113,7 +115,7 @@ input[type=button], input[type=submit], input[type=reset] {
 }
 .grid-element:hover{
 	animation-name: test;
-	animation-duration: 0.9s;
+	animation-duration: 0.5s;
 	animation-fill-mode: forwards;
 }
 
@@ -140,6 +142,7 @@ table, th, td{
 }
 
 table{
+	margin-top: 10px;
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
@@ -150,8 +153,11 @@ td{
 }
 
 .jeu{
-	float: left;
+	display: block;
+	margin-left:auto;
+	margin-right: auto;
 	padding: 5px;
+	padding-top: 10px;
 	text-align: center;
 	height: 60px;
 	width: 80px;
@@ -180,9 +186,9 @@ td{
 }
 
 .game-container{
-	margin-top: -10px;
-	padding-top: 10px;
-	display: block;
+	padding-top: 0px;
 	float: left;
+	display: inline-block;
 	background-color: green;
+	margin-right: -90px;
 }
