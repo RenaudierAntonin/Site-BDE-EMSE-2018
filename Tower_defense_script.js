@@ -20,21 +20,26 @@ function Tower_defense_script(){
 	time = Math.floor(1000/FPS) ;
 	terrain  = new Terrain();
 
-	joueur = {vie : 100, money : 1000, score : 0};
-	
+	joueur = {vie : 2, money : 10, score : 0};
+
+	Vie.innerText = joueur.vie;
+	Money.innerText = joueur.money;
+	Score.innerText = joueur.score;
+
 	tourelleSelectionnee = false;
 
 	initialisation(terrain);
 
-	var jeu = setInterval(run, time);
+	jeu = setInterval(run, time);
 
 	canvas.addEventListener('mousedown', function() {
 
-  		if(tourelleSelectionnee && tourelleSelectionnee.emplacement.disponible) {
+  		if(tourelleSelectionnee && tourelleSelectionnee.emplacement.disponible && joueur.money >= tourelleSelectionnee.prix) {
 
     		terrain.tourelles.push(tourelleSelectionnee.copie());
     		joueur.money -= tourelleSelectionnee.prix;
-    		tourelleSelectionnee.emplacement.libre = false;
+    		Money.innerText = joueur.money;
+    		tourelleSelectionnee.emplacement.disponible = false; 
     		tourelleSelectionnee = false;
 
   	}

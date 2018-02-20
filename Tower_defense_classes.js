@@ -202,6 +202,14 @@ function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees, 
 			if (this.avancement.parselle >= terrain.chemin.parselles.length){ // si le chemin est terminé, on réduit la vie du joueur
 
 					joueur.vie -= this.force;
+					Vie.innerText = joueur.vie;
+
+					if (joueur.vie <= 0){
+
+						clearInterval(jeu);
+						alert("Perdu ! Expeliar'mines vous a tué ");
+					}
+
 					this.supprimer();
 
 			}
@@ -220,8 +228,12 @@ function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees, 
 		if (this.vie <= 0){ // quand le monstre n'a plus de vie
 
 			projectile.tourelle.setXP(valeurXP); // et on donne ses xp à la tourelle qui l'a tué
+
 			joueur.money += valeurMoney;
 			joueur.score += valeurXP;
+			Money.innerText = joueur.money;
+			Score.innerText = joueur.score;
+			
 			projectile.tourelle.cible = false;
 			this.supprimer();// on le tue c'est à dire on le supprime du tableau des monstres, PROBLEME ! le for dans l'update risque de buger
 

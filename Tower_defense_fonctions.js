@@ -1,6 +1,5 @@
 function run(){
 
-	terrain.update();
 	terrain.dessiner();
 
 	if (tourelleSelectionnee){
@@ -9,9 +8,7 @@ function run(){
 	}
 
 	genererMonstre();
-	Money.innerText = joueur.money;
-	Vie.innerText = joueur.vie;
-	Score.innerText = joueur.score;
+	terrain.update();
 }
 
 function Norme(coordonnee1,coordonnee2){ // calcule la norme d'une coordonnée, si l'argument facultatif coordonnee2 est ecrit : calule la distance entre les 2
