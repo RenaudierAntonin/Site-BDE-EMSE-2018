@@ -20,7 +20,7 @@ function run(){
 			
 				Niveau.innerText = lvl;
 				initialisation();
-				clearInterval(jeu);
+				play_pause();
 				//transformer l'image du bouton jeu
 			} 
 		}
@@ -188,4 +188,22 @@ function genererMonstre(){
 		return(false);
 	}
 	return(true);
+}
+
+function play_pause(){
+
+	if (jeu){
+			
+		bouton_play.innerText = "Play";	
+		//transformer l'image du bouton play
+		clearInterval(jeu);
+		jeu = false;
+	}
+
+	else{
+
+		bouton_play.innerText = "Pause";	
+		//transformer l'image du bouton play
+		jeu = setInterval(run, time, terrain);
+	}
 }

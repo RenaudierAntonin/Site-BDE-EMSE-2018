@@ -1,6 +1,8 @@
 window.onload = Tower_defense_script;
 // utiliser des images, et tetes du bureau en boss
 
+// penser a creer un super pouvoir, qui genere une tete de edme parcourant le chemin a lenvert pour buter tout les monstres
+
 function Tower_defense_script(){
 
 	canvas = document.getElementById("canvas");
@@ -32,7 +34,7 @@ function Tower_defense_script(){
 
 	initialisation();
 
-	jeu = setInterval(run, time);
+	jeu = false;
 
 	canvas.addEventListener('mousedown', function() {
 
@@ -50,25 +52,7 @@ function Tower_defense_script(){
 
 
 });
-	/*var bouton_play = document.getElementById("Play_Pause");
+	bouton_play = document.getElementById("Play_Pause");
 
-	bouton_play.addEventListener('click',function(){
-
-		if (jeu){
-			//transformer l'image du bouton play
-			clearInterval(jeu);
-			jeu = false;
-		}
-
-		else{
-			//transformer l'image du bouton play
-			jeu = setInterval(run, time, terrain);
-		}
-		
-
-	});*/
-
-
-
-
+	bouton_play.addEventListener('click',play_pause);
 }
