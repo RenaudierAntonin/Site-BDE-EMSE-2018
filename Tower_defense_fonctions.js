@@ -1,5 +1,6 @@
 function run(){
 
+	terrain.update();
 	terrain.dessiner();
 
 	if (tourelleSelectionnee){
@@ -7,8 +8,28 @@ function run(){
 		tourelleSelectionnee.dessiner(); 
 	}
 
-	genererMonstre();
-	terrain.update();
+	finGeneration = genererMonstre();
+
+	if (finGeneration && (terrain.monstres.length == 0)){
+
+		lvl++;
+
+		if (lvl < lvlMax){
+ 
+			if (confirm("Niveau terminé, voulez vous allez au niveau suivant")){
+			
+				Niveau.innerText = lvl;
+				initialisation();
+				clearInterval(jeu);
+				//transformer l'image du bouton jeu
+			} 
+		}
+		else {
+
+			alert("Bravo ! Vous avez terminé le jeu épique de Mines'perium, vous pouvez passer au survival pour ameliorer votre score");
+		}
+		
+	}
 }
 
 function Norme(coordonnee1,coordonnee2){ // calcule la norme d'une coordonnée, si l'argument facultatif coordonnee2 est ecrit : calule la distance entre les 2
@@ -164,5 +185,7 @@ function genererMonstre(){
 			terrain.monstres.push(new Monstre(monstre.vitesse, monstre.force, monstre.type, monstre.vie, monstre.valeurXP, monstre.valeurMoney, {x : monstre.coordonnees.x, y : monstre.coordonnees.y}, monstre.couleur));
 			monstre.nb--;
 		}
+		return(false);
 	}
+	return(true);
 }

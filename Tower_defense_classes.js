@@ -100,9 +100,6 @@ function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, couleur
 		context.fillStyle  = this.couleur;
 		context.fill();
 		context.closePath();
-		
-		
-
 	}
 
 	this.supprimer = function(){
@@ -246,7 +243,12 @@ function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees, 
 		context.fillStyle  = couleur;
 		context.arc(this.coordonnees.x, this.coordonnees.y, Taille_Monstres, 0, Math.PI*2, false);
 		context.fill();
+		context.fillStyle = "#33FF00";
+		context.fillRect(this.coordonnees.x - Taille_Monstres, this.coordonnees.y + Taille_Monstres + 4, 2 * Taille_Monstres * (this.vie/vie), 4);
+		context.fillStyle = "red";
+		context.fillRect(this.coordonnees.x + Taille_Monstres, this.coordonnees.y + Taille_Monstres + 4, 2 * Taille_Monstres * ((this.vie/vie)-1),4);
 		context.closePath();
+
 		// ajouter une fonction qui rajoute la barre de vie
 	}
 
@@ -382,9 +384,8 @@ function Niveau(){
 function Chemin(debut, construction){ // c'est le chemin sur lequel vont avancer les monstres
 
 	this.parselles = Convertir_chemin(construction); // on va essayer de contruire un chemin assez simplement avec une suite d'instructions : va à droite en au en bas...
-	this.cases = []
-
-	this.cases.push(terrain.cases[debut.i][debut.j]);
+	this.cases = [terrain.cases[debut.i][debut.j]];
+	this.debut = { i : debut.i, j : debut.j };
 
 	for(var k = 1; k<this.parselles.length; k++){// on marque la case actuelle et on calcule la suivante
 			
