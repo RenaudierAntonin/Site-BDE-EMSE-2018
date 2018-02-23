@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Mines'perium</title>
-	<link rel="stylesheet" type="text/css" href="../style/style.css">
+	<link rel="stylesheet" type="text/css" href="style/style.css">
 	<meta charset="utf-8">
 </head>
 
@@ -11,8 +11,8 @@
 	<?php include("menu.php"); ?>
 
 	<div class="game-container">
-		<div><a class="jeu" href="../Tower_defense/Tower_defense_main.html"><img class="logo" src="../img/logo_minesperium_transparent.png">Jeu 1</a></div>
-		<div><a class="jeu" href=""><img class="logo" src="../img/logo_minesperium_transparent.png">Jeu 2</a></div>	
+		<div><a class="jeu" href="Tower_defense/Tower_defense_main.html"><img class="logo" src="img/logo_minesperium_transparent.png">Jeu 1</a></div>
+		<div><a class="jeu" href=""><img class="logo" src="img/logo_minesperium_transparent.png">Jeu 2</a></div>	
 	</div>
 	<table>
 		<tr>

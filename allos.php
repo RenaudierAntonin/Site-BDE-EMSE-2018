@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Mines'perium</title>
-	<link rel="stylesheet" type="text/css" href="../style/style.css">
+	<link rel="stylesheet" type="text/css" href="style/style.css">
 	<meta charset="utf-8">
 </head>
 
@@ -10,7 +10,7 @@
 	<?php include("menu.php"); ?>
 
 	<div class="grid-container">
-		<a href="" class="grid-element" title="hfeuhuheuheduh" alt="dieidjei"><h2>titre 1</h2><img src="../img/logo_minesperium_transparent.png"></a>
+		<a href="" class="grid-element" title="hfeuhuheuheduh" alt="dieidjei"><h2>titre 1</h2><img src="img/logo_minesperium_transparent.png"></a>
 		<a href="" class="grid-element"><h2>titre 2</h2><p>Description</p></a>
 		<a href="" class="grid-element"><h2>titre 3</h2><p>Description</p></a>
 		<a href="" class="grid-element"><h2>titre 4</h2><p>Description</p></a>
