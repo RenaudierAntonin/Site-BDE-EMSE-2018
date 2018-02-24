@@ -25,10 +25,10 @@
 
 <div class="menu-container">
 	<ul class="menu">
-		<li><a href="">Membres</a></li>
+		<li><a href="membres.php">Membres</a></li>
 		<li><a href="allos.php">Allo ?</a></li>
-		<li><a href="">Planning</a></li>
+		<li><a href="planning.php">Planning</a></li>
 		<li><a href="jeux_classements.php">Jeux et classements</a></li>
-		<li><a href="">Photos/Vidéos</a></li>
+		<li><a href="medias.php">Photos/Vidéos</a></li>
 	</ul>
 </div>
