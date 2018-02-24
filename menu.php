@@ -1,6 +1,6 @@
 <div class="logo-container">
-	<a href="index.php"><img class="logo" src="../img/logo_minesperium_transparent.png"></a>
-	<img class="nom_liste" src="../img/nom_minesperium_diogene.png">
+	<a href=index.php"><img class="logo" src="img/logo_minesperium_transparent.png"></a>
+	<img class="nom_liste" src="img/nom_minesperium_diogene.png">
 	
 	<?php if (isset($_SESSION['login']) AND $_SESSION['login']){
 
@@ -8,14 +8,15 @@
 	}
 		else if (!isset($_GET['inscrire']) OR !$_GET['inscrire']){ ?>
 
-	<form action = "connexion.php" method = "post">
+	<div class="connection-container">
+	<form class="connection" action = "connexion.php" method = "post">
 		<input type="text" name="login">
 		<input type="password" name="mdp">
 		<input type="submit">
 	</form>
 	
-	<a href = "inscription.php?inscrire=true"> s'inscrire </a>*
-
+	<a href = "inscription.php?inscrire=true">S'inscrire</a>
+	</div>
 	<?php }  ?>
 </div>
 
