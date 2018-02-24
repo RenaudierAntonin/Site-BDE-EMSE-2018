@@ -1,5 +1,7 @@
 <div class="logo-container">
-	<a href="index.php"><img class="logo" src="img/logo_minesperium.png"></a>
+	<div>
+		<a href="index.php"><img class="logo" src="img/logo_minesperium.png"></a>
+	</div>
 	
 	<?php if (isset($_SESSION['login']) AND $_SESSION['login']){
 
