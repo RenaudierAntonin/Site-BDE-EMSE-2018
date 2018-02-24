@@ -1,5 +1,5 @@
 <div class="logo-container">
-	<a href=index.php"><img class="logo" src="img/logo_minesperium_transparent.png"></a>
+	<a href="index.php"><img class="logo" src="img/logo_minesperium_transparent.png"></a>
 	<img class="nom_liste" src="img/nom_minesperium_diogene.png">
 	
 	<?php if (isset($_SESSION['login']) AND $_SESSION['login']){
@@ -10,8 +10,8 @@
 
 	<div class="connection-container">
 	<form class="connection" action = "connexion.php" method = "post">
-		<input type="text" name="login">
-		<input type="password" name="mdp">
+		<input placeholder="Identifiant" type="text" name="login">
+		<input placeholder="Mot de passe" type="password" name="mdp">
 		<input type="submit">
 	</form>
 	
