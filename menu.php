@@ -10,8 +10,8 @@
 
 	<div class="connection-container">
 	<form class="connection" action = "connexion.php" method = "post">
-		<input type="text" name="login">
-		<input type="password" name="mdp">
+		<input placeholder="Identifiant" type="text" name="login">
+		<input placeholder="Mot de passe" type="password" name="mdp">
 		<input type="submit">
 	</form>
 	
