@@ -2,25 +2,14 @@
 <html>
 <head>
 	<title>Mines'perium</title>
-	<link rel="stylesheet" type="text/css" href="style/style.css">
+	<link rel="stylesheet" type="text/css" href="../style/style.css">
 	<meta charset="utf-8">
 </head>
 
 <body>
 	
-	<div class="logo-container">
-		<img class="logo" src="img/logo_minesperium_transparent.png">
-		<img class="nom_liste" src="img/nom_minesperium_diogene.png">
-	</div>
-	<div class="menu-container">
-	<ul class="menu">
-		<li><a href="">Membres</a></li>
-		<li><a href="pages/allos.html">Allo ?</a></li>
-		<li><a href="">Planning</a></li>
-		<li><a href="pages/jeux_classements.html">Jeux et classements</a></li>
-		<li><a href="">Photos/Vidéos</a></li>
-	</ul>
-	</div>
+	<?php include("menu.php"); ?>
+
 	<div class="texte">
 		<h1>L'invasion commence !</h1>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -32,20 +21,15 @@
 	</div>
 	<div class="formulaire">
 	<form name="formulaire" action="affiche-donnees.php" method="POST" enctype="multipart/form-data">
-      <li><label for="nom">Pour avoir nos infos par sms :</label>
-        <input type="text" id="nom" name="nom"></li>
+      <li><label for="numero">Pour avoir nos infos par sms :</label>
+        <input type="text" id="numero" name="numero"></li>
       <li><input type="submit" value="Je veux recevoir des informations par SMS"></li>
     </ul>
 	</form>
 	</div>
-	<hr>
-	<div class="social-container">
-		<a href=""><img class="social" src="img/facebook_logo.svg"></a>
-		<a href=""><a href=""><img class="social" src="img/snapchat_logo.svg"></a>
-		<a href=""><img class = "social" src="img/instagram_logo.svg"></a>
-		<a href=""><img class="social" src="img/youtube_logo.svg"></a>
-	</div>
-	<hr>
+
+	<?php include("reseaux_sociaux.php"); ?>
+
 </body>
 <footer>
 	<p class="credits">Liste BDE Mines Saint-Etienne 2K18 - Mines'perium - Copyright BDE's Nerds</p>

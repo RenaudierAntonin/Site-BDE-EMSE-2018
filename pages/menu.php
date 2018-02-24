@@ -1,0 +1,32 @@
+<div class="logo-container">
+	<a href="index.php"><img class="logo" src="../img/logo_minesperium_transparent.png"></a>
+	<img class="nom_liste" src="../img/nom_minesperium_diogene.png">
+	
+	<?php if (isset($_SESSION['login']) AND $_SESSION['login']){
+
+		echo $_SESSION['prenom']. " " . $_SESSION['nom'];
+	}
+		else if (!isset($_GET['inscrire']) OR !$_GET['inscrire']){ ?>
+
+	<form action = "connexion.php" method = "post">
+		<input type="text" name="login">
+		<input type="password" name="mdp">
+		<input type="submit">
+	</form>
+	
+	<a href = "inscription.php?inscrire=true"> s'inscrire </a>*
+
+	<?php }  ?>
+</div>
+
+
+
+<div class="menu-container">
+	<ul class="menu">
+		<li><a href="">Membres</a></li>
+		<li><a href="allos.php">Allo ?</a></li>
+		<li><a href="">Planning</a></li>
+		<li><a href="jeux_classements.php">Jeux et classements</a></li>
+		<li><a href="">Photos/Vidéos</a></li>
+	</ul>
+</div>
