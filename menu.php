@@ -47,9 +47,9 @@
 
 	<form class="connection" action = "index.php" method = "post">
 
-		<input type="text" name="login">
+		<input placeholder="Login" type="text" name="login">
 
-		<input type="password" name="mdp">
+		<input placeholder="Mot de passe" type="password" name="mdp">
 
 		<input type="submit">
 
