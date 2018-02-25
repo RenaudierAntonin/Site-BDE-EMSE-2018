@@ -10,10 +10,7 @@
 
 <div class="logo-container">
 
-	<a href="index.php"><img class="logo" src="img/logo_minesperium_transparent.png"></a>
-
-	<img class="nom_liste" src="img/nom_minesperium_diogene.png">
-
+	<a href="index.php"><img class="logo" src="img/logo_minesperium.png"></a>
 	
 
 	<?php if(isset($_POST['login']) AND isset($_POST['mdp'])){
