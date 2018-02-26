@@ -7,14 +7,11 @@
 	} ?>
 
 
-
 <div class="logo-container">
 
 	<a href="index.php"><img class="logo" src="img/logo_minesperium_transparent.png"></a>
 
 	<img class="nom_liste" src="img/nom_minesperium_diogene.png">
-
-	
 
 	<?php if(isset($_POST['login']) AND isset($_POST['mdp'])){
 
@@ -26,25 +23,16 @@
 
 	if (isset($_SESSION['login']) /*AND $_SESSION['login']*/){
 
-
-
 		echo $_SESSION['login']. " " . $_SESSION['mdp'];
 
 	?>
 
-
-
 	<a href="index.php?deconnexion=true"><button>Deconnexion</button></a>
-
-
 
 	<?php
 
 	}
-
 		else if (!isset($_GET['inscrire']) OR !$_GET['inscrire']){ ?>
-
-
 
 	<div class="connection-container">
 
@@ -67,10 +55,6 @@
 	<?php } ?>
 
 </div>
-
-
-
-
 
 
 

@@ -8,7 +8,7 @@ function run(){
 		tourelleSelectionnee.dessiner(); 
 	}
 
-	finGeneration = genererMonstre();
+	var finGeneration = genererMonstre();
 
 	if (finGeneration && (terrain.monstres.length == 0)){
 
@@ -171,21 +171,31 @@ function selectionnerTourelle(n){
 
 function genererMonstre(){
 
-	var r = Math.random();
 
 	if (type < Monstres.length){
+
+		compteur--;
 
 		if (Monstres[type].nb <= 0){
 			
 			type++;
+			monstre = Monstres[type];
+			compteur = attenteVagues;	
 		}
-		if (r < proba){
 
-			var monstre = Monstres[type];
-			terrain.monstres.push(new Monstre(monstre.vitesse, monstre.force, monstre.type, monstre.vie, monstre.valeurXP, monstre.valeurMoney, {x : monstre.coordonnees.x, y : monstre.coordonnees.y}, monstre.couleur));
-			monstre.nb--;
-		}
+		if (compteur < 0){
+
+			var r = Math.random();
+
+			if (r < proba){
+
+				compteur = Taille_Cases / monstre.vitesse; // permet de definir le compteur de façon à ne pas produire un monstre avant que le dernier sorti ai parcouru une case
+				terrain.monstres.push(new Monstre(monstre.vitesse, monstre.force, monstre.type, monstre.vie, monstre.valeurXP, monstre.valeurMoney, {x : monstre.coordonnees.x, y : monstre.coordonnees.y}, monstre.couleur));
+				monstre.nb--;
+			}
+
 		return(false);
+		}	
 	}
 	return(true);
 }

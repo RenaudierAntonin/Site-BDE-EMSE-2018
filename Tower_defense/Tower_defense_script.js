@@ -17,11 +17,13 @@ function Tower_defense_script(){
 	souris = { x : 0, y : 0}; // position de la souris
 	type = 0; // type de monstre utilise dans la fonction generer
 	
+
 	FPS = 20;
 	nbCasesLargeur = 20;
 	Taille_Cases = canvas.width / nbCasesLargeur; 
 	Taille_Monstres = 0.3 * Taille_Cases;
 	time = Math.floor(1000/FPS);
+	compteur = 0;
 
 	joueur = {vie : 2, money : 10, score : 0};
 
@@ -33,7 +35,8 @@ function Tower_defense_script(){
 	tourelleSelectionnee = false;
 
 	initialisation();
-
+	monstre = Monstres[type];
+	
 	jeu = false;
 
 	canvas.addEventListener('mousedown', function() {
