@@ -9,9 +9,14 @@
 
 <div class="logo-container">
 
+<<<<<<< HEAD
 	<a href="index.php"><img class="logo" src="img/logo_minesperium_transparent.png"></a>
 
 	<img class="nom_liste" src="img/nom_minesperium_diogene.png">
+=======
+	<a href="index.php"><img class="logo" src="img/logo_minesperium.png"></a>
+	
+>>>>>>> 5e6e60a9f1f63f435efddee63fba2055cc6f185d
 
 	<?php if(isset($_POST['login']) AND isset($_POST['mdp'])){
 
@@ -38,9 +43,9 @@
 
 	<form class="connection" action = "index.php" method = "post">
 
-		<input type="text" name="login">
+		<input placeholder="Login" type="text" name="login">
 
-		<input type="password" name="mdp">
+		<input placeholder="Mot de passe" type="password" name="mdp">
 
 		<input type="submit">
 

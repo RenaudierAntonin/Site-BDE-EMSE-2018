@@ -14,7 +14,7 @@
 
 }
 
-.inscription input[type=password], input[type=text]{
+.inscription input[type=password], input[type=text], input[type=email], input[type=tel]{
     padding: 16px 16px;
     margin: 5px 5px;
     width: 75%;
