@@ -13,12 +13,12 @@
 	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 808" >
 		<image width="100%" height="100%" xlink:href="img/organigramme.jpg" usemap="#membermap">
 		</image>
-		<a href="vikings.html"><rect x="20" y="200" fill="transparent" width="360" height="250"/></a>
-		<a href="guests.html"><rect x="800" y="30" fill="transparent" width="360" height="150"/></a>
-		<a href="gaulois.html"><rect x="30" y="480" fill="transparent" width="360" height="250"/></a>
-		<a href="bureau.html"><rect x="480" y="590" fill="transparent" width="330" height="200" /></a>
-		<a href="romains.html"><rect x="900" y="230" fill="transparent" width="290" height="220"/></a>
-		<a href="egyptiens.html"><rect x="890" y="470" fill="transparent" width="300" height="320"/></a>
+		<a href="vikings.php"><rect x="20" y="200" fill="transparent" width="360" height="250"/></a>
+		<a href="guests.php"><rect x="800" y="30" fill="transparent" width="360" height="150"/></a>
+		<a href="gaulois.php"><rect x="30" y="480" fill="transparent" width="360" height="250"/></a>
+		<a href="bureau.php"><rect x="480" y="590" fill="transparent" width="330" height="200" /></a>
+		<a href="romains.php"><rect x="900" y="230" fill="transparent" width="290" height="220"/></a>
+		<a href="egyptiens.php"><rect x="890" y="470" fill="transparent" width="300" height="320"/></a>
 	</svg>
 
 	<map name="membermap">
