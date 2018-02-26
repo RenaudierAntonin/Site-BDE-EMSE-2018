@@ -6,7 +6,7 @@ function initialisation(){
 
 		case 1:
 
-
+			attenteVagues = 100;
 			proba = 0.05;
 			terrain.chemin = new Chemin({i : 1, j : 0}, ['b','b','b','d','d','b','b','b','d','d','d','h','h','h','d','d','d','b','b','b','b','d','d','d','b','b','b','b','b']);
 			depart = {x : (terrain.chemin.debut.i - terrain.chemin.parselles[0].x + 0.5) * Taille_Cases, y : (terrain.chemin.debut.j - terrain.chemin.parselles[0].y + 0.5) * Taille_Cases}; // changer la couleur des different monstres

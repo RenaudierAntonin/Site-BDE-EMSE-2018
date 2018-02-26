@@ -1,0 +1,36 @@
+.organigramme{
+	max-width: 100%;
+}
+
+rect:hover{
+	fill: white;
+	opacity: 0.2;
+}
+
+svg{
+	padding: 0;
+	margin:0;
+}
+
+.presentations{
+	margin:0;
+	padding: 0;
+	margin-top:10px; 
+}
+
+.presentations img{
+	display: block;
+	max-width: 90%;
+	width: auto;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 10px;
+}
+
+.respo{
+	border-style:solid;
+	border-width: 2px;
+	border-color: orange;
+	border-radius: 5px;
+}

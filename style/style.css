@@ -18,6 +18,7 @@ body{
 }
 
 .logo-container{
+	display: block;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	background-color: gray;
@@ -30,7 +31,7 @@ body{
 	background-color: #6E0B14;
 	padding: 0px;
 	margin: 0px;
-	height: 39px;
+	height: 40px;
 	width: 100%;
 }
 .menu{
@@ -75,23 +76,6 @@ body{
 	padding: 10px;
 }
 
-input[type=text]{
-	border: none;
-    padding: 16px 16px;
-    margin: 5px 5px;
-    width: 467px;
-}
-
-input[type=button], input[type=submit], input[type=reset] {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 16px 16px;
-    text-decoration: none;
-    margin: 5px 5px;
-    cursor: pointer;
-    width: 100%;
-}
 
 .grid-container{
 	display: flex;
@@ -158,6 +142,7 @@ td{
 	margin-right: auto;
 	padding: 5px;
 	padding-top: 10px;
+	padding-bottom: 10px;
 	text-align: center;
 	height: 60px;
 	width: 80px;
@@ -191,4 +176,22 @@ td{
 	display: inline-block;
 	background-color: green;
 	margin-right: -90px;
+}
+
+.connection-container{
+	margin-top: -170px;
+	margin-left: auto;
+	margin-right: 0px;
+	float: right;
+	width:170px;
+	padding: 10px;
+	/*background-color: red;*/
+	text-align: center;
+}
+
+.connection input{
+	max-width: 150px;
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
 }

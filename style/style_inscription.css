@@ -1,0 +1,35 @@
+.inscription{
+	display: block;
+	padding: 10px;
+	text-align: center;
+}
+
+.inscription div{
+	display: inline-block;
+}
+
+.inscription input{ 
+	display: inline;
+	border: 1px solid black;
+
+}
+
+.inscription input[type=password], input[type=text], input[type=email], input[type=tel]{
+    padding: 16px 16px;
+    margin: 5px 5px;
+    width: 75%;
+    max-width: 250px;
+}
+
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 16px;
+    text-decoration: none;
+    margin: 5px 5px;
+    cursor: pointer;
+    width: 75%;
+    max-width: 200px;
+}
