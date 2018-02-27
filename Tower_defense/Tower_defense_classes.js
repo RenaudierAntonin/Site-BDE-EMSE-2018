@@ -241,8 +241,7 @@ function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees, 
 
 		var tete = new Image();
 		tete.src = "graphisme/monstre/" + image;
-		console.log(tete.src);
-		context.drawImage(tete, this.coordonnees.x, this.coordonnees.y, Taille_Monstres, Taille_Monstres);
+		context.drawImage(tete, 50, 50, 200, 200, this.coordonnees.x - Taille_Monstres, this.coordonnees.y - Taille_Monstres, 2 * Taille_Monstres, 2 * Taille_Monstres);
 		context.beginPath(); // dessin du monstre
 		context.fillStyle = "#33FF00"; // dessin de la jauge de vie
 		context.fillRect(this.coordonnees.x - Taille_Monstres, this.coordonnees.y + Taille_Monstres + 4, 2 * Taille_Monstres * (this.vie/vie), 4); 
