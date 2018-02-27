@@ -12,6 +12,8 @@ function Tower_defense_script(){
 	Score = document.getElementById("score");
 	Niveau = document.getElementById("niveau");
 
+	
+	jeu = false;
 	lvl = 1; // niveau actuel
 	lvlMax = 10;
 	souris = { x : 0, y : 0}; // position de la souris
@@ -37,7 +39,7 @@ function Tower_defense_script(){
 	initialisation();
 	monstre = Monstres[type];
 	
-	jeu = false;
+
 
 	canvas.addEventListener('mousedown', function() {
 

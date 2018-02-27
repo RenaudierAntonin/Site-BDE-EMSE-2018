@@ -176,7 +176,7 @@ function Projectile(tourelle, vitesse, cible){
 
 
 
-function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees, couleur){
+function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees, image){
 
 	this.vitesse = vitesse;
 	this.force = force;
@@ -239,12 +239,13 @@ function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees, 
 
 	this.dessiner = function(){
 
-		context.beginPath();
-		context.fillStyle  = couleur;
-		context.arc(this.coordonnees.x, this.coordonnees.y, Taille_Monstres, 0, Math.PI*2, false);
-		context.fill();
-		context.fillStyle = "#33FF00";
-		context.fillRect(this.coordonnees.x - Taille_Monstres, this.coordonnees.y + Taille_Monstres + 4, 2 * Taille_Monstres * (this.vie/vie), 4);
+		var tete = new Image();
+		tete.src = "graphisme/monstre/" + image;
+		console.log(tete.src);
+		context.drawImage(tete, this.coordonnees.x, this.coordonnees.y, Taille_Monstres, Taille_Monstres);
+		context.beginPath(); // dessin du monstre
+		context.fillStyle = "#33FF00"; // dessin de la jauge de vie
+		context.fillRect(this.coordonnees.x - Taille_Monstres, this.coordonnees.y + Taille_Monstres + 4, 2 * Taille_Monstres * (this.vie/vie), 4); 
 		context.fillStyle = "red";
 		context.fillRect(this.coordonnees.x + Taille_Monstres, this.coordonnees.y + Taille_Monstres + 4, 2 * Taille_Monstres * ((this.vie/vie)-1),4);
 		context.closePath();

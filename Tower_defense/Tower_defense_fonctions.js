@@ -117,6 +117,9 @@ function sourisPos(e) {
 
 function selectionnerTourelle(n){
 
+if (jeu){
+	console.log("pb");
+
 	switch (n){ // changer les couleurs pour les differentes tourelles
 
 		case 1:
@@ -168,6 +171,7 @@ function selectionnerTourelle(n){
 		break;
 	}
 }
+}
 
 function genererMonstre(){
 
@@ -180,7 +184,7 @@ function genererMonstre(){
 			
 			type++;
 			monstre = Monstres[type];
-			compteur = attenteVagues;	
+			compteur = monstre.attenteVague;	
 		}
 
 		if (compteur < 0){
@@ -189,8 +193,8 @@ function genererMonstre(){
 
 			if (r < proba){
 
-				compteur = Taille_Cases / monstre.vitesse; // permet de definir le compteur de façon à ne pas produire un monstre avant que le dernier sorti ai parcouru une case
-				terrain.monstres.push(new Monstre(monstre.vitesse, monstre.force, monstre.type, monstre.vie, monstre.valeurXP, monstre.valeurMoney, {x : monstre.coordonnees.x, y : monstre.coordonnees.y}, monstre.couleur));
+				compteur = Taille_Cases / (4 * monstre.vitesse); // permet de definir le compteur de façon à ne pas produire un monstre avant que le dernier sorti ai parcouru une case
+				terrain.monstres.push(new Monstre(monstre.vitesse, monstre.force, monstre.type, monstre.vie, monstre.valeurXP, monstre.valeurMoney, {x : monstre.coordonnees.x, y : monstre.coordonnees.y}, monstre.image));
 				monstre.nb--;
 			}
 
