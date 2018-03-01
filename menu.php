@@ -6,6 +6,7 @@
 
 	} ?>
 
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <div class="logo-container">
 
@@ -34,8 +35,8 @@
 
 	<?php
 
-	}
-		else if (!isset($_GET['inscrire']) OR !$_GET['inscrire']){ ?>
+	}	
+		else if (!isset($inscrire) OR !$inscrire){ ?>
 
 			<div class="connection-container">
 
@@ -51,7 +52,7 @@
 
 	
 
-	<a href = "inscription.php?inscrire=true">S'inscrire</a>
+	<a href = "inscription.php">S'inscrire</a>
 
 	</div>
 
