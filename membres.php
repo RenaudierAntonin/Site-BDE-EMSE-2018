@@ -8,9 +8,8 @@
 </head>
 
 <body>
-	
 	<?php include("menu.php"); ?>
-	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 808" >
+	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 795" >
 		<image width="100%" height="100%" xlink:href="img/organigramme.jpg" usemap="#membermap">
 		</image>
 		<a href="vikings.php"><rect x="20" y="200" fill="transparent" width="360" height="250"/></a>
@@ -21,9 +20,9 @@
 		<a href="egyptiens.php"><rect x="890" y="470" fill="transparent" width="300" height="320"/></a>
 	</svg>
 
-	<map name="membermap">
+	<!--map name="membermap">
 		<area shape="rect" coords="20,200 380,450" href="vikings.html">
-	</map>
+	</map>-->
 	
 	<?php include("reseaux_sociaux.php"); ?>
 
