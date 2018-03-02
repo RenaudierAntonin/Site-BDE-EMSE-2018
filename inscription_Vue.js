@@ -36,7 +36,7 @@ var envoi = new Vue({
 
 	el : '#envoi',
 	data : {
-		display : mdp1.valide & (mdp2 === mdp1) & number.valide
+		display : mdp1.data.valide & (mdp2 === mdp1) & number.data.valide
 	}
 })
 

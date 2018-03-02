@@ -23,7 +23,7 @@ function Tower_defense_script(){
 	FPS = 20;
 	nbCasesLargeur = 20;
 	Taille_Cases = canvas.width / nbCasesLargeur; 
-	Taille_Monstres = 0.3 * Taille_Cases;
+	Taille_Monstres = 0.5 * Taille_Cases;
 	time = Math.floor(1000/FPS);
 	compteur = 0;
 
