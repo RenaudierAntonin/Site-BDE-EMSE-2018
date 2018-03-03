@@ -6,7 +6,6 @@
 
 	} ?>
 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <div class="logo-container">
 

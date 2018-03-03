@@ -23,7 +23,8 @@ var inscription = new Vue({
 			this.mdp1.displayMessage = (this.mdp1.entree == '');
 		},
 		mdp2_Verif : function(){
-			this.mdp2.displayMessage = (this.mdp1.entree == this.mdp2.entree);
+			this.mdp2.displayMessage = (this.mdp1.entree != this.mdp2.entree);
+			console.log(this.mdp1.entree == this.mdp2.entree);
 		}
 	}
 })
