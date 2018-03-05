@@ -1,0 +1,152 @@
+.grid-container{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-between;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+}
+
+
+.grid-element{
+  margin: 5px;
+  height: 150px;
+  width: 200px;
+  text-align: center;
+}
+.allo_capotes{
+  display: flex;
+  height: 150px;
+  width: 200px;
+  background-size: 200px 150px;
+  background-image: url("../img/allos/capotes1.png");
+  transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  background-color: #d5bf86;
+  z-index: 1000;
+}
+
+.allo_capotes:hover{
+  position: relative;
+  transition: ease-in-out;
+  transform: scale(1.2);
+  transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  background-image: url("../img/allos/capotes2.png");
+  z-index: 1000;
+  background-color: #cbaf68;
+}
+
+.allo_binouze{
+  height: 150px;
+  width: 200px;
+  background-size: 200px 150px;
+  background-image: url("../img/allos/binouze1.png");
+  transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  background-color: #d5bf86;
+  z-index: 1000;  
+}
+
+.allo_binouze:hover{
+  position: relative;
+  transition: ease-in-out;
+  transform: scale(1.2);
+  transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  background-image: url("../img/allos/binouze2.png");
+  z-index: 1000;
+    background-color: #cbaf68;
+}
+
+.allo_clopes{
+  height: 150px;
+  width: 200px;
+  background-size: 200px 150px;
+  background-image: url("../img/allos/clopes1.png");
+  transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  background-color: #d5bf86;
+  z-index: 1000;
+}
+
+.allo_clopes:hover{
+  position: relative;
+  transition: ease-in-out;
+  transform: scale(1.2);
+  transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  background-image: url("../img/allos/clopes2.png");
+  z-index: 1000;
+    background-color: #cbaf68;
+}
+
+.allo_compagnie{
+  height: 150px;
+  width: 200px;
+  background-size: 200px 150px;
+  background-image: url("../img/allos/compagnie1.png");
+  transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  background-color: #d5bf86;
+  z-index: 1000;
+}
+
+.allo_compagnie:hover{
+  position: relative;
+  transition: ease-in-out;
+  transform: scale(1.2);
+  transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  background-image: url("../img/allos/compagnie2.png");
+  z-index: 1000;
+    background-color: #cbaf68;
+}
+.allo_dodo{
+  height: 150px;
+  width: 200px;
+  background-size: 200px 150px;
+  background-image: url("../img/allos/dodo1.png");
+  transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  background-color: #d5bf86;
+  z-index: 1000;
+}
+
+.allo_dodo:hover{
+  position: relative;
+  transition: ease-in-out;
+  transform: scale(1.2);
+  transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  background-image: url("../img/allos/dodo2.png");
+  z-index: 1000;
+    background-color: #cbaf68;
+}
+
+.allo_massage{
+  height: 150px;
+  width: 200px;
+  background-size: 200px 150px;
+  background-image: url("../img/allos/massage1.png");
+  transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  background-color: #d5bf86;
+  z-index: 1000;
+}
+
+.allo_massage:hover{
+  position: relative;
+  transition: ease-in-out;
+  transform: scale(1.2);
+  transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  background-image: url("../img/allos/massage2.png");
+  z-index: 1000;
+    background-color: #cbaf68;
+}
