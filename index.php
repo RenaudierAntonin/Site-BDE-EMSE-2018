@@ -12,12 +12,7 @@
 
 	<div class="texte">
 		<h1>L'invasion commence !</h1>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p>"L’Histoire a occulté sous le voile de l’oubli le nom du plus grand empire du monde antique. Cet empire est composé des plus grands, des plus impitoyables, des plus festifs, des plus habiles… Une seule civilisation menée par quatre personnages héroïques. Une seule civilisation dans laquelle Vikings, Gaulois, Romains et Egyptiens unissent leurs forces pour repousser l’ennemi et enjailler l’empire tout entier. Chacun de ces peuples apporte son savoir sur le champ de bataille. Ils crient tous d’une même voix des chants qui évoquent la fête, le festin et le divertissement. </p>
 	</div>
 
 	<?php include("reseaux_sociaux.php"); ?>

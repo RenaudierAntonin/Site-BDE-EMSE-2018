@@ -151,3 +151,11 @@
 .allo_lecture:hover{
   background-image: url("../img/allos/lecture2.png");
 }
+
+.allo_victime{
+  background-image: url("../img/allos/victime1.png");
+}
+
+.allo_victime:hover{
+  background-image: url("../img/allos/victime2.png");
+}

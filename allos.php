@@ -17,6 +17,7 @@
 		<a href="" class="grid-element"><div class="allo allo_capotes"></div></a>
 		<a href="" class="grid-element"><div class="allo allo_binouze"></div></a>
 		<a href="" class="grid-element"><div class="allo allo_clopes"></div></a>
+		<a href="" class="grid-element"><div class="allo allo_victime"></div></a>
 		<a href="" class="grid-element"><div class="allo allo_liaison"></div></a>
 		<a href="" class="grid-element"><div class="allo allo_lecture"></div></a>
 		<a href="" class="grid-element"><div class="allo allo_compagnie"></div></a>
