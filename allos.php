@@ -11,12 +11,20 @@
 	<?php include("menu.php"); ?>
 
 	<div class="grid-container">
-		<a href="" class="grid-element"><div class="allo_capotes"></div></a>
-		<a href="" class="grid-element"><div class="allo_binouze"></div></a>
-		<a href="" class="grid-element"><div class="allo_clopes"></div></a>
-		<a href="" class="grid-element"><div class="allo_compagnie"></div></a>
-		<a href="" class="grid-element"><div class="allo_dodo"></div></a>
-		<a href="" class="grid-element"><div class="allo_massage"></div></a>
+		<a href="" class="grid-element"><div class="allo allo_film"></div></a>
+		<a href="" class="grid-element"><div class="allo allo_car"></div></a>
+		<a href="" class="grid-element"><div class="allo allo_laleuleu"></div></a>
+		<a href="" class="grid-element"><div class="allo allo_capotes"></div></a>
+		<a href="" class="grid-element"><div class="allo allo_binouze"></div></a>
+		<a href="" class="grid-element"><div class="allo allo_clopes"></div></a>
+		<a href="" class="grid-element"><div class="allo allo_liaison"></div></a>
+		<a href="" class="grid-element"><div class="allo allo_lecture"></div></a>
+		<a href="" class="grid-element"><div class="allo allo_compagnie"></div></a>
+		<a href="" class="grid-element"><div class="allo allo_dodo"></div></a>
+		<a href="" class="grid-element"><div class="allo allo_blackout"></div></a>
+		<a href="" class="grid-element"><div class="allo allo_reveil"></div></a>
+		<a href="" class="grid-element"><div class="allo allo_coiffure"></div></a>
+		<a href="" class="grid-element"><div class="allo allo_massage"></div></a>
 
 	</div>
 	<?php include("reseaux_sociaux.php"); ?>

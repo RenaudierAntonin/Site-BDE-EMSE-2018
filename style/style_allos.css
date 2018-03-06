@@ -17,136 +17,137 @@
   width: 200px;
   text-align: center;
 }
-.allo_capotes{
-  display: flex;
+
+.allo{
   height: 150px;
   width: 200px;
   background-size: 200px 150px;
-  background-image: url("../img/allos/capotes1.png");
   transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
   background-color: #d5bf86;
   z-index: 1000;
 }
 
-.allo_capotes:hover{
+.allo:hover{
   position: relative;
   transition: ease-in-out;
   transform: scale(1.2);
   transition-duration: 0.3s;
   -moz-transition-duration: 0.3s;
   transition-duration: 0.5s;
-  -moz-transition-duration: 0.5s;
-  background-image: url("../img/allos/capotes2.png");
+  -moz-transition-duration: 0.5s;  
   z-index: 1000;
   background-color: #cbaf68;
 }
 
+.allo_capotes{
+  background-image: url("../img/allos/capotes1.png");
+}
+
+
+.allo_capotes:hover{
+  background-image: url("../img/allos/capotes2.png");
+}
+
 .allo_binouze{
-  height: 150px;
-  width: 200px;
-  background-size: 200px 150px;
   background-image: url("../img/allos/binouze1.png");
-  transition-duration: 0.5s;
-  -moz-transition-duration: 0.5s;
-  background-color: #d5bf86;
-  z-index: 1000;  
 }
 
 .allo_binouze:hover{
-  position: relative;
-  transition: ease-in-out;
-  transform: scale(1.2);
-  transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
   background-image: url("../img/allos/binouze2.png");
-  z-index: 1000;
-    background-color: #cbaf68;
 }
 
 .allo_clopes{
-  height: 150px;
-  width: 200px;
-  background-size: 200px 150px;
   background-image: url("../img/allos/clopes1.png");
-  transition-duration: 0.5s;
-  -moz-transition-duration: 0.5s;
-  background-color: #d5bf86;
-  z-index: 1000;
 }
 
 .allo_clopes:hover{
-  position: relative;
-  transition: ease-in-out;
-  transform: scale(1.2);
-  transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
   background-image: url("../img/allos/clopes2.png");
-  z-index: 1000;
-    background-color: #cbaf68;
 }
 
 .allo_compagnie{
-  height: 150px;
-  width: 200px;
-  background-size: 200px 150px;
   background-image: url("../img/allos/compagnie1.png");
-  transition-duration: 0.5s;
-  -moz-transition-duration: 0.5s;
-  background-color: #d5bf86;
-  z-index: 1000;
 }
 
 .allo_compagnie:hover{
-  position: relative;
-  transition: ease-in-out;
-  transform: scale(1.2);
-  transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
   background-image: url("../img/allos/compagnie2.png");
-  z-index: 1000;
-    background-color: #cbaf68;
 }
 .allo_dodo{
-  height: 150px;
-  width: 200px;
-  background-size: 200px 150px;
   background-image: url("../img/allos/dodo1.png");
-  transition-duration: 0.5s;
-  -moz-transition-duration: 0.5s;
-  background-color: #d5bf86;
-  z-index: 1000;
 }
 
 .allo_dodo:hover{
-  position: relative;
-  transition: ease-in-out;
-  transform: scale(1.2);
-  transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
   background-image: url("../img/allos/dodo2.png");
-  z-index: 1000;
-    background-color: #cbaf68;
 }
 
 .allo_massage{
-  height: 150px;
-  width: 200px;
-  background-size: 200px 150px;
   background-image: url("../img/allos/massage1.png");
-  transition-duration: 0.5s;
-  -moz-transition-duration: 0.5s;
-  background-color: #d5bf86;
-  z-index: 1000;
 }
 
 .allo_massage:hover{
-  position: relative;
-  transition: ease-in-out;
-  transform: scale(1.2);
-  transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
   background-image: url("../img/allos/massage2.png");
-  z-index: 1000;
-    background-color: #cbaf68;
+}
+
+.allo_laleuleu{
+  background-image: url("../img/allos/laleuleu1.png");
+}
+
+.allo_laleuleu:hover{
+  background-image: url("../img/allos/laleuleu2.png");
+}
+
+.allo_car{
+  background-image: url("../img/allos/car1.png");
+}
+
+.allo_car:hover{
+  background-image: url("../img/allos/car2.png");
+}
+
+.allo_film{
+  background-image: url("../img/allos/film1.png");
+}
+
+.allo_film:hover{
+  background-image: url("../img/allos/film2.png");
+}
+
+.allo_reveil{
+  background-image: url("../img/allos/reveil1.png");
+}
+
+.allo_reveil:hover{
+  background-image: url("../img/allos/reveil2.png");
+}
+
+.allo_liaison{
+  background-image: url("../img/allos/liaison1.png");
+}
+
+.allo_liaison:hover{
+  background-image: url("../img/allos/liaison2.png");
+}
+
+.allo_blackout{
+  background-image: url("../img/allos/blackout1.png");
+}
+
+.allo_blackout:hover{
+  background-image: url("../img/allos/blackout2.png");
+}
+
+.allo_coiffure{
+  background-image: url("../img/allos/coiffure1.png");
+}
+
+.allo_coiffure:hover{
+  background-image: url("../img/allos/coiffure2.png");
+}
+
+.allo_lecture{
+  background-image: url("../img/allos/lecture1.png");
+}
+
+.allo_lecture:hover{
+  background-image: url("../img/allos/lecture2.png");
 }
