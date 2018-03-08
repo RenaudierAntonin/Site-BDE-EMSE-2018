@@ -43,15 +43,27 @@ function Tower_defense_script(){
 
 	canvas.addEventListener('mousedown', function() {
 
-  		if(tourelleSelectionnee && tourelleSelectionnee.emplacement.disponible && joueur.money >= tourelleSelectionnee.prix) {
+		if (tourelleSelectionnee){
 
-    		terrain.tourelles.push(tourelleSelectionnee.copie());
-    		joueur.money -= tourelleSelectionnee.prix;
-    		Money.innerText = joueur.money;
-    		tourelleSelectionnee.emplacement.disponible = false; 
-    		tourelleSelectionnee = false;
+			if(joueur.money < tourelleSelectionnee.prix){
+			alert('Fonds insuffisants ! ');
+			}
 
-  	}
+			else{
+				
+				if(tourelleSelectionnee.emplacement.disponible) {
+
+    				terrain.tourelles.push(tourelleSelectionnee.copie());
+    				joueur.money -= tourelleSelectionnee.prix;
+    				Money.innerText = joueur.money;
+    				tourelleSelectionnee.emplacement.disponible = false; 
+    				tourelleSelectionnee = false;
+
+  				}
+				}
+		}
+		
+  		
 
   	canvas.addEventListener('mousemove', sourisPos, false); 
 
