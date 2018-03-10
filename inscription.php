@@ -14,13 +14,11 @@
 
 	include("menu.php");?>
 
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
-	<script src = "https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.min.js"></script>
 	
-	<?php if (/*!isset($_POST['mail']) OR !isset($_POST['mdp1']) OR !isset($_POST['number']) OR */ !isset($_GET['validation']) OR !$_GET['validation'] ){ ?>
+	<?php if (!isset($_POST['mail']) OR !isset($_POST['mdp1'])){ ?>
 
 	
-		<form class="inscription" action = "inscription.php?validation=true" method = "post" id = "inscription1">
+		<form class="inscription" action = "inscription.php" method = "post" id = "inscription1">
 			<p><span v-if = 'mail.displayMessage'>{{mail.message}}</span></p>
 			<input placeholder="E-mail" type="email" v-model="mail.entree" name="mail" v-on:input="mail_Verif()">
 			<p ><span v-if = 'mdp1.displayMessage'>{{mdp1.message}}</span></p>
@@ -34,7 +32,7 @@
 
 		<script> axios.get('https://minesperium.herokuapp.com/api/users').then(function(reponse){console.log(reponse)})</script> 
 
-	<?php } else if (!isset($_POST['pseudo']) OR !isset($_POST['civilisation']) OR !isset($_GET['identification'])){
+	<?php } else {
 
 				echo "<script type=\"text/javascript\">var mail='".$_POST["mail"]."'</script>";
 				echo "<script type=\"text/javascript\">var mdp='".$_POST["mdp1"]."'</script>";
@@ -45,13 +43,14 @@
 				<!--<script> //axios.post('https://minesperium.herokuapp.com/api/users',{email : mail, mot_de_passe : mdp, numero : numero_mobile}).then(function(reponse){console.log(reponse)})</script> -->
 
 		<p>Inscription validée, choisissez maintenant votre camps !</p> 
-		
+
 		<div id = "inscription2" class="inscription">
 			<div v-if = "!envoi">
 				<p><span v-if = 'pseudo.displayMessage'>{{pseudo.message}}</span></p>
 				<input placeholder="Pseudo" type="text" v-model="pseudo.entree" v-on:input="pseudo_Verif()" name="pseudo"> <br>
 
 				<select v-model="civilisation" name="civilisation" placeholder="Choisissez votre civilisation" >
+					<option disabled value="">Choisissez votre civilisation</option>
 					<option v-for="option in civilisations">
 						{{ option.name }}
 					</option>
@@ -59,15 +58,17 @@
             	<p v-if = "pseudo.valide"><button v-on:click = "envoiDonnees()">Envoyer</button> ></p>
 			</div>
 
-				<p v-if = "envoi"> Felicitations ! Vous êtes maintenant inscrit aux campagnes Mines'perium, que la bataille commence ! </p>
+				<div v-if = "envoi"> 
+					<p> Felicitations ! Vous êtes maintenant inscrit aux campagnes Mines'perium, que la bataille commence ! </p>
+
+					<?php $_SESSION['login'] = pseudo.entree ?>
+				</div>
+
+			</div>
+
 			<script src = "inscription2_Vue.js"></script>
-		</div>
 
-    <?php } else { ?>
-
-    		<p> Felicitations ! Vous êtes maintenant inscrit aux campagnes Mines'perium, que la bataille commence ! </p>
-
-	<?php } ?>		
+    <?php } ?>		
 
 	<?php include("reseaux_sociaux.php"); ?>
 

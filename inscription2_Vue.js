@@ -22,16 +22,19 @@ var inscription2 = new Vue({
 	methods : {
 		pseudo_Verif : function(){
 
-			axios.get("https://minesperium.herokuapp.com/api/users/identification",{pseudo : this.pseudo.entree}).then(function(reponse){
+			axios.get("https://minesperium.herokuapp.com/api/users/check/" + this.pseudo.entree).then(function(reponse){
 
-				this.pseudo.displayMessage = !(reponse.id);
+				this.pseudo.displayMessage = reponse.id;
 				this.pseudo.valide = !(this.pseudo.displayMessage) && (this.pseudo.entree !='');
 			}) 
 		},
 		envoiDonnee : function(){
 
-			axios.post
-			this.envoi = true;
+			axios.post("https://minesperium.herokuapp.com/api/users/").then(function(reponse){
+
+				this.envoi = true;
+			})
+			
 		}
 	}
 })

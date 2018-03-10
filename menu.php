@@ -15,8 +15,10 @@
 
 	<a href="index.php"><img class="logo" src="img/logo_minesperium.png"></a>
 
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+	<script src = "https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.min.js"></script>
 
-	<?php if(isset($_POST['login']) AND isset($_POST['mdp'])){
+	<?php if(isset($_POST['login'])){
 
 		$_SESSION['login'] = $_POST['login'];
 
@@ -24,9 +26,9 @@
 
 	}
 
-	if (isset($_SESSION['login']) /*AND $_SESSION['login']*/){
+	if (isset($_SESSION['login']) ){
 
-		echo $_SESSION['login']. " " . $_SESSION['mdp'];
+		echo "Hello " . $_SESSION['login'];
 
 	?>
 
@@ -37,23 +39,23 @@
 	}	
 		else if (!isset($inscrire) OR !$inscrire){ ?>
 
-			<div class="connection-container">
+			<div class="connection-container" id="connexion">
 
 			<form class="connection" action = "index.php" method = "post">
 
-				<input placeholder="Login" type="text" name="login">
+				<input placeholder="Pseudo" type="text" name="login" v-model="login.entree" v-on:input="autentification" >
 
-				<input placeholder="Mot de passe" type="password" name="mdp">
+				<input placeholder="Mot de passe" type="password" name="mdp" v-model="mdp.entree" v-on:input="verification">
 
-				<input type="submit">
+				<input type="submit" v-if="mdp.valide">
 
 			</form>
 
-	
+			<a href = "inscription.php">S'inscrire</a>
 
-	<a href = "inscription.php">S'inscrire</a>
+			</div>
 
-	</div>
+		<script src = "connexion_Vue.js"></script>
 
 	<?php } ?>
 
