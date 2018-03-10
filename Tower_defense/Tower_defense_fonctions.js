@@ -118,7 +118,6 @@ function sourisPos(e) {
 function selectionnerTourelle(n){
 
 if (jeu){
-	console.log("pb");
 
 	switch (n){ // changer les couleurs pour les differentes tourelles
 
@@ -183,6 +182,7 @@ function genererMonstre(){
 		if (Monstres[type].nb <= 0){
 			
 			type++;
+			alert("Attention ! Une vague de " + Monstres[type].image + " en approche ! ");
 			monstre = Monstres[type];
 			compteur = monstre.attenteVague;	
 		}
