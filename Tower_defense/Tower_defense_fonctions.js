@@ -175,7 +175,7 @@ if (jeu){
 function genererMonstre(){
 
 
-	if (type < Monstres.length){
+	if (type < Monstres.length){ 
 
 		compteur--;
 
@@ -194,12 +194,12 @@ function genererMonstre(){
 			if (r < proba){
 
 				compteur = Taille_Cases / (4 * monstre.vitesse); // permet de definir le compteur de façon à ne pas produire un monstre avant que le dernier sorti ai parcouru une case
-				terrain.monstres.push(new Monstre(monstre.vitesse, monstre.force, monstre.type, monstre.vie, monstre.valeurXP, monstre.valeurMoney, {x : monstre.coordonnees.x, y : monstre.coordonnees.y}, monstre.image));
+				terrain.monstres.push(new Monstre(monstre.vitesse, monstre.force, monstre.type, monstre.vie, monstre.valeurXP, monstre.valeurMoney, {x : monstre.coordonnees.x, y : monstre.coordonnees.y}, monstre.image + ".png"));
 				monstre.nb--;
 			}
 
-		return(false);
-		}	
+		}
+		return(false);	
 	}
 	return(true);
 }
