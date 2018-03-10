@@ -1,3 +1,39 @@
+.body_allo div{
+  display: block;
+  text-align: center;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+p{
+  display: block;
+  width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table{
+  text-align: center;
+  width: 320px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: solid 1px black;
+  border-collapse: collapse;
+  padding: 0;
+}
+
+td{
+  margin: 0;
+  padding: 0;
+  padding-top: 10px;
+}
+
+a{
+  text-decoration: none;
+}
+
 .grid-container{
   display: flex;
   width: 100%;
