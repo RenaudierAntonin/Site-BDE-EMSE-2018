@@ -12,6 +12,7 @@
 
 	<h1 style="display: block;margin-right: auto;margin-left: auto;text-align: center;">More to come!!</h1>
 	<img style="display:block; max-width: 80%;margin-left:auto;margin-right: auto;text-align: center;" src="img/planning.jpg">
+	<img class="event" src="img/events/Anim_12_03_18.jpg">
 	<?php include("reseaux_sociaux.php"); ?>
 
 </body>
