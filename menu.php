@@ -23,7 +23,7 @@
 
 	if (isset($_SESSION['login']) ){
 
-		echo "Hello " . $_SESSION['login'];
+		echo "<span class='hello'> Hello " . $_SESSION['login']. "</span>";
 
 	?>
 

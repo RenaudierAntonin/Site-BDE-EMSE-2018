@@ -28,21 +28,29 @@
     			'coiffure' => 'pages_allos/allo_coiffure.html',
     			'massage' => 'pages_allos/allo_massage.html',
     		);
+
+    		$eventOnClick = 'target="_blank"';
+
+
 	if(!isset($_SESSION['login'])){	
 
-		 foreach ($allos as $key => $value) {
+		foreach ($allos as $key => $value) {
 
 			$allos[$key] = '';
 
 			}
+			
+		$eventOnClick = "onclick = 'alert(\"Vous devez être connecté pour beneficier des allos\")';"; 
 
-	}?>
+	}
+
+	?>
 
 	<div class="grid-container">
 
 		<?php foreach ($allos as $key => $value) {
 
-			echo '<a href="'.$value.'" class="grid-element" target="_blank"><div class="allo allo_'.$key.'"></div></a>';
+			echo '<a href="'.$value.'" class="grid-element " '.$eventOnClick.'><div class="allo allo_'.$key.'"></div></a>';
 
 		} ?>
 
