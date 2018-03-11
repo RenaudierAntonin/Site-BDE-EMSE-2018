@@ -10,8 +10,8 @@
 	
 	<?php include("menu.php"); ?>
 
-	<h1>Ici sera inséré le planning</h1>
-	
+	<h1 style="display: block;margin-right: auto;margin-left: auto;text-align: center;">More to come!!</h1>
+	<img style="display:block; max-width: 80%;margin-left:auto;margin-right: auto;text-align: center;" src="img/planning.jpg">
 	<?php include("reseaux_sociaux.php"); ?>
 
 </body>
