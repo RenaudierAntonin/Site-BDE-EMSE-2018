@@ -14,7 +14,7 @@
 		<img class="respo" src="img/membres/0valm1.jpg">
 		<img src="img/membres/0valm2.png">
 
-	<?php for($i = 3; $i < 8; $i++){
+	<?php for($i = 3; $i < 9; $i++){
 
 		echo "<img src='img/membres/0valm".$i.".jpg'>";
 	}?>
