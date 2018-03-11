@@ -11,7 +11,7 @@ var inscription2 = new Vue({
 
 		},
 
-		civilisations : [{name: 'Gauloise'}, {name: 'Viking'}, {name: 'Romaine'}, {name: 'Egyptienne'}],
+		civilisations : [{name: 'Gauloise'}, {name: 'Viking'}, {name: 'Romaine'}, {name: 'Egyptienne'}, {name : 'Minesperium'}],
 
 		civilisation : '',
 
