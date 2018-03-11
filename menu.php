@@ -65,9 +65,9 @@
 
 		<li><a href="planning.php">Planning</a></li>
 
-		<li><a href="jeux_classements.php">Jeux et classements</a></li>
+		<!--<li><a href="jeux_classements.php">Jeux et classements</a></li>
 
-		<li><a href="medias.php">Photos/Vidéos</a></li>
+		<li><a href="medias.php">Photos/Vidéos</a></li>-->
 
 	</ul>
 
