@@ -25,7 +25,9 @@
 			<input placeholder="Mot de passe" type="password" v-model="mdp1.entree" v-on:input="mdp1_Verif()" name = "mdp1">
 			<p ><span v-if = 'mdp2.displayMessage'>{{mdp2.message}}</span></p>
 			<input placeholder="Confirmation du mot de passe" type="password" v-model="mdp2.entree" v-on:input="mdp2_Verif()" name = "mdp2">
-			<p > <span v-if = 'number.displayMessage'> {{number.message}}</span> </p><input placeholder="Numéro de téléphone" type="tel" v-model="number.entree" name = "number"> 
+			<p > <span v-if = 'number.displayMessage'> {{number.message}}</span> </p>
+			<p>Entrez votre numero de tel pour recevoir les news par sms</p>
+			<input placeholder="Numéro de téléphone" type="tel" v-model="number.entree" name = "number"> 
 			<p v-if = "(mail.valide && mdp1.valide && mdp2.valide && number.valide)"><input type="submit"></p>
 		</form>
 		<script src = "VueJS/inscription1_Vue.js"></script>
@@ -36,18 +38,28 @@
 
 				echo "<script type=\"text/javascript\">var mail='".$_POST["mail"]."'</script>";
 				echo "<script type=\"text/javascript\">var mdp='".$_POST["mdp1"]."'</script>";
-				echo "<script type=\"text/javascript\">var number='".$_POST["number"]."'</script>";
+
+				if (isset($_POST['number'])){
+
+					echo "<script type=\"text/javascript\">var number='".$_POST["number"]."'</script>";
+					echo "<script type=\"text/javascript\">var numberEntre = true</script>";
+	
+				}else {
+					echo "<script type=\"text/javascript\">var number= null </script>";
+					echo "<script type=\"text/javascript\">var numberEntre = false</script>";
+				}
 
 				 ?>
  
 				<!--<script> //axios.post('https://minesperium.herokuapp.com/api/users',{email : mail, mot_de_passe : mdp, numero : numero_mobile}).then(function(reponse){console.log(reponse)})</script> -->
 
-		<p>Inscription validée, choisissez maintenant votre camps !</p> 
+	
 
 		<div id = "inscription2" class="inscription">
 			<div v-if = "!envoi">
+				<p>Inscription validée, choisissez maintenant votre camps !</p> 
 				<p><span v-if = 'pseudo.displayMessage'>{{pseudo.message}}</span></p>
-				<input placeholder="Pseudo" type="text" v-model="pseudo.entree" v-on:input="pseudo_Verif" name="pseudo"> <br>
+				<input placeholder="Pseudo" type="text" v-model="pseudo.entree" v-on:input="pseudo_Verif()" name="pseudo"> <br>
 
 				<select v-model="civilisation" name="civilisation" placeholder="Choisissez votre civilisation" >
 					<option disabled value="">Choisissez votre civilisation</option>
@@ -55,13 +67,11 @@
 						{{ option.name }}
 					</option>
             	</select>
-            	<p v-if = "pseudo.valide"><button v-on:click = "envoiDonnees">Envoyer</button> ></p>
+            	<p v-if = "pseudo.valide && civilisation"><button v-on:click = "envoiDonnees()">Envoyer</button></p>
 			</div>
 
 				<div v-if = "envoi"> 
 					<p> Felicitations ! Vous êtes maintenant inscrit aux campagnes Mines'perium, que la bataille commence ! </p>
-
-					<?php $_SESSION['login'] = pseudo.entree ?>
 				</div>
 
 			</div>
