@@ -24,15 +24,15 @@ var inscription2 = new Vue({
 
 			axios.get("https://minesperium.herokuapp.com/api/users/check/" + this.pseudo.entree).then(function(reponse){
 
-				this.pseudo.displayMessage = reponse.id;
-				this.pseudo.valide = !(this.pseudo.displayMessage) && (this.pseudo.entree !='');
+				inscription2.pseudo.displayMessage = reponse.id;
+				inscription2.pseudo.valide = !(inscription2.pseudo.displayMessage) && (inscription2.pseudo.entree !='');
 			}) 
 		},
-		envoiDonnee : function(){
+		envoiDonnees : function(){
 
-			axios.post("https://minesperium.herokuapp.com/api/users/").then(function(reponse){
+			axios.post("https://minesperium.herokuapp.com/api/users/new", { ??? }).then(function(reponse){
 
-				this.envoi = true;
+				inscription2.envoi = true;
 			})
 			
 		}

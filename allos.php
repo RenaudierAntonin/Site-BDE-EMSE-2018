@@ -8,38 +8,43 @@
 </head>
 
 <body>
-	<?php include("menu.php"); ?>
+	<?php include("menu.php"); 
+		
+	
+			$allos = array (
+    			'film' => '',
+   				'car' => 'pages_allos/allo_car.html',
+   				'laleuleu' => 'pages_allos/allo_laleuleu.html',
+    			'capotes' => 'pages_allos/allo_capotes.html',
+    			'binouze' => 'pages_allos/allo_binouze.html',
+    			'clopes' => 'pages_allos/allo_clopes.html',
+    			'victime' => 'pages_allos/allo_victime.html',
+    			'liaison' => 'pages_allos/allo_liaison.html',
+    			'lecture' => 'pages_allos/allo_lecture.html',
+    			'compagnie' => 'pages_allos/allo_compagnie.html',
+    			'dodo' => 'pages_allos/allo_dodo.html',
+    			'blackout' => 'pages_allos/allo_blackout.html',
+    			'reveil' => 'pages_allos/allo_reveil.html',
+    			'coiffure' => 'pages_allos/allo_coiffure.html',
+    			'massage' => 'pages_allos/allo_massage.html',
+    		);
+	if(!isset($_SESSION['login'])){	
+
+		 foreach ($allos as $key => $value) {
+
+			$allos[$key] = '';
+
+			}
+
+	}?>
 
 	<div class="grid-container">
-		<a href="pages_allos/allo_film.html" class="grid-element"><div class="allo allo_film"></div></a>
-		
-		<a href="pages_allos/allo_car.html" class="grid-element"><div class="allo allo_car"></div></a>
-		
-		<a href="pages_allos/allo_laleuleu.html" class="grid-element"><div class="allo allo_laleuleu"></div></a>
-		
-		<a href="pages_allos/allo_capotes.html" class="grid-element"><div class="allo allo_capotes"></div></a>
-		
-		<a href="pages_allos/allo_binouze.html" class="grid-element"><div class="allo allo_binouze"></div></a>
-		
-		<a href="pages_allos/allo_clopes.html" class="grid-element"><div class="allo allo_clopes"></div></a>
-		
-		<a href="pages_allos/allo_victime.html" class="grid-element"><div class="allo allo_victime"></div></a>
-		
-		<a href="pages_allos/allo_liaison.html" class="grid-element"><div class="allo allo_liaison"></div></a>
-		
-		<a href="pages_allos/allo_lecture.html" class="grid-element"><div class="allo allo_lecture"></div></a>
-		
-		<a href="pages_allos/allo_compagnie.html" class="grid-element"><div class="allo allo_compagnie"></div></a>
-		
-		<a href="pages_allos/allo_dodo.html" class="grid-element"><div class="allo allo_dodo"></div></a>
-		
-		<a href="pages_allos/allo_blackout.html" class="grid-element"><div class="allo allo_blackout"></div></a>
-		
-		<a href="pages_allos/allo_reveil.html" class="grid-element"><div class="allo allo_reveil"></div></a>
-		
-		<a href="pages_allos/allo_coiffure.html" class="grid-element"><div class="allo allo_coiffure"></div></a>
-		
-		<a href="pages_allos/allo_massage.html" class="grid-element"><div class="allo allo_massage"></div></a>
+
+		<?php foreach ($allos as $key => $value) {
+
+			echo '<a href="'.$value.'" class="grid-element" target="_blank"><div class="allo allo_'.$key.'"></div></a>';
+
+		} ?>
 
 	</div>
 	<?php include("reseaux_sociaux.php"); ?>

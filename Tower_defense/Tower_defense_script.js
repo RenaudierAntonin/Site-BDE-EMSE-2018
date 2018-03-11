@@ -19,6 +19,7 @@ function Tower_defense_script(){
 	souris = { x : 0, y : 0}; // position de la souris
 	type = 0; // type de monstre utilise dans la fonction generer
 	
+	
 
 	FPS = 20;
 	nbCasesLargeur = 20;

@@ -28,7 +28,7 @@
 			<p > <span v-if = 'number.displayMessage'> {{number.message}}</span> </p><input placeholder="Numéro de téléphone" type="tel" v-model="number.entree" name = "number"> 
 			<p v-if = "(mail.valide && mdp1.valide && mdp2.valide && number.valide)"><input type="submit"></p>
 		</form>
-		<script src = "inscription1_Vue.js"></script>
+		<script src = "VueJS/inscription1_Vue.js"></script>
 
 		<script> axios.get('https://minesperium.herokuapp.com/api/users').then(function(reponse){console.log(reponse)})</script> 
 
@@ -47,7 +47,7 @@
 		<div id = "inscription2" class="inscription">
 			<div v-if = "!envoi">
 				<p><span v-if = 'pseudo.displayMessage'>{{pseudo.message}}</span></p>
-				<input placeholder="Pseudo" type="text" v-model="pseudo.entree" v-on:input="pseudo_Verif()" name="pseudo"> <br>
+				<input placeholder="Pseudo" type="text" v-model="pseudo.entree" v-on:input="pseudo_Verif" name="pseudo"> <br>
 
 				<select v-model="civilisation" name="civilisation" placeholder="Choisissez votre civilisation" >
 					<option disabled value="">Choisissez votre civilisation</option>
@@ -55,7 +55,7 @@
 						{{ option.name }}
 					</option>
             	</select>
-            	<p v-if = "pseudo.valide"><button v-on:click = "envoiDonnees()">Envoyer</button> ></p>
+            	<p v-if = "pseudo.valide"><button v-on:click = "envoiDonnees">Envoyer</button> ></p>
 			</div>
 
 				<div v-if = "envoi"> 
@@ -66,7 +66,7 @@
 
 			</div>
 
-			<script src = "inscription2_Vue.js"></script>
+			<script src = "VueJS/inscription2_Vue.js"></script>
 
     <?php } ?>		
 

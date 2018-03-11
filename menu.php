@@ -9,10 +9,6 @@
 
 <div class="logo-container">
 
-	<!-- <a href="index.php"><img class="logo" src="img/logo_minesperium_transparent.png"></a> -->
-
-	<!--<img class="nom_liste" src="img/nom_minesperium_diogene.png"> -->
-
 	<a href="index.php"><img class="logo" src="img/logo_minesperium.png"></a>
 
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
@@ -21,8 +17,6 @@
 	<?php if(isset($_POST['login'])){
 
 		$_SESSION['login'] = $_POST['login'];
-
-		$_SESSION['mdp'] = $_POST['mdp'];
 
 	}
 
@@ -47,7 +41,7 @@
 
 				<input placeholder="Mot de passe" type="password" name="mdp" v-model="mdp.entree" v-on:input="verification">
 
-				<input type="submit" v-if="mdp.valide">
+				<input type="submit" value = "connexion" v-if="mdp.valide">
 
 			</form>
 
@@ -55,13 +49,11 @@
 
 			</div>
 
-		<script src = "connexion_Vue.js"></script>
-
 	<?php } ?>
 
 </div>
 
-
+<script src = "VueJS/connexion_Vue.js"></script>
 
 <div class="menu-container">
 
