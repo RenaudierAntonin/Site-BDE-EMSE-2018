@@ -21,7 +21,7 @@ function initialisation(){
 
 		case 2: 
 			proba = 0.05;
-			terrain.chemin = new Chemin({i : 1, j: 0}, ['d','d','b','b','b','b','b','b','b','b','d','d','d','d','d','d','h','h','h','g','g','g','g','h','h','h','d','d','d','d','d','d','b','b','b','b','b','b','b','b','b']);
+			terrain.chemin = new Chemin({i : 1, j: 0}, ['b','b','b','b','b','b','b','b','b','d','d','d','d','d','d','h','h','h','g','g','g','g','h','h','h','d','d','d','d','d','d','b','b','b','b','b','b','b','b','b']);
 			depart = {x : (terrain.chemin.debut.i - terrain.chemin.parselles[0].x + 0.5) * Taille_Cases, y : (terrain.chemin.debut.j - terrain.chemin.parselles[0].y + 0.5) * Taille_Cases}; 
 			Monstres = [ { nb : 15, vitesse : 3, force : 1, vie : 150, valeurXP : 200, valeurMoney : 2, coordonnees : {x : depart.x, y : depart.y}, nom : "Gabriel Chiche" , attenteVague : 50 },
 						 { nb : 20, vitesse : 13, force : 1, vie : 300, valeurXP : 100, valeurMoney : 3, coordonnees : {x : depart.x, y : depart.y}, nom : "Etienne Saby", attenteVague : 200 },
