@@ -224,6 +224,6 @@ function play_pause(){
 
 		bouton_play.innerText = "Pause";	
 		//transformer l'image du bouton play
-		jeu = setInterval(run, time, terrain);
+		jeu = setInterval(run, time);
 	}
 }

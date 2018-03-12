@@ -1,6 +1,7 @@
 function initialisation(){
 
 	terrain  = new Terrain();
+	type = 0;
 
 	switch (lvl){
 
