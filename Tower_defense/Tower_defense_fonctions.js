@@ -125,46 +125,46 @@ if (jeu){
 
 			var frequenceTir = 100;
  			var vitesse = 10;
-			var force = 100;
+			var force = 50;
 			var emplacement = findCase(souris);
 			var aire = 100;
-			var prix = 10;
+			var prix = 20;
 			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, "#33FF00");
 
 		break;
 
 		case 2:
 
-			var frequenceTir = 100;
- 			var vitesse = 10;
-			var force = 100;
+			var frequenceTir = 200;
+ 			var vitesse = 20;
+			var force = 20;
 			var emplacement = findCase(souris);
 			var aire = 100;
-			var prix = 10;
+			var prix = 50;
 			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, "red");
 	
 		break;
 
 		case 3:
 
-			var frequenceTir = 50;
+			var frequenceTir = 70;
  			var vitesse = 10;
-			var force = 100;
+			var force = 300;
 			var emplacement = findCase(souris);
 			var aire = 100;
-			var prix = 10;
+			var prix = 50;
 			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, "blue");
 
 		break;
 
 		case 4: 
 			
-			var frequenceTir = 50;
- 			var vitesse = 10;
-			var force = 100;
+			var frequenceTir = 200;
+ 			var vitesse = 20;
+			var force = 200;
 			var emplacement = findCase(souris);
 			var aire = 100;
-			var prix = 10;
+			var prix = 150;
 			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, "#660099");
 
 		break;
