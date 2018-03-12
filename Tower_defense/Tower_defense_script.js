@@ -23,7 +23,6 @@ function Tower_defense_script(){
 	lvl = 1; // niveau actuel
 	lvlMax = 10;
 	souris = { x : 0, y : 0}; // position de la souris
-	type = 0; // type de monstre utilise dans la fonction generer
 	
 	
 
@@ -32,7 +31,7 @@ function Tower_defense_script(){
 	Taille_Cases = canvas.width / nbCasesLargeur; 
 	Taille_Monstres = 0.45 * Taille_Cases;
 	time = Math.floor(1000/FPS);
-	compteur = 0;
+	
 
 	joueur = {vie : 2050, money : 50, score : 0};
 
@@ -44,10 +43,7 @@ function Tower_defense_script(){
 	tourelleSelectionnee = false;
 
 	initialisation();
-	monstre = Monstres[type];
-	var lienImg = monstre.nom.split(' ').join('_') + ".png";
-	monstre.image = new Image();
-	monstre.image.src = "graphisme/monstre/" + lienImg;
+	
 	
 
 
