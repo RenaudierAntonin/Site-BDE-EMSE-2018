@@ -16,7 +16,7 @@ function run(){
 
 		if (lvl < lvlMax){
  
-			if (confirm("Niveau terminé, voulez vous allez au niveau suivant")){
+			if (confirm("Niveau terminé, voulez vous aller au niveau suivant")){
 			
 				Niveau.innerText = lvl;
 				initialisation();
