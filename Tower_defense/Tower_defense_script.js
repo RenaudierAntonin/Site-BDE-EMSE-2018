@@ -33,7 +33,7 @@ function Tower_defense_script(){
 	time = Math.floor(1000/FPS);
 	
 
-	joueur = {vie : 2050, money : 50, score : 0};
+	joueur = {vie : 20, money : 50, score : 0};
 
 	Vie.innerText = joueur.vie;
 	Money.innerText = joueur.money;
