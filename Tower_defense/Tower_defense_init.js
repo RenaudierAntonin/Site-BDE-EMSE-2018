@@ -2,6 +2,8 @@ function initialisation(){
 
 	terrain  = new Terrain();
 	type = 0;
+	compteur = 0;
+
 
 	switch (lvl){
 
@@ -30,6 +32,10 @@ function initialisation(){
 						 { nb : 1, vitesse : 2, force : 1, vie : 10000, valeurXP : 300, valeurMoney : 200, coordonnees : {x : depart.x, y : depart.y}, nom : "Francois Herve", attenteVague : 200 } ];
 		break;
 	}	
-	
+
+	monstre = Monstres[type];
+	var lienImg = monstre.nom.split(' ').join('_') + ".png";
+	monstre.image = new Image();
+	monstre.image.src = "graphisme/monstre/" + lienImg;
 	terrain.dessiner();
 }
