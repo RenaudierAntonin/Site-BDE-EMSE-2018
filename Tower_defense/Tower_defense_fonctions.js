@@ -149,7 +149,7 @@ if (jeu){
 
 			var frequenceTir = 70;
  			var vitesse = 10;
-			var force = 300;
+			var force = 250;
 			var emplacement = findCase(souris);
 			var aire = 100;
 			var prix = 50;
@@ -159,12 +159,12 @@ if (jeu){
 
 		case 4: 
 			
-			var frequenceTir = 200;
+			var frequenceTir = 150;
  			var vitesse = 20;
 			var force = 200;
 			var emplacement = findCase(souris);
 			var aire = 100;
-			var prix = 150;
+			var prix = 200;
 			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, "#660099");
 
 		break;
