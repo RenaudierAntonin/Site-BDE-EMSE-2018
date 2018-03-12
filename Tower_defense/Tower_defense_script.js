@@ -12,6 +12,12 @@ function Tower_defense_script(){
 	Score = document.getElementById("score");
 	Niveau = document.getElementById("niveau");
 
+	herbe = new Image();
+    herbe.src = 'graphisme/terrain/herbe.jpg';
+
+	chemin = new Image();
+    chemin.src = 'graphisme/terrain/chemin.png';
+
 	
 	jeu = false;
 	lvl = 1; // niveau actuel
@@ -39,6 +45,9 @@ function Tower_defense_script(){
 
 	initialisation();
 	monstre = Monstres[type];
+	var lienImg = monstre.nom.split(' ').join('_') + ".png";
+	monstre.image = new Image();
+	monstre.image.src = "graphisme/monstre/" + lienImg;
 	
 
 

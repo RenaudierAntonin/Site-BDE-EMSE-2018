@@ -25,7 +25,7 @@
 	</map>-->
 	
 	<?php include("reseaux_sociaux.php"); ?>
-
+	<?php include("partenaires.php"); ?>
 </body>
 <footer>
 	<p class="credits">Liste BDE Mines Saint-Etienne 2K18 - Mines'perium - Copyright BDE's Nerds</p>

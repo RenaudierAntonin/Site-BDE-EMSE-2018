@@ -23,6 +23,7 @@
 
 	
 	<?php include("reseaux_sociaux.php"); ?>
+	<?php include("partenaires.php"); ?>
 
 </body>
 <footer>

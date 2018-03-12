@@ -239,9 +239,8 @@ function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees, 
 
 	this.dessiner = function(){
 
-		var tete = new Image();
-		tete.src = "graphisme/monstre/" + image;
-		context.drawImage(tete, this.coordonnees.x - Taille_Monstres, this.coordonnees.y - Taille_Monstres, 2 * Taille_Monstres, 2 * Taille_Monstres);
+
+		context.drawImage(image, this.coordonnees.x - Taille_Monstres, this.coordonnees.y - Taille_Monstres, 2 * Taille_Monstres, 2 * Taille_Monstres);
 		context.beginPath(); // dessin du monstre
 		context.fillStyle = "#33FF00"; // dessin de la jauge de vie
 		context.fillRect(this.coordonnees.x - Taille_Monstres, this.coordonnees.y + Taille_Monstres + 4, 2 * Taille_Monstres * (this.vie/vie), 4); 
@@ -295,12 +294,15 @@ function Terrain(){ // l'objet qui contient tous les autres, le plan quoi
 		}
 	}
 
-	this.dessiner = function(){ // on dessine chaque élément, l'ordre est important ! on ne va pas dessiner le chemin par dessu le monstre par exemple
+	this.dessiner = function(){ // on dessine chaque élément, l'ordre est important ! on ne va pas dessiner le chemin par dessus le monstre par exemple
 		
 		context.beginPath();
-		context.fillStyle = "green";
-		context.fillRect(0,0, canvas.width, canvas.height); // penser à utiliser un pattern
+		
+		var pattern = context.createPattern(herbe, 'repeat');
+        context.fillStyle = pattern;
+        context.fillRect(0, 0, canvas.width, canvas.height);
 		context.closePath();
+		
 
 		this.chemin.dessiner();
 
@@ -365,10 +367,11 @@ function Case(coordonnees){ // on découpe le plan en carrés de taille egale su
 	this.disponible = true; //booléen qui indique si on peut y placer une tourelle ou non
 	this.type; // pour le dessin de la case, herbe, roche, eau, parselle ...
 
-	this.dessiner = function(couleur){
+	this.dessiner = function(image){
 
 		context.beginPath();
-		context.fillStyle  = couleur;
+		var pattern = context.createPattern(image, 'repeat');
+        context.fillStyle = pattern;
 		context.fillRect(Math.floor(this.coordonnees.x - (Taille_Cases/2)), Math.floor(this.coordonnees.y - (Taille_Cases/2)), Taille_Cases, Taille_Cases);
 		context.closePath();
 	}
@@ -400,7 +403,7 @@ function Chemin(debut, construction){ // c'est le chemin sur lequel vont avancer
 
 		for(var k = 0; k < this.cases.length; k++){
 
-			this.cases[k].dessiner("grey");
+			this.cases[k].dessiner(chemin);
 		}
 	}
 };

@@ -182,8 +182,13 @@ function genererMonstre(){
 		if (Monstres[type].nb <= 0){
 			
 			type++;
-			alert("Attention ! Une vague de " + Monstres[type].image + " en approche ! ");
+			alert("Attention ! Une vague de " + Monstres[type].nom + " en approche ! ");
 			monstre = Monstres[type];
+
+			var lienImg = monstre.nom.split(' ').join('_') + ".png";
+			monstre.image = new Image();
+			monstre.image.src = "graphisme/monstre/" + lienImg;
+	
 			compteur = monstre.attenteVague;	
 		}
 
@@ -193,8 +198,9 @@ function genererMonstre(){
 
 			if (r < proba){
 
+				console.log(monstre.image);
 				compteur = Taille_Cases / (4 * monstre.vitesse); // permet de definir le compteur de façon à ne pas produire un monstre avant que le dernier sorti ai parcouru une case
-				terrain.monstres.push(new Monstre(monstre.vitesse, monstre.force, monstre.type, monstre.vie, monstre.valeurXP, monstre.valeurMoney, {x : monstre.coordonnees.x, y : monstre.coordonnees.y}, monstre.image + ".png"));
+				terrain.monstres.push(new Monstre(monstre.vitesse, monstre.force, monstre.type, monstre.vie, monstre.valeurXP, monstre.valeurMoney, {x : monstre.coordonnees.x, y : monstre.coordonnees.y}, monstre.image));
 				monstre.nb--;
 			}
 
