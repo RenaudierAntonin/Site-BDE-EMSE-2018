@@ -1,3 +1,9 @@
+
+
+MaxCivilisation = 80;
+
+
+
 var inscription2 = new Vue({
 	el : "#inscription2",
 
@@ -11,7 +17,7 @@ var inscription2 = new Vue({
 
 		},
 
-		civilisations : [{name: 'Gauloise'}, {name: 'Viking'}, {name: 'Romaine'}, {name: 'Egyptienne'}, {name : 'Minesperium'}],
+		civilisations : [{name: 'Gauloise', nb : 0}, {name: 'Viking', nb : 0}, {name: 'Romaine', nb : 0}, {name: 'Egyptienne', nb : 0}],
 
 		civilisation : '',
 
@@ -45,5 +51,38 @@ var inscription2 = new Vue({
 				inscription2.envoi = true;
 			
 		}
+	},
+	 mounted : function(){
+	 	axios.get("https://minesperium.herokuapp.com/api/users").then(function(reponse){
+
+	for(var i = 0; i < reponse.length; i++ ){
+
+		switch (reponse.data.civilisation){
+
+			case "Romaine":
+				inscription2.civilisations.Romaines.nb++;
+			break;
+
+			case "Viking":
+				inscription2.civilisations.Viking.nb++;
+			break;
+
+			case "Gauloise":
+				inscription2.civilisations.Gauloise.nb++;
+			break;
+
+			case "Egyptienne":
+				inscription2.civilisations.Egyptienne.nb++;
+			break;
+		}
+	for(civ in civilisations ){
+
+	if(civ.nb > 80){
+		delete civilisations[civ]; 
 	}
-})
+}
+	}
+});
+	 }
+});
+

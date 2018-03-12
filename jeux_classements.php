@@ -15,28 +15,19 @@
 		</div>
 		<!--<div><a class="jeu" href=""><img class="logo" src="img/logo_minesperium_transparent.png">Jeu 2</a></div>-->	
 	</div>
-	<table>
+	<table id="classement">
 		<tr>
 			<td >Pseudo</td>
 			<td>Rang</td>
 			<td>Score</td>
 		</tr>
-		<tr style="background-color: blue;"><!--Adapter la couleur à la civilisation-->
-			<td>ufhe</td>
-			<td>ufhe</td>
-			<td>ufhe</td>
-		</tr>
-		<tr style="background-color: gray;"><!--Adapter la couleur à la civilisation-->
-			<td>ufhe</td>
-			<td>ufhe</td>
-			<td>ufhe</td>
-		</tr>
-		<tr style="background-color: gray;"><!--Adapter la couleur à la civilisation-->
-			<td>ufhe</td>
-			<td>ufhe</td>
-			<td>ufhe</td>
+		<tr v-for="user in users" style="background-color: user.couleur;" ><!--Adapter la couleur à la civilisation-->
+			<td>{{user.pseudo}}</td>
+			<td>{{user.rang}}</td>
+			<td>{{user.score}}</td>
 		</tr>
 	</table>
+	<script src="VueJS/classement_Vue.js"></script>
 	
 	<?php include("reseaux_sociaux.php"); ?>
 	<?php include("partenaires.php"); ?>
