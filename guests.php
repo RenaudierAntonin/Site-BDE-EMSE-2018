@@ -14,7 +14,7 @@
 
 	<?php for($i = 1; $i < 6 ; $i++){
 
-		echo "<img src='img/membres/0guest".$i.".jpg'>";
+		echo "<img src='img/membres/0guest".$i.".png'>";
 	}?>
 	</div>
 

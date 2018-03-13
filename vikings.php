@@ -12,12 +12,12 @@
 	<?php include("menu.php"); ?>
 	<div class="presentations">
 		<img class="respo" src="img/membres/0soiree1.png">
-		<img class="respo" src="img/membres/0soiree2.jpg">
+		<img class="respo" src="img/membres/0soiree2.png">
 
 
 	<?php for($i = 3; $i < 12; $i++){
 
-		echo "<img src='img/membres/0soiree".$i.".jpg'>";
+		echo "<img src='img/membres/0soiree".$i.".png'>";
 	}?>
 	</div>
 

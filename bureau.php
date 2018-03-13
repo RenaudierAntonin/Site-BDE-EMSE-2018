@@ -11,10 +11,10 @@
 	
 	<?php include("menu.php"); ?>
 	<div class="presentations">
-		<img class="respo" src="img/membres/0bureau1.jpg">
+		<img class="respo" src="img/membres/0bureau1.png">
 		<img src="img/membres/0bureau2.jpg">
-		<img src="img/membres/0bureau3.jpg">
-		<img src="img/membres/0bureau4.jpg">
+		<img src="img/membres/0bureau3.png">
+		<img src="img/membres/0bureau4.png">
 	</div>
 
 	

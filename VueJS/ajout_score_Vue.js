@@ -14,7 +14,7 @@ ajout_score =new Vue({
 			entree :'',
 			message:"Le jeu entré n'existe pas",
 			displayMessage: false,
-			valide : false
+			valide : true
 		},
 		score : {
 			entree :'',
@@ -85,10 +85,11 @@ ajout_Jeu = new Vue({
 
 			entree : '',
 			message : 'ce nom de jeu existe déjà, il faut choisir un autre nom',
-			displayMessage : false
+			displayMessage : false,
+			valide : true
 
 		},
-		
+
 		ajout : false,
 		jeuAjoute : false
 	},
@@ -107,7 +108,7 @@ ajout_Jeu = new Vue({
 			});
 
 			ajout_Jeu.jeuAjoute = true;
-			ajout_Jeu.entree ='';
+			ajout_Jeu.jeu.entree ='';
 		},
 
 		jeu_Verif : function(){

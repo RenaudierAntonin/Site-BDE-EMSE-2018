@@ -2,7 +2,6 @@
 MaxCivilisation = 40;
 
 
-
 var inscription2 = new Vue({
 	el : "#inscription2",
 

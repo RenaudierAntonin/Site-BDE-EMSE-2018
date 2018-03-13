@@ -11,17 +11,17 @@
 	
 	<?php include("menu.php"); ?>
 	<div class="presentations">
-		<img class="respo" src="img/membres/0com1.jpg">
+		<img class="respo" src="img/membres/0com1.png">
 
 	<?php for($i = 2; $i < 6 ; $i++){
 
-		echo "<img src='img/membres/0com".$i.".jpg'>";
+		echo "<img src='img/membres/0com".$i.".png'>";
 	}
-		echo "<img class='respo' src='img/membres/0sponsor1.jpg'>";
+		echo "<img class='respo' src='img/membres/0sponsor1.png'>";
 
 	for($i = 2; $i < 5 ; $i++){
 
-		echo "<img src='img/membres/0sponsor".$i.".jpg'>";
+		echo "<img src='img/membres/0sponsor".$i.".png'>";
 
 			}?>
 	</div>

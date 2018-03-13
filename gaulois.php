@@ -11,12 +11,10 @@
 	
 	<?php include("menu.php"); ?>
 	<div class="presentations">
-		<img class="respo" src="img/membres/0valm1.jpg">
-		<img src="img/membres/0valm2.png">
+		<img class="respo" src="img/membres/0valm1.png">
+	<?php for($i = 2; $i < 9; $i++){
 
-	<?php for($i = 3; $i < 9; $i++){
-
-		echo "<img src='img/membres/0valm".$i.".jpg'>";
+		echo "<img src='img/membres/0valm".$i.".png'>";
 	}?>
 	</div>
 
