@@ -66,7 +66,7 @@
 
 		<li><a href="planning.php">Planning</a></li>
 
-		<li><a href="jeux_classements.php">Jeux et classements</a></li>
+		<!--<li><a href="jeux_classements.php">Jeux et classements</a></li>-->
 
 		<?php if (isset($_SESSION['login']) && ($_SESSION['login'] == "Sim's")){
 			echo "<li><a href='ajout_point.php'>Ajout Points</a></li>";

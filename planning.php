@@ -15,10 +15,8 @@
 		<image width="100%" height="100%" xlink:href="img/planning.png" usemap="#membermap">
 		</image>
 		<a href="events/anim1.php"><rect x="200" y="190" fill="transparent" width="130" height="145"/></a>
-		<a href="events/repas1.php"><rect x="475" y="190" fill="transparent" width="130" height="145"/></a>
+		<a href="events/repas1.php"><rect x="470" y="260" fill="transparent" width="130" height="73"/></a>
 	</svg>
-	<img class="event" src="img/events/Anim_12_03_18.jpg">
-	<img class="event" src="img/events/Repas_14_03_18.jpg">
 
 	<?php include("reseaux_sociaux.php"); ?>
 
