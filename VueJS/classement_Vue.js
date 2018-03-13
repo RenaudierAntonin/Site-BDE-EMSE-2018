@@ -18,19 +18,19 @@ axios.get("https://minesperium.herokuapp.com/api/users/ranking").then(function(r
 		switch(users[i].civilisation){
 
 			case "Romaine":
-				users[i].couleur = "red";
+				users[i].couleur = "#ce0404";
 			break;
 
 			case "Egyptienne":
-				users[i].couleur = "yellow";
+				users[i].couleur = "#ffd60c";
 			break;
 
 			case "Gauloise":
-				users[i].couleur = "green";
+				users[i].couleur = "#299b15";
 			break;
 
 			case "Viking":
-				users[i].couleur = "blue";
+				users[i].couleur = "#0e136d";
 			break;
 		}
 	}
