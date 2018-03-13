@@ -13,7 +13,7 @@
 	<div class="game-container">
 		<!--<div class="jeu"><a  href="Tower_defense/Tower_defense_main.html" ><img class="logo" src="img/logo_minesperium_transparent.png">Tower Defense</a>
 		</div>
-		<!--<div><a class="jeu" href=""><img class="logo" src="img/logo_minesperium_transparent.png">Jeu 2</a></div>-->	
+		<div><a class="jeu" href=""><img class="logo" src="img/logo_minesperium_transparent.png">Jeu 2</a></div> -->	
 	</div>
 	<table id="classement">
 		<tr>
@@ -21,8 +21,8 @@
 			<td>Rang</td>
 			<td>Score</td>
 		</tr>
-		<tr v-for="user in users" style="background-color: user.couleur;" ><!--Adapter la couleur à la civilisation-->
-			<td>{{user.pseudo}}</td>
+		<tr v-for="user in users" v-bind:style="{ backgroundColor: user.couleur}" ><!--Adapter la couleur à la civilisation-->
+			<td>{{user.pseudo}}</td> 
 			<td>{{user.rang}}</td>
 			<td>{{user.score}}</td>
 		</tr>

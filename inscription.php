@@ -30,7 +30,7 @@
 			<p > <span v-if = 'number.displayMessage' class = "rouge"> {{number.message}}</span> </p>
 			<p>Entrez votre numero de tel pour recevoir les news par sms</p>
 			<input placeholder="Numéro de téléphone" type="tel" v-model="number.entree" name = "number"> 
-			<p v-if = "(mail.valide && mdp1.valide && mdp2.valide && number.valide)"><input type="submit"></p>
+			<p v-if = "(mail.valide && mdp1.valide && mdp2.valide && number.valide)"><input type="submit" value="s'incrire"></p>
 		</form>
 		<script src = "VueJS/inscription1_Vue.js"></script>
 

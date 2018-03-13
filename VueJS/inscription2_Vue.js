@@ -1,6 +1,5 @@
 
-
-MaxCivilisation = 80;
+MaxCivilisation = 40;
 
 
 
@@ -26,6 +25,7 @@ var inscription2 = new Vue({
 },
 
 	methods : {
+
 		pseudo_Verif : function(){
 
 			axios.get("https://minesperium.herokuapp.com/api/users/check/" + this.pseudo.entree).then(function(reponse){
@@ -53,36 +53,47 @@ var inscription2 = new Vue({
 		}
 	},
 	 mounted : function(){
-	 	axios.get("https://minesperium.herokuapp.com/api/users").then(function(reponse){
+	
 
-	for(var i = 0; i < reponse.length; i++ ){
+	 }
+});
 
-		switch (reponse.data.civilisation){
+
+axios.get("https://minesperium.herokuapp.com/api/users").then(function(reponse){
+
+	var users = reponse.data;
+
+	for(var i=0; i < users.length; i++){
+
+		switch(users[i].civilisation){
 
 			case "Romaine":
-				inscription2.civilisations.Romaines.nb++;
-			break;
-
-			case "Viking":
-				inscription2.civilisations.Viking.nb++;
-			break;
-
-			case "Gauloise":
-				inscription2.civilisations.Gauloise.nb++;
+				
+				inscription2.civilisations[2].nb++;
 			break;
 
 			case "Egyptienne":
-				inscription2.civilisations.Egyptienne.nb++;
+				inscription2.civilisations[3].nb++;
+			break;
+
+			case "Gauloise":
+				inscription2.civilisations[0].nb++;
+			break;
+
+			case "Viking":
+				inscription2.civilisations[1].nb++;
 			break;
 		}
-	for(civ in civilisations ){
+	}
 
-	if(civ.nb > 80){
-		delete civilisations[civ]; 
+	for(var i = 0; i < 4; i++){
+
+	if(inscription2.civilisations[i].nb > MaxCivilisation){
+
+		inscription2.civilisations.splice(i,1);
+		i--;
 	}
 }
-	}
-});
-	 }
+
 });
 
