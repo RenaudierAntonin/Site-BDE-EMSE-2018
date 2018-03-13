@@ -3,15 +3,20 @@
 <head>
 	<title>Mines'perium</title>
 	<link rel="stylesheet" type="text/css" href="style/style.css">
+	<link rel="stylesheet" type="text/css" href="style/style_planning.css">
 	<meta charset="utf-8">
 </head>
 
 <body>
 	
 	<?php include("menu.php"); ?>
-
-	<h1 style="display: block;margin-right: auto;margin-left: auto;text-align: center;">More to come!!</h1>
-	<img style="display:block; max-width: 80%;margin-left:auto;margin-right: auto;text-align: center;" src="img/planning.png">
+<!--	<img class="planning" src="img/planning.png">-->
+	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 795" >
+		<image width="100%" height="100%" xlink:href="img/planning.png" usemap="#membermap">
+		</image>
+		<a href="events/anim1.php"><rect x="200" y="190" fill="transparent" width="130" height="145"/></a>
+		<a href="events/repas1.php"><rect x="475" y="190" fill="transparent" width="130" height="145"/></a>
+	</svg>
 	<img class="event" src="img/events/Anim_12_03_18.jpg">
 	<img class="event" src="img/events/Repas_14_03_18.jpg">
 
