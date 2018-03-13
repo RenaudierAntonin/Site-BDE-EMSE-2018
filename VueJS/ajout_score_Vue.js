@@ -21,7 +21,10 @@ ajout_score =new Vue({
 			message:"Il faut entrer un score",
 			displayMessage: false,
 			valide : false
-		}
+		},
+
+		scoreAjoute : false,
+		ajout : false
 
 	},
 
@@ -66,7 +69,50 @@ ajout_score =new Vue({
 
 			ajout_score.pseudo.entree='';
 			ajout_score.score.entree='';
+			ajout_score.ajout = true;
 			
+		}
+	}
+})
+
+ajout_Jeu = new Vue({
+
+	el:"#ajout_Jeu",
+
+	data : {
+
+		jeu :{
+
+			entree : '',
+			message : 'ce nom de jeu existe déjà, il faut choisir un autre nom',
+			displayMessage : false
+
+		},
+		
+		ajout : false,
+		jeuAjoute : false
+	},
+
+	methods : {
+
+		envoiJeu : function(){
+
+			axios({
+
+				method: 'post',
+
+				url : 'https://minesperium.herokuapp.com/api/games/new',
+
+				data : {name : ajout_Jeu.jeu.entree}
+			});
+
+			ajout_Jeu.jeuAjoute = true;
+			ajout_Jeu.entree ='';
+		},
+
+		jeu_Verif : function(){
+
+
 		}
 	}
 })

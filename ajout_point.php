@@ -14,16 +14,30 @@
 	<div class="texte">
 		Love sur toi mon Sim's d'amour
 	
+	<div id = "ajout_Jeu" class="inscription">
+		<p v-if="jeuAjoute">Le jeu a été ajouté</p>
+		<button v-if= "!ajout" v-on:click="ajout = true;"> Ajouter un jeu </button>
+		<div v-if= "ajout">
+			<p v-if="jeu.displayMessage">{{jeu.message}}</p>
+			<input type="text" v-model="jeu.entree" v-on:input="jeu_Verif()" placeholder="Ajouter un jeu">
+			<button v-if="jeu.valide" v-on:click="envoiJeu()">Ajouter</button>
+		</div>
+	</div>
 
-	<form id = "score" class="inscription">
-		<p v-if="pseudo.displayMessage">{{pseudo.message}}</p>
-		<input type="text" v-model="pseudo.entree" placeholder="pseudo" v-on:input="pseudo_Verif()"> <br>
-		<p v-if="jeu.displayMessage">{{jeu.message}}</p>
-		<input type="text" v-model="jeu.entree" placeholder="jeu" v-on:input="jeu_Verif()"> <br>
-		<p v-if="score.displayMessage">{{score.message}}</p>
-		<input type="text" v-model="score.entree" placeholder="score" v-on:input="score_Verif()">  
-		<button v-if="jeu.valide && score.valide && pseudo.valide" v-on:click="envoiDonnees()"> Envoyer </button>
-	</form>
+
+	<div id = "score" class="inscription">
+		<button v-if="!ajout" v-on:click="ajout = true;">Ajouter un score</button>
+		<div v-if="ajout">
+			<p v-if="scoreAjoute">Le score a été ajouté</p>
+			<p v-if="pseudo.displayMessage">{{pseudo.message}}</p>
+			<input type="text" v-model="pseudo.entree" placeholder="pseudo" v-on:input="pseudo_Verif()"> <br>
+			<p v-if="jeu.displayMessage">{{jeu.message}}</p>
+			<input type="text" v-model="jeu.entree" placeholder="jeu" v-on:input="jeu_Verif()"> <br>
+			<p v-if="score.displayMessage">{{score.message}}</p>
+			<input type="text" v-model="score.entree" placeholder="score" v-on:input="score_Verif()">  
+			<button v-if="jeu.valide && score.valide && pseudo.valide" v-on:click="envoiDonnees()"> Envoyer </button>
+		</div>
+	</div>
 	<script src="VueJS/ajout_score_Vue.js"></script>
 	
 	</div>

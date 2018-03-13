@@ -32,6 +32,10 @@ axios.get("https://minesperium.herokuapp.com/api/users/ranking").then(function(r
 			case "Viking":
 				users[i].couleur = "blue";
 			break;
+			case "Minesperium" :
+				users[i].couleur = "#ff8402";
+			break;
+
 		}
 	}
 

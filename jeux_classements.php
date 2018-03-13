@@ -18,13 +18,21 @@
 	<table id="classement">
 		<tr>
 			<td >Pseudo</td>
+			<td>Score</td>	
 			<td>Rang</td>
-			<td>Score</td>
 		</tr>
-		<tr v-for="user in users" v-bind:style="{ backgroundColor: user.couleur}" ><!--Adapter la couleur à la civilisation-->
+		<tr v-for="user in users" v-bind:style="{ backgroundColor: user.couleur}" >
 			<td>{{user.pseudo}}</td> 
-			<td>{{user.rang}}</td>
 			<td>{{user.score}}</td>
+			<td>{{user.rang}}</td>
+		</tr>
+	</table>
+
+	<table>
+		<tr>
+			<td >Civilisation</td>
+			<td>Score</td>	
+			<td>Rang</td>
 		</tr>
 	</table>
 	<script src="VueJS/classement_Vue.js"></script>
