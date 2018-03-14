@@ -46,7 +46,7 @@
 
 			</form>
 
-			<!--<a href = "inscription.php">S'inscrire</a>-->
+			<a href = "inscription.php">S'inscrire</a>
 
 			</div>
 
