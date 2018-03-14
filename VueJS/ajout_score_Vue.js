@@ -63,13 +63,13 @@ ajout_score =new Vue({
 
                 url: 'https://minesperium.herokuapp.com/api/scores/add',
 
-				data: { id_user : ajout_score.pseudo.entree, id_game : ajout_score.jeu.entree, value : ajout_score.score.entree}
+				data: { pseudo_user : ajout_score.pseudo.entree, name_game : ajout_score.jeu.entree, value : ajout_score.score.entree}
 
             });
 
 			ajout_score.pseudo.entree='';
 			ajout_score.score.entree='';
-			ajout_score.ajout = true;
+			ajout_score.scoreAjoute =true;
 			
 		}
 	}
