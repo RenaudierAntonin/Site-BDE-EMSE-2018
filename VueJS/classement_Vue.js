@@ -40,7 +40,7 @@ axios.get("https://minesperium.herokuapp.com/api/users/ranking").then(function(r
 	}
 
 	classementJoueurs.users = users;
-	console.log(users);
+
 });
 
 var classementCivilisations = new Vue({
