@@ -20,13 +20,13 @@
 	
 		<form class="inscription" action = "inscription.php" method = "post" id = "inscription1">
 			<p><span v-if = 'mail.displayMessage' class = "rouge">{{mail.message}}</span></p>
-			<input placeholder="E-mail" type="email" v-model="mail.entree" name="mail" v-on:input="mail_Verif()">
+			<input placeholder="E-mail" type="email" v-model="mail.entree" name="mail" v-on:input="mail_Verif">
 			<p > <span v-if = 'number.displayMessage' class = "rouge"> {{number.message}}</span> </p>
 			<p>Attention ! Les mots de passe ne sont pas encore cryptés, n'utilisez pas celui de vos comptes perso</p>
 			<p ><span v-if = 'mdp1.displayMessage' class  = "rouge">{{mdp1.message}}</span></p>
-			<input placeholder="Mot de passe" type="password" v-model="mdp1.entree" v-on:input="mdp1_Verif()" name = "mdp1">
+			<input placeholder="Mot de passe" type="password" v-model="mdp1.entree" v-on:input="mdp1_Verif" name = "mdp1">
 			<p ><span v-if = 'mdp2.displayMessage' class= "rouge">{{mdp2.message}}</span></p>
-			<input placeholder="Confirmation du mot de passe" type="password" v-model="mdp2.entree" v-on:input="mdp2_Verif()" name = "mdp2">
+			<input placeholder="Confirmation du mot de passe" type="password" v-model="mdp2.entree" v-on:input="mdp2_Verif" name = "mdp2">
 			<p > <span v-if = 'number.displayMessage' class = "rouge"> {{number.message}}</span> </p>
 			<p>Entrez votre numero de tel pour recevoir les news par sms</p>
 			<input placeholder="Numéro de téléphone" type="tel" v-model="number.entree" name = "number"> 

@@ -23,7 +23,7 @@
 
 	if (isset($_SESSION['login']) ){
 
-		echo "<span class='hello'> Hello " . $_SESSION['login']. "</span>";
+		echo "<span class='hello'> Bonjour " . $_SESSION['login']. "</span>";
 
 	?>
 
@@ -38,11 +38,11 @@
 
 			<form class="connection" action = "index.php" method = "post">
 				<span v-if="login.displayMessage">{{login.message}}</span> 
-				<input placeholder="Pseudo" type="text" name="login" v-model="login.entree" v-on:input="autentification" >
+				<input placeholder="Pseudo ou email" type="text" name="login" v-model="login.entree" v-on:input="autentification" v-on:input="verification" v-on:blur="autentification" >
 				<span v-if="mdp.displayMessage">{{mdp.message}}</span> 
-				<input placeholder="Mot de passe" type="password" name="mdp" v-model="mdp.entree" v-on:input="verification">
+				<input placeholder="Mot de passe" type="password" name="mdp" v-model="mdp.entree" v-on:input="verification" v-on:blur="verification">
 
-				<input type="submit" value = "connexion" v-if="mdp.valide">
+				<input type="submit" value = "connexion" v-if="login.valide && mdp.valide">
 
 			</form>
 
@@ -66,9 +66,10 @@
 
 		<li><a href="planning.php">Planning</a></li>
 
-		<!--<li><a href="jeux_classements.php">Jeux et classements</a></li>-->
+		<li><a href="jeux_classements.php">Jeux et classements</a></li>
 
 		<?php if (isset($_SESSION['login']) && ($_SESSION['login'] == "Sim's")){
+
 			echo "<li><a href='ajout_point.php'>Ajout Points</a></li>";
 		}?>
 

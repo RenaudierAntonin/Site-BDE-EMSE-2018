@@ -63,13 +63,13 @@ ajout_score =new Vue({
 
                 url: 'https://minesperium.herokuapp.com/api/scores/add',
 
-				data: { id_user : ajout_score.pseudo.entree, id_game : ajout_score.civilisation, value : ajout_score.score.entree}
+				data: { pseudo_user : ajout_score.pseudo.entree, name_game : ajout_score.jeu.entree, value : ajout_score.score.entree}
 
             });
 
 			ajout_score.pseudo.entree='';
 			ajout_score.score.entree='';
-			ajout_score.ajout = true;
+			ajout_score.scoreAjoute =true;
 			
 		}
 	}
@@ -113,6 +113,11 @@ ajout_Jeu = new Vue({
 
 		jeu_Verif : function(){
 
+			/*axios.get("https://minesperium.herokuapp.com/api/jeu/check/" + this.jeu.entree).then(function(reponse){
+
+				ajout_score.jeu.displayMessage = !(reponse.data.id);
+				ajout_score.jeu.valide = !(ajout_score.jeu.displayMessage) && (ajout_score.jeu.entree !='');
+			})*/
 
 		}
 	}

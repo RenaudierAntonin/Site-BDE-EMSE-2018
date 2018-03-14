@@ -7,7 +7,7 @@ var connexion = new Vue({
 		login :{
 
 			entree : '',
-			message : 'Pseudo inexistant',
+			message : 'Pseudo inexistant, vous pouvez essayez votre adresse mail',
 			displayMessage : false,
 			valide : false
 		},
@@ -29,7 +29,7 @@ var connexion = new Vue({
 			axios.get("https://minesperium.herokuapp.com/api/users/check/" + this.login.entree).then(function(reponse){
 
 				connexion.login.displayMessage = !(reponse.data.id);
-				connexion.login.valide = !(connexion.login.displayMessage) && (connexion.login.entree !='');
+				connexion.login.valide = !(!(reponse.data.id)) && (connexion.login.entree !='');
 			})
 			.catch(function (error) {
     			//console.log(error);
@@ -41,8 +41,9 @@ var connexion = new Vue({
 
 			axios.get("https://minesperium.herokuapp.com/api/users/identification/" + this.login.entree + "/" + this.mdp.entree).then(function(reponse){
 
-				connexion.mdp.displayMessage = (!(reponse.data.id)) && (connexion.login.valide);
-				connexion.mdp.valide = !(connexion.mdp.displayMessage) && (connexion.mdp.entree !='');
+				connexion.mdp.displayMessage = !reponse.data.id && (connexion.mdp.entree != '');
+				connexion.pseudo.valide = !(!reponse.data.id);
+				connexion.mdp.valide = !(!reponse.data.id) && (connexion.mdp.entree !='');
 			})
 			.catch(function (error) {
     			//console.log(error);
