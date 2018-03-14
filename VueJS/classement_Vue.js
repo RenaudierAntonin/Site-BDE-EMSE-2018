@@ -1,6 +1,6 @@
-var classement = new Vue({
+var classementJoueurs = new Vue({
 	
-	el : "#classement",
+	el : "#classementJoueurs",
 
 	data : {
 
@@ -14,7 +14,7 @@ axios.get("https://minesperium.herokuapp.com/api/users/ranking").then(function(r
 	var users = reponse.data;
 
 	for(var i=0; i < users.length; i++){
-
+		users[i].rang = i+1;
 		switch(users[i].civilisation){
 
 			case "Romaine":
@@ -39,7 +39,53 @@ axios.get("https://minesperium.herokuapp.com/api/users/ranking").then(function(r
 		}
 	}
 
-	classement.users = users;
+	classementJoueurs.users = users;
+	console.log(users);
 });
 
+var classementCivilisations = new Vue({
 
+	el: "#classementCivilisations",
+
+	data : {
+
+		Civilisations : []
+	},
+
+
+});
+
+axios.get("https://minesperium.herokuapp.com/api/users/civilisationranking").then(function(reponse){
+
+	var Civilisations = reponse.data;
+
+	for(var i=0; i < Civilisations.length; i++){
+
+		Civilisations[i].rang = i+1;
+
+		switch(Civilisations[i].name){
+
+			case "Romaine":
+				Civilisations[i].couleur = "#ce0404";
+			break;
+
+			case "Egyptienne":
+				Civilisations[i].couleur = "#ffd60c";
+			break;
+
+			case "Gauloise":
+				Civilisations[i].couleur = "#299b15";
+			break;
+
+			case "Viking":
+				Civilisations[i].couleur = "#0e136d";
+			break;
+			case "Minesperium" :
+				Civilisations[i].couleur = "#ff8402";
+			break;
+
+		}
+	}
+
+	classementCivilisations.Civilisations = Civilisations;
+});

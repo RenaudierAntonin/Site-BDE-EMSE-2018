@@ -113,6 +113,11 @@ ajout_Jeu = new Vue({
 
 		jeu_Verif : function(){
 
+			axios.get("https://minesperium.herokuapp.com/api/jeu/check/" + this.jeu.entree).then(function(reponse){
+
+				ajout_score.jeu.displayMessage = !(reponse.data.id);
+				ajout_score.jeu.valide = !(ajout_score.jeu.displayMessage) && (ajout_score.jeu.entree !='');
+			})
 
 		}
 	}
