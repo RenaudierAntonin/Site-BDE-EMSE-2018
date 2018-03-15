@@ -42,7 +42,7 @@
 				<span v-if="mdp.displayMessage">{{mdp.message}}</span> 
 				<input placeholder="Mot de passe" type="password" name="mdp" v-model="mdp.entree" v-on:input="verification" v-on:blur="verification">
 
-				<input type="submit" value = "connexion" v-if="login.valide && mdp.valide">
+				<input type="submit" value = "connexion" v-if="mdp.valide">
 
 			</form>
 

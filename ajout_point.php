@@ -30,12 +30,12 @@
 		<div v-if="ajout">
 			<p v-if="scoreAjoute">Le score a été ajouté</p>
 			<p v-if="pseudo.displayMessage">{{pseudo.message}}</p>
-			<input type="text" v-model="pseudo.entree" placeholder="pseudo" v-on:input="pseudo_Verif()"> <br>
+			<input type="text" v-model="pseudo.entree" placeholder="pseudo" v-on:input="pseudo_Verif"> <br>
 			<p v-if="jeu.displayMessage">{{jeu.message}}</p>
-			<input type="text" v-model="jeu.entree" placeholder="jeu" v-on:input="jeu_Verif()"> <br>
+			<input type="text" v-model="jeu.entree" placeholder="jeu" v-on:input="jeu_Verif"> <br>
 			<p v-if="score.displayMessage">{{score.message}}</p>
-			<input type="text" v-model="score.entree" placeholder="score" v-on:input="score_Verif()">  
-			<button v-if="jeu.valide && score.valide && pseudo.valide" v-on:click="envoiDonnees()"> Envoyer </button>
+			<input type="text" v-model="score.entree" placeholder="score" v-on:input="score_Verif">  
+			<button v-if="jeu.valide && score.valide && pseudo.valide" v-on:click="envoiDonnees"> Envoyer </button>
 		</div>
 	</div>
 	<script src="VueJS/ajout_score_Vue.js"></script>

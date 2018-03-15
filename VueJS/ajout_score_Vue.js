@@ -35,7 +35,7 @@ ajout_score =new Vue({
 			axios.get("https://minesperium.herokuapp.com/api/users/check/" + this.pseudo.entree).then(function(reponse){
 
 				ajout_score.pseudo.displayMessage = !(reponse.data.id);
-				ajout_score.pseudo.valide = !(ajout_score.pseudo.displayMessage) && (ajout_score.pseudo.entree !='');
+				ajout_score.pseudo.valide = !(!reponse.data.id) && (ajout_score.pseudo.entree !='');
 			})
 			.catch(function (error) {
     			//console.log(error);
@@ -52,7 +52,7 @@ ajout_score =new Vue({
 
 		jeu_Verif : function(){
 
-			axio.get("https://minesperium.herokuapp.com/api/game/check/" + this.jeu.entree).then(function(reponse){
+			axios.get("https://minesperium.herokuapp.com/api/games/check/" + this.jeu.entree).then(function(reponse){
 
 				ajout_score.jeu.displayMessage = !reponse.data.id;
 				ajout_score.jeu.valide = !(!reponse.data.id);
@@ -62,19 +62,14 @@ ajout_score =new Vue({
 
 		envoiDonnees : function(){
 
-			axios({
+			axios.post("https://minesperium.herokuapp.com/api/scores/addscore/" + ajout_score.pseudo.entree + "/" +  ajout_score.jeu.entree + "/" + ajout_score.score.entree).then(function(reponse){
 
-            	method: 'post',
+				ajout_score.pseudo.entree='';
+				ajout_score.score.entree='';
+				ajout_score.scoreAjoute =true;
+			
+			});
 
-                url: 'https://minesperium.herokuapp.com/api/scores/add',
-
-				data: { pseudo_user : ajout_score.pseudo.entree, name_game : ajout_score.jeu.entree, value : ajout_score.score.entree}
-
-            });
-
-			ajout_score.pseudo.entree='';
-			ajout_score.score.entree='';
-			ajout_score.scoreAjoute =true;
 			
 		}
 	}
@@ -118,10 +113,10 @@ ajout_Jeu = new Vue({
 
 		jeu_Verif : function(){
 
-			axio.get("https://minesperium.herokuapp.com/api/games/check/" + this.jeu.entree).then(function(reponse){
+			axios.get("https://minesperium.herokuapp.com/api/games/check/" + this.jeu.entree).then(function(reponse){
 
-				ajout_Jeu.jeu.displayMessage = !reponse.data.id;
-				ajout_Jeu.jeu.valide = !(!reponse.data.id);
+				ajout_Jeu.jeu.displayMessage = reponse.data.id;
+				ajout_Jeu.jeu.valide = !reponse.data.id;
 			})
 
 		}

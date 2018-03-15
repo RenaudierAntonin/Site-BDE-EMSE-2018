@@ -43,8 +43,7 @@ var connexion = new Vue({
 			axios.get("https://minesperium.herokuapp.com/api/users/identification/" + this.login.entree + "/" + this.mdp.entree).then(function(reponse){
 
 				connexion.mdp.displayMessage = !(reponse.data.id);
-				connexion.login.valide = !(!reponse.data.id) ;
-				connexion.mdp.valide = !(!reponse.data.id) ;
+				connexion.mdp.valide = !(!reponse.data.id);
 
 			})
 			.catch(function (error) {
