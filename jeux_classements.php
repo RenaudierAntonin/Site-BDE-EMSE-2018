@@ -50,8 +50,5 @@
 <footer>
 	<p class="credits">Liste BDE Mines Saint-Etienne 2K18 - Mines'perium - Copyright BDE's Nerds</p>
 </footer>
-<?php
-	//  echo "<script type=\"text/javascript\">var id_user=".$_SESSION["id_user"]."</script>";
-?>
 
 </html>

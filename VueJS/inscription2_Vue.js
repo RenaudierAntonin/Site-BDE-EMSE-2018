@@ -1,5 +1,5 @@
 
-MaxCivilisation = 40;
+MaxCivilisation = 60;
 
 
 var inscription2 = new Vue({

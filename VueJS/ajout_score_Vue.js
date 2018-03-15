@@ -14,7 +14,7 @@ ajout_score =new Vue({
 			entree :'',
 			message:"Le jeu entré n'existe pas",
 			displayMessage: false,
-			valide : true
+			valide : false
 		},
 		score : {
 			entree :'',
@@ -52,6 +52,11 @@ ajout_score =new Vue({
 
 		jeu_Verif : function(){
 
+			axio.get("https://minesperium.herokuapp.com/api/game/check/" + this.jeu.entree).then(function(reponse){
+
+				ajout_score.jeu.displayMessage = !reponse.data.id;
+				ajout_score.jeu.valide = !(!reponse.data.id);
+			})
 
 		},
 
@@ -73,7 +78,7 @@ ajout_score =new Vue({
 			
 		}
 	}
-})
+});
 
 ajout_Jeu = new Vue({
 
@@ -86,7 +91,7 @@ ajout_Jeu = new Vue({
 			entree : '',
 			message : 'ce nom de jeu existe déjà, il faut choisir un autre nom',
 			displayMessage : false,
-			valide : true
+			valide : false
 
 		},
 
@@ -113,11 +118,11 @@ ajout_Jeu = new Vue({
 
 		jeu_Verif : function(){
 
-			/*axios.get("https://minesperium.herokuapp.com/api/jeu/check/" + this.jeu.entree).then(function(reponse){
+			axio.get("https://minesperium.herokuapp.com/api/games/check/" + this.jeu.entree).then(function(reponse){
 
-				ajout_score.jeu.displayMessage = !(reponse.data.id);
-				ajout_score.jeu.valide = !(ajout_score.jeu.displayMessage) && (ajout_score.jeu.entree !='');
-			})*/
+				ajout_Jeu.jeu.displayMessage = !reponse.data.id;
+				ajout_Jeu.jeu.valide = !(!reponse.data.id);
+			})
 
 		}
 	}
