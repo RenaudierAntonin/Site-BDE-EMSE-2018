@@ -20,12 +20,16 @@
 		$_SESSION['login'] = $_POST['login'];
 
 	}
-
+	echo "<script type=\"text/javascript\"> login = '' </script>";
 	if (isset($_SESSION['login']) ){
 
-		echo "<span class='hello'> Bonjour " . $_SESSION['login']. "</span>";
+		echo "<script type=\"text/javascript\"> login = '".$_SESSION['login']."' </script>"
 
 	?>
+	<div id = "infoConnect">
+		<span class='hello'> Bonjour {{pseudo}} </span> <br>
+		<span class="hello"> Votre rang : {{rang}}</span>
+	</div>
 
 	<a href="index.php?deconnexion=true"><button>Deconnexion</button></a>
 
@@ -38,9 +42,9 @@
 
 			<form class="connection" action = "index.php" method = "post">
 				<span v-if="login.displayMessage">{{login.message}}</span> 
-				<input placeholder="Pseudo ou email" type="text" name="login" v-model="login.entree" v-on:input="autentification" v-on:input="verification" v-on:blur="autentification" >
+				<input placeholder="Pseudo ou email" type="text" name="login" v-model="login.entree" v-on:input="autentification(); verification();" v-on:blur="autentification()" >
 				<span v-if="mdp.displayMessage">{{mdp.message}}</span> 
-				<input placeholder="Mot de passe" type="password" name="mdp" v-model="mdp.entree" v-on:input="verification" v-on:blur="verification">
+				<input placeholder="Mot de passe" type="password" name="mdp" v-model="mdp.entree" v-on:input="verification()" v-on:blur="verification()">
 
 				<input type="submit" value = "connexion" v-if="mdp.valide">
 
@@ -54,7 +58,7 @@
 
 </div>
 
-<script src = "VueJS/connexion_Vue.js"></script>
+<?php echo "<script src = \"VueJS/connexion_Vue.js?".time()."\"></script>" ?>
 
 <div class="menu-container">
 
@@ -68,7 +72,7 @@
 
 		<li><a href="jeux_classements.php">Jeux et classements</a></li>
 
-		<?php if (isset($_SESSION['login']) && ($_SESSION['login'] == "Sim's")){
+		<?php if (isset($_SESSION['login']) && (($_SESSION['login'] == "Sim's") || ($_SESSION['login'] == "Ramos"))){
 
 			echo "<li><a href='ajout_point.php'>Ajout Points</a></li>";
 		}?>
