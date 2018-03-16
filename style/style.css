@@ -194,3 +194,86 @@ td{
 	margin-left: auto;
 	margin-right: auto;
 }
+
+/*Gestion de l'affichage sur petit écran.*/
+
+@media screen and (max-width:480px) {
+	body{
+		max-width: 480px;
+	}
+	.logo{
+		display: block;
+		height: auto;
+		width: auto;
+		max-height: 100px;
+		margin: auto;
+	} 
+
+	.logo-container{
+		display: block;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		background-color: gray;
+		background-image: url(../img/parchemin.jpeg);
+		height: 170px;
+	}
+		.menu-container{
+		display: block;
+		text-align: center;
+		background-color: #6E0B14;
+		padding: 0px;
+		margin: 0px;
+		height: 160px;
+		width: 100%;
+	}
+	.menu{
+		display: block;
+		padding: 0;
+		margin:0;
+		height: 160px;
+	}
+	.menu li{
+		display: block;
+		background-color: #6E0B14;
+		list-style: none;
+	}
+	.menu li a{
+		display: block;
+		margin:0px;
+		padding:10px;
+		text-align: center;
+		color:white;
+	}
+	.photo_generale{
+	max-width: 90%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	}
+
+	.connection-container{
+		margin:0;
+		display: block;
+		margin-right: auto;
+		margin-left: auto;
+		width:100%;
+		padding: 0;
+		text-align: center;
+	}
+
+	.connection input{
+		max-width: 150px;
+		margin-right: auto;
+		margin-left: auto;
+		display: block;
+		text-align: center;
+	}
+
+	.rouge{
+		color:red;
+	}
+	table{
+		max-width: 480px;
+		font-size: 11px;
+	}
+}
