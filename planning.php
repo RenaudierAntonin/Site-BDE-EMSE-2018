@@ -16,6 +16,7 @@
 		</image>
 		<a href="events/anim1.php"><rect x="200" y="190" fill="transparent" width="130" height="145"/></a>
 		<a href="events/repas1.php"><rect x="470" y="260" fill="transparent" width="130" height="73"/></a>
+		<a href="events/dej1.php"><rect x="200" y="340" fill="transparent" width="130" height="65"/></a>
 	</svg>
 
 	<?php include("reseaux_sociaux.php"); ?>
