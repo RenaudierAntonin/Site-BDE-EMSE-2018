@@ -117,59 +117,18 @@ function sourisPos(e) {
 
 function selectionnerTourelle(n){
 
-if (jeu){
-
-	switch (n){ // changer les couleurs pour les differentes tourelles
-
-		case 1:
-
-			var frequenceTir = 100;
- 			var vitesse = 10;
-			var force = 50;
-			var emplacement = findCase(souris);
-			var aire = 100;
-			var prix = 20;
-			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, "#33FF00");
-
-		break;
-
-		case 2:
-
-			var frequenceTir = 200;
- 			var vitesse = 20;
-			var force = 20;
-			var emplacement = findCase(souris);
-			var aire = 100;
-			var prix = 50;
-			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, "red");
-	
-		break;
-
-		case 3:
-
-			var frequenceTir = 70;
- 			var vitesse = 10;
-			var force = 250;
-			var emplacement = findCase(souris);
-			var aire = 100;
-			var prix = 50;
-			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, "blue");
-
-		break;
-
-		case 4: 
-			
-			var frequenceTir = 150;
- 			var vitesse = 20;
-			var force = 200;
-			var emplacement = findCase(souris);
-			var aire = 100;
-			var prix = 200;
-			tourelleSelectionnee = new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, "#660099");
-
-		break;
+	if (jeu){
+		console.log(n);
+		var t = Tourelles[n];
+		var emplacement = findCase(souris);
+		tourelleSelectionnee = new Tourelle(t.frequenceTir,
+											t.vitesse, 
+											t.force, 
+											emplacement, 
+											t.aire, 
+											t.prix, 
+											t.couleur);
 	}
-}
 }
 
 function genererMonstre(){
@@ -214,7 +173,6 @@ function play_pause(){
 	if (jeu){
 			
 		bouton_play.innerText = "Play";	
-		//transformer l'image du bouton play
 		clearInterval(jeu);
 		jeu = false;
 	}
@@ -222,7 +180,7 @@ function play_pause(){
 	else{
 
 		bouton_play.innerText = "Pause";	
-		//transformer l'image du bouton play
+
 		jeu = setInterval(run, time);
 	}
 }

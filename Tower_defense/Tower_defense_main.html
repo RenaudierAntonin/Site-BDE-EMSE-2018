@@ -22,63 +22,33 @@
 	</head>
 	
 	<body>
+
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+		<script src = "https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.min.js"></script>
 		
 		<canvas id="canvas" class='canvas' width="1000" height="600" style="border: 1px solid black;"></canvas>
 
-		<button id = "tourelle1" class='tower' style='background-color: green;' onclick='selectionnerTourelle(1);'>
-			Tour 1
-			<br>
-			Portée: <span> 0 </span>
-			<br>
-			Puissance: <span> 0 </span>
-			<br>
-			Cadence: <span> 0 </span>
-			<br>
-			Prix: 
-		</button>
+		<div id="tourelles">
 
-		<button id="Play_Pause">Play</button>
-		<br>
+			<div v-for="Tourelle in Tourelles" >
+				<button class='tower' v-bind:style="{backgroundColor: Tourelle.couleur}" v-on:click='selectionnerTourelle(Tourelles.indexOf(Tourelle));'>
+					
+					Tour {{Tourelles.indexOf(Tourelle)+1}}
+					<br>
+					Portée: {{Tourelle.aire}}
+					<br>
+					Puissance:  {{Tourelle.force}}
+					<br>
+					Cadence:  {{Tourelle.frequenceTir}}
+					<br>
+					Prix:  {{Tourelle.prix}}
+				</button>
+			<br>
+			</div>
 
-		<button id = "tourelle2" class='tower' style='background-color: brown;' onclick='selectionnerTourelle(2);'>
-			Tour 2
-			<br>
-			Portée: <span> 0 </span>
-			<br>
-			Puissance: <span> 0 </span>
-			<br>
-			Cadence: <span> 0 </span>
-			<br>
-			Prix: <span> 0 </span>
-		</button>
+			
 
-		<br>
-
-		<button id = "tourelle3" class='tower' style='background-color:aqua;' onclick='selectionnerTourelle(3);'>
-			Tour 3
-			<br>
-			Portée: <span> 0 </span>
-			<br>
-			Puissance: <span> 0 </span>
-			<br>
-			Cadence: <span> 0 </span>
-			<br>
-			Prix:  <span> 0 </span>
-		</button>
-
-		<br>
-
-		<button id = "tourelle4" class='tower' style='background-color:purple;' onclick='selectionnerTourelle(4);'>
-			Tour 3
-			<br>
-			Portée: <span> 0 </span>
-			<br>
-			Puissance: <span> 0 </span>
-			<br>
-			Cadence: <span> 0 </span>
-			<br>
-			Prix: <span> 0 </span>
-		</button>
+		</div>
 
 		<br>
 
@@ -91,6 +61,9 @@
 			<br>
 			Niveau : <span id = "niveau"> 0 </span>
 		</div>
+		<br>
+
+		<button id="Play_Pause">Play</button>
 
 		<script src="Tower_defense_classes.js"></script>
 		<script src="Tower_defense_fonctions.js"></script>

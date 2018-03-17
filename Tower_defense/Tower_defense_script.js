@@ -1,7 +1,7 @@
 window.onload = Tower_defense_script;
-// utiliser des images, et tetes du bureau en boss
 
-// penser a creer un super pouvoir, qui genere une tete de edme parcourant le chemin a lenvert pour buter tout les monstres
+// penser a creer un super pouvoir, qui genere une tete de edme parcourant le chemin a lenvert pour buter tout les monstres, ou les viking qui glacent, les romain qui brulent
+// trouver un moyen de focus sur le canvas (avec une image play au depart et un addEventListener sur le focus de l'écran qui dessine le canvas et fait play)
 
 function Tower_defense_script(){
 
@@ -15,15 +15,11 @@ function Tower_defense_script(){
 	herbe = new Image();
     herbe.src = 'graphisme/terrain/herbe.jpg';
 
-	chemin = new Image();
-    chemin.src = 'graphisme/terrain/chemin.png';
 
-	
 	jeu = false;
 	lvl = 1; // niveau actuel
 	lvlMax = 10;
 	souris = { x : 0, y : 0}; // position de la souris
-	
 	
 
 	FPS = 20;
@@ -31,6 +27,20 @@ function Tower_defense_script(){
 	Taille_Cases = canvas.width / nbCasesLargeur; 
 	Taille_Monstres = 0.45 * Taille_Cases;
 	time = Math.floor(1000/FPS);
+
+	chemin = new Image();
+    chemin.src = 'graphisme/terrain/chemin.jpg';
+    console.log(chemin.width);
+    console.log(chemin.height);
+    chemin.onload = function(){
+
+    	chemin.width = Taille_Cases;
+    	chemin.height = Taille_Cases;
+    }
+    
+    console.log(chemin.width);
+    console.log(chemin.height);
+
 	
 
 	joueur = {vie : 20, money : 50, score : 0};
@@ -44,7 +54,19 @@ function Tower_defense_script(){
 
 	initialisation();
 	
-	
+	Tourelles = [
+		{frequenceTir: 100, vitesse: 10, force: 50, aire: 100, prix: 20, couleur : "#33FF00"},
+		{frequenceTir: 200, vitesse: 20, force: 20, aire: 100, prix: 50, couleur : "red"},
+		{frequenceTir: 70, vitesse: 10, force: 250, aire: 100, prix: 50, couleur : "blue"},
+		{frequenceTir: 150, vitesse: 20, force: 200, aire: 100, prix: 200, couleur : "#ffd60c"}
+	];
+
+	var tourelles = new Vue({
+
+	el:"#tourelles",
+
+	data: {Tourelles : Tourelles}
+});
 
 
 	canvas.addEventListener('mousedown', function() {
@@ -52,7 +74,8 @@ function Tower_defense_script(){
 		if (tourelleSelectionnee){
 
 			if(joueur.money < tourelleSelectionnee.prix){
-			alert('Fonds insuffisants ! ');
+
+				alert('Fonds insuffisants ! ');
 			}
 
 			else{
@@ -66,10 +89,10 @@ function Tower_defense_script(){
     				tourelleSelectionnee = false;
 
   				}
-				}
+			}
 		}
 		
-  		
+  	
 
   	canvas.addEventListener('mousemove', sourisPos, false); 
 
