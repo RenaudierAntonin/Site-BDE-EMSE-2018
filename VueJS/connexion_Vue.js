@@ -52,4 +52,30 @@ var connexion = new Vue({
 		}) 
 		}
 	}
+});
+
+var infoConnect = new Vue({
+
+	el:"#infoConnect",
+
+	data : {
+		pseudo : login,
+		rang : 0
+	},
+
+	mounted : function(){
+
+		axios.get("https://minesperium.herokuapp.com/api/users/ranking").then(function(reponse){
+
+			var i = 0;
+			while (i < reponse.data.length && (infoConnect.rang == 0)){
+
+				user = reponse.data[i];
+				if (user.pseudo == infoConnect.pseudo){
+					infoConnect.rang = i+1;
+				}
+				i++;
+			}
+		})
+	}
 })

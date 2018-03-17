@@ -197,7 +197,7 @@ td{
 
 /*Gestion de l'affichage sur petit écran.*/
 
-@media screen and (max-width:480px) {
+@media screen and (max-width:720px) {
 	body{
 		max-width: 480px;
 	}
