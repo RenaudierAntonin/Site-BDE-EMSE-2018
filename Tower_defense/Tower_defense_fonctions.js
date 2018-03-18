@@ -11,16 +11,19 @@ function run(){
 	var finGeneration = genererMonstre();
 
 	if (finGeneration && (terrain.monstres.length == 0)){
-
+		
+		play_pause();
 		lvl++;
+		//axios.post("https://minesperium.herokuapp.com/api/scores/addscore/" + pseudo + "/TowerDefense/" + joueur.score);
 
 		if (lvl < lvlMax){
  
-			if (confirm("Niveau terminé, voulez vous aller au niveau suivant")){
+			if (confirm("Niveau terminé, voulez vous aller au niveau suivant ? ")){
 			
 				Niveau.innerText = lvl;
 				initialisationTerrain();
-				play_pause();
+				
+
 				//transformer l'image du bouton jeu
 			} 
 		}
@@ -127,6 +130,7 @@ function selectionnerTourelle(n){
 											emplacement, 
 											t.aire, 
 											t.prix, 
+											t.image,
 											t.couleur);
 	}
 }

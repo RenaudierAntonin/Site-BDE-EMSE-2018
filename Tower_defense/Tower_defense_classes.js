@@ -1,5 +1,5 @@
 
-function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, couleur){
+function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, image, couleur){
 	
 	var comptInit = 1000 / frequenceTir; // a modifier lorsqu'on modifiera la frequence de tir
 	this.compteur = 0; // frequence est le nb de tir par sec
@@ -13,6 +13,7 @@ function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, couleur
 	this.direction = {x: 1, y: 0};
 	this.coordonnees = this.emplacement.coordonnees;
 	this.prix = prix;
+	this.image = image
 	this.couleur = couleur;
 
 	this.cibler = function(){
@@ -77,17 +78,14 @@ function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, couleur
 	}
 
 	this.dessiner = function(){
-
+		
+		context.drawImage(this.image, this.emplacement.coordonnees.x - Taille_Monstres, this.emplacement.coordonnees.y - Taille_Monstres, 2 * Taille_Monstres, 2 * Taille_Monstres);
 		context.beginPath();
 		context.arc(this.emplacement.coordonnees.x, this.emplacement.coordonnees.y, this.aire, 0, Math.PI*2, false);
 		context.strokeStyle  = "black";
 		context.stroke();
 		context.closePath();
-		context.beginPath();
-		context.arc(this.emplacement.coordonnees.x, this.emplacement.coordonnees.y, 15, 0, Math.PI*2, false);
-		context.fillStyle  = this.couleur;
-		context.fill();
-		context.closePath();
+		
 	}
 
 	this.supprimer = function(){
@@ -104,8 +102,9 @@ function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, couleur
 	var emplacement = findCase({ x : this.emplacement.coordonnees.x, y : this.emplacement.coordonnees.y});
 	var aire = this.aire; 
 	var prix = this.prix;
-	var couleur = this.couleur;
-	return (new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, couleur));
+	var image = this.image;
+	var couleur = this.couleur
+	return (new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, image, couleur));
 	}
 };
 
@@ -149,7 +148,7 @@ function Projectile(tourelle, vitesse, cible){
 
 		context.beginPath();
 		context.arc(this.coordonnees.x, this.coordonnees.y, 5, 0, Math.PI*2, false);
-		context.fillStyle  = "#F00";
+		context.fillStyle  = tourelle.couleur;
 		context.fill();
 	}
 

@@ -24,6 +24,8 @@ function initialisationTerrain(){
 
 		case 2: 
 
+			joueur.money += 100;
+			Money.innerText = joueur.money;
 			proba = 0.03;
 			terrain.chemin = new Chemin({i : 1, j: 0}, ['b','b','b','b','b','d','d','d','d','d','b','b','d','d','d','d','d','d','b','b','d','d','d','b','b','b']);
 			depart = {x : (terrain.chemin.debut.i - terrain.chemin.parselles[0].x + 0.5) * Taille_Cases, y : (terrain.chemin.debut.j - terrain.chemin.parselles[0].y + 0.5) * Taille_Cases}; 
@@ -37,6 +39,8 @@ function initialisationTerrain(){
 
 		case 3: 
 
+			joueur.money += 200;
+			Money.innerText = joueur.money;
 			proba = 0.07;
 			terrain.chemin = new Chemin({i : 1, j: 0}, ['b','b','b','b','b','b','b','b','b','d','d','d','d','d','d','d','d','h','h','h','g','g','g','g','h','h','h','d','d','d','d','d','d','d','d','d','b','b','b','b','b','b','b','b','b']);
 			depart = {x : (terrain.chemin.debut.i - terrain.chemin.parselles[0].x + 0.5) * Taille_Cases, y : (terrain.chemin.debut.j - terrain.chemin.parselles[0].y + 0.5) * Taille_Cases}; 

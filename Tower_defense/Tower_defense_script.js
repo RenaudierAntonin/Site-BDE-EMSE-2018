@@ -31,6 +31,18 @@ function Tower_defense_script(){
 	chemin = new Image();
     chemin.src = 'graphisme/terrain/chemin.jpg';
 
+    var TourelleGauloise = new Image();
+    TourelleGauloise.src = 'graphisme/tourelles/gauloise.png';
+
+    var TourelleRomaine = new Image();
+    TourelleRomaine.src = 'graphisme/tourelles/romaine.png';
+
+    var TourelleViking = new Image();
+    TourelleViking.src = 'graphisme/tourelles/viking.png';
+
+    var TourelleEgyptienne = new Image();
+    TourelleEgyptienne.src = 'graphisme/tourelles/egyptienne.png';
+
     chemin.onload = function(){
 
     	chemin.width = Taille_Cases;
@@ -46,10 +58,10 @@ function Tower_defense_script(){
 
 
 	Tourelles = [
-		{frequenceTir: 100, vitesse: 10, force: 50, aire: 100, prix: 20, couleur : "#33FF00"},
-		{frequenceTir: 200, vitesse: 20, force: 20, aire: 100, prix: 50, couleur : "red"},
-		{frequenceTir: 70, vitesse: 10, force: 250, aire: 100, prix: 50, couleur : "blue"},
-		{frequenceTir: 150, vitesse: 20, force: 200, aire: 100, prix: 200, couleur : "#ffd60c"}
+		{frequenceTir: 100, vitesse: 10, force: 50, aire: 100, prix: 20, image : TourelleGauloise, couleur : "#33FF00", nom : "Menhir Gaulois"},
+		{frequenceTir: 200, vitesse: 20, force: 20, aire: 150, prix: 50, image : TourelleRomaine, couleur : "red", nom : "Tour Romaine"},
+		{frequenceTir: 50, vitesse: 10, force: 250, aire: 100, prix: 100, image : TourelleViking, couleur : "blue", nom : "Drakar Viking"},
+		{frequenceTir: 150, vitesse: 20, force: 200, aire: 100, prix: 200, image : TourelleEgyptienne, couleur : "#ffd60c", nom : "Pyramide Egyptienne"}
 	];
 
 	var tourelles = new Vue({

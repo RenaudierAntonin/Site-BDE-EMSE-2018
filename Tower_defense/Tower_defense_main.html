@@ -33,7 +33,7 @@
 			<div v-for="Tourelle in Tourelles" >
 				<button class='tower' v-bind:style="{backgroundColor: Tourelle.couleur}" v-on:click='selectionnerTourelle(Tourelles.indexOf(Tourelle));'>
 					
-					Tour {{Tourelles.indexOf(Tourelle)+1}}
+					{{Tourelle.nom}}
 					<br>
 					Portée: {{Tourelle.aire}}
 					<br>
