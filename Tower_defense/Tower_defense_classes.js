@@ -203,8 +203,7 @@ function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees, 
 
 					if (joueur.vie <= 0){
 
-						clearInterval(jeu);
-						alert("Perdu ! Expeliar'mines vous a tué ");
+						Perdre();
 					}
 
 					this.supprimer();

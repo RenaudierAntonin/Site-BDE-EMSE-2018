@@ -1,9 +1,11 @@
 window.onload = Tower_defense_script;
 
 // penser a creer un super pouvoir, qui genere une tete de edme parcourant le chemin a lenvert pour buter tout les monstres, ou les viking qui glacent, les romain qui brulent
-// trouver un moyen de focus sur le canvas (avec une image play au depart et un addEventListener sur le focus de l'écran qui dessine le canvas et fait play)
+
+// transformer les boutons des tourelle, ajouter des jauges au lieu de chiffres
 
 function Tower_defense_script(){
+
 
 	canvas = document.getElementById("canvas");
 	context = canvas.getContext("2d");
@@ -11,13 +13,13 @@ function Tower_defense_script(){
 	Vie = document.getElementById("vie");
 	Score = document.getElementById("score");
 	Niveau = document.getElementById("niveau");
+	bouton_play = document.getElementById("Play_Pause");
 
 	herbe = new Image();
     herbe.src = 'graphisme/terrain/herbe.jpg';
 
 
-	jeu = false;
-	lvl = 1; // niveau actuel
+	
 	lvlMax = 10;
 	souris = { x : 0, y : 0}; // position de la souris
 	
@@ -30,30 +32,21 @@ function Tower_defense_script(){
 
 	chemin = new Image();
     chemin.src = 'graphisme/terrain/chemin.jpg';
-    console.log(chemin.width);
-    console.log(chemin.height);
+
     chemin.onload = function(){
 
     	chemin.width = Taille_Cases;
     	chemin.height = Taille_Cases;
     }
-    
-    console.log(chemin.width);
-    console.log(chemin.height);
 
-	
-
-	joueur = {vie : 20, money : 50, score : 0};
-
-	Vie.innerText = joueur.vie;
-	Money.innerText = joueur.money;
-	Score.innerText = joueur.score;
-	Niveau.innerText = lvl;
 
 	tourelleSelectionnee = false;
 
-	initialisation();
-	
+	initialisationJeu();
+	initialisationTerrain();
+
+
+
 	Tourelles = [
 		{frequenceTir: 100, vitesse: 10, force: 50, aire: 100, prix: 20, couleur : "#33FF00"},
 		{frequenceTir: 200, vitesse: 20, force: 20, aire: 100, prix: 50, couleur : "red"},
@@ -67,6 +60,9 @@ function Tower_defense_script(){
 
 	data: {Tourelles : Tourelles}
 });
+
+	alert('Attention ! Des mages noirs tentent de pénétrer la ME, même sous leur airs fragiles et innocents ils sont très dangeureux... Cliquez sur les tourelles de Mines\'perium pour les placer sur le terrain et defendez nous de cette attaque');
+
 
 
 	canvas.addEventListener('mousedown', function() {
@@ -91,14 +87,9 @@ function Tower_defense_script(){
   				}
 			}
 		}
-		
-  	
-
-  	canvas.addEventListener('mousemove', sourisPos, false); 
-
-
 });
-	bouton_play = document.getElementById("Play_Pause");
+
+	canvas.addEventListener('mousemove', sourisPos, false); 
 
 	bouton_play.addEventListener('click',play_pause);
 }

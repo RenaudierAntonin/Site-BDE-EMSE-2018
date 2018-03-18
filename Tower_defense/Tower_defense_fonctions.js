@@ -19,7 +19,7 @@ function run(){
 			if (confirm("Niveau terminé, voulez vous aller au niveau suivant")){
 			
 				Niveau.innerText = lvl;
-				initialisation();
+				initialisationTerrain();
 				play_pause();
 				//transformer l'image du bouton jeu
 			} 
@@ -118,7 +118,7 @@ function sourisPos(e) {
 function selectionnerTourelle(n){
 
 	if (jeu){
-		console.log(n);
+
 		var t = Tourelles[n];
 		var emplacement = findCase(souris);
 		tourelleSelectionnee = new Tourelle(t.frequenceTir,
@@ -143,11 +143,6 @@ function genererMonstre(){
 			type++;
 			alert("Attention ! Une vague de " + Monstres[type].nom + " en approche ! ");
 			monstre = Monstres[type];
-
-			var lienImg = monstre.nom.split(' ').join('_') + ".png";
-			monstre.image = new Image();
-			monstre.image.src = "graphisme/monstre/" + lienImg;
-	
 			compteur = monstre.attenteVague;	
 		}
 
@@ -182,5 +177,19 @@ function play_pause(){
 		bouton_play.innerText = "Pause";	
 
 		jeu = setInterval(run, time);
+	}
+}
+
+function Perdre(){
+	
+	play_pause();
+	// envoi des donnees
+	var recommencer = confirm("Perdu ! Expeliar'mines vous a tué, voulez vous recommencer une partie ?");
+
+	if (recommencer){
+		
+		initialisationJeu();
+		initialisationTerrain();
+
 	}
 }
