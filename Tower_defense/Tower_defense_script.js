@@ -12,23 +12,21 @@ function Tower_defense_script(){
 	Money = document.getElementById("money");
 	Vie = document.getElementById("vie");
 	Score = document.getElementById("score");
+	MeilleurScore = document.getElementById("MeilleurScore");
 	Niveau = document.getElementById("niveau");
 	bouton_play = document.getElementById("Play_Pause");
-
-	herbe = new Image();
-    herbe.src = 'graphisme/terrain/herbe.jpg';
-
-
 	
 	lvlMax = 10;
 	souris = { x : 0, y : 0}; // position de la souris
-	
 
 	FPS = 20;
 	nbCasesLargeur = 20;
 	Taille_Cases = canvas.width / nbCasesLargeur; 
 	Taille_Monstres = 0.45 * Taille_Cases;
 	time = Math.floor(1000/FPS);
+
+	herbe = new Image();
+    herbe.src = 'graphisme/terrain/herbe.jpg';
 
 	chemin = new Image();
     chemin.src = 'graphisme/terrain/chemin.jpg';
@@ -61,7 +59,7 @@ function Tower_defense_script(){
 	data: {Tourelles : Tourelles}
 });
 
-	alert('Attention ! Des mages noirs tentent de pénétrer la ME, même sous leur airs fragiles et innocents ils sont très dangeureux... Cliquez sur les tourelles de Mines\'perium pour les placer sur le terrain et defendez nous de cette attaque');
+	alert('Attention ! Des mages noirs tentent de pénétrer la ME, malgré leurs airs fragiles et innocents ils sont très dangeureux... Cliquez sur les tourelles de Mines\'perium pour les placer sur le terrain et defendez nous de cette attaque');
 
 
 

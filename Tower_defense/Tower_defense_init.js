@@ -69,7 +69,7 @@ function initialisationJeu(){
 
 	jeu = false;
 	lvl = 1; // niveau actuel
-	joueur = {vie : 20, money : 40, score : 0};
+	joueur = {vie : 20, money : 40, score : 0, meilleurScore: 0};
 	Vie.innerText = joueur.vie;
 	Money.innerText = joueur.money;
 	Score.innerText = joueur.score;

@@ -193,3 +193,16 @@ function Perdre(){
 
 	}
 }
+function Gain(valeurXP, valeurMoney){
+
+			joueur.money += valeurMoney;
+			joueur.score += valeurXP;
+			Money.innerText = joueur.money;
+			Score.innerText = joueur.score;
+
+			if(joueur.score > joueur.meilleurScore){
+
+				joueur.meilleurScore = joueur.score;
+				MeilleurScore.innerText = joueur.meilleurScore;
+			}
+}

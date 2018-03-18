@@ -1,15 +1,3 @@
-// mettre le context, et la taille du canvas en var globale et l'utiliser dans le window
-
-// pensez à creer un objet litteral pour les coordonnées de vitesse ou chemin
-
-/* 
-	function Mobile(){
-		this.x
-		this.y
-	
-		}
-	};
- */
 
 function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, couleur){
 	
@@ -225,10 +213,7 @@ function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees, 
 
 			projectile.tourelle.setXP(valeurXP); // et on donne ses xp à la tourelle qui l'a tué
 
-			joueur.money += valeurMoney;
-			joueur.score += valeurXP;
-			Money.innerText = joueur.money;
-			Score.innerText = joueur.score;
+			Gain(valeurXP, valeurMoney);
 			
 			projectile.tourelle.cible = false;
 			this.supprimer();// on le tue c'est à dire on le supprime du tableau des monstres, PROBLEME ! le for dans l'update risque de buger
