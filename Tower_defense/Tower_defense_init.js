@@ -73,7 +73,29 @@ function initialisationJeu(){
 
 	jeu = false;
 	lvl = 1; // niveau actuel
-	joueur = {vie : 20, money : 40, score : 0, meilleurScore: 0};
+	joueur = {vie : 20, money : 40, score : 0, meilleurScore: 0, rang : 0};
+
+	if (login){
+
+		axios.get("https://minesperium.herokuapp.com/api/users/ranking/game/TowerDefense").then(function(reponse){
+
+			users = reponse.data;
+			var i = 0;
+
+			while (i < users.length && (joueur.rang == 0)){
+
+				var user = users[i];
+
+				if (user.pseudo == login){
+
+					joueur.meilleurScore = user.value;
+					joueur.rang = i+1;
+				}
+
+			}
+		})
+	}
+	
 	Vie.innerText = joueur.vie;
 	Money.innerText = joueur.money;
 	Score.innerText = joueur.score;

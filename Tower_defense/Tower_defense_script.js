@@ -16,7 +16,7 @@ function Tower_defense_script(){
 	Niveau = document.getElementById("niveau");
 	bouton_play = document.getElementById("Play_Pause");
 	
-	lvlMax = 10;
+	lvlMax = 3;
 	souris = { x : 0, y : 0}; // position de la souris
 
 	FPS = 20;
@@ -58,8 +58,8 @@ function Tower_defense_script(){
 
 
 	Tourelles = [
-		{frequenceTir: 100, vitesse: 10, force: 50, aire: 100, prix: 20, image : TourelleGauloise, couleur : "#33FF00", nom : "Menhir Gaulois"},
-		{frequenceTir: 200, vitesse: 20, force: 20, aire: 150, prix: 50, image : TourelleRomaine, couleur : "red", nom : "Tour Romaine"},
+		{frequenceTir: 100, vitesse: 10, force: 40, aire: 100, prix: 20, image : TourelleGauloise, couleur : "#33FF00", nom : "Menhir Gaulois"},
+		{frequenceTir: 200, vitesse: 20, force: 25, aire: 150, prix: 50, image : TourelleRomaine, couleur : "red", nom : "Tour Romaine"},
 		{frequenceTir: 50, vitesse: 10, force: 250, aire: 100, prix: 100, image : TourelleViking, couleur : "blue", nom : "Drakar Viking"},
 		{frequenceTir: 150, vitesse: 20, force: 200, aire: 100, prix: 200, image : TourelleEgyptienne, couleur : "#ffd60c", nom : "Pyramide Egyptienne"}
 	];

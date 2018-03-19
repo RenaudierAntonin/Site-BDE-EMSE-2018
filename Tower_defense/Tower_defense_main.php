@@ -20,14 +20,15 @@
 		}
 		</style>
 	</head>
+	<?php session_start();?>
 	
 	<body>
 
 		<script type='text/javascript'> login = '' </script>
 
-		<?php if (isset($_SESSION['login']) ){
+		<?php if (isset($_SESSION['login'])){
 
-		echo '<script type=\'text/javascript\'> login = "'.$_SESSION['login'].'" </script>'
+		echo '<script type=\'text/javascript\'> login = "'.$_SESSION['login'].'" </script>';
 
 	}
 

@@ -13,23 +13,22 @@ function run(){
 	if (finGeneration && (terrain.monstres.length == 0)){
 		
 		play_pause();
-		lvl++;
-		//axios.post("https://minesperium.herokuapp.com/api/scores/addscore/" + pseudo + "/TowerDefense/" + joueur.score);
+		
+		axios.post("https://minesperium.herokuapp.com/api/scores/addscore/" + login + "/TowerDefense/" + joueur.score);
 
 		if (lvl < lvlMax){
  
 			if (confirm("Niveau terminé, voulez vous aller au niveau suivant ? ")){
-			
+				
+				lvl++;
 				Niveau.innerText = lvl;
 				initialisationTerrain();
-				
 
-				//transformer l'image du bouton jeu
 			} 
 		}
 		else {
 
-			alert("Bravo ! Vous avez terminé le jeu épique de Mines'perium, vous pouvez passer au survival pour ameliorer votre score");
+			alert("Bravo ! Vous avez terminé le jeu épique de Mines'perium, repassez une prochaine fois pour plus de niveau");
 		}
 		
 	}
@@ -187,7 +186,8 @@ function play_pause(){
 function Perdre(){
 	
 	play_pause();
-	// envoi des donnees
+	axios.post("https://minesperium.herokuapp.com/api/scores/addscore/" + login + "/TowerDefense/" + joueur.score);
+	
 	var recommencer = confirm("Perdu ! Expeliar'mines vous a tué, voulez vous recommencer une partie ?");
 
 	if (recommencer){
