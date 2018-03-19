@@ -58,10 +58,10 @@ function Tower_defense_script(){
 
 
 	Tourelles = [
-		{frequenceTir: 100, vitesse: 10, force: 40, aire: 100, prix: 20, image : TourelleGauloise, couleur : "#33FF00", nom : "Menhir Gaulois"},
-		{frequenceTir: 200, vitesse: 20, force: 25, aire: 150, prix: 50, image : TourelleRomaine, couleur : "red", nom : "Tour Romaine"},
-		{frequenceTir: 50, vitesse: 10, force: 250, aire: 100, prix: 100, image : TourelleViking, couleur : "blue", nom : "Drakar Viking"},
-		{frequenceTir: 150, vitesse: 20, force: 200, aire: 100, prix: 200, image : TourelleEgyptienne, couleur : "#ffd60c", nom : "Pyramide Egyptienne"}
+		{frequenceTir: 100, vitesse: 10, force: 20, aire: 100, prix: 20, image : TourelleGauloise, couleur : "#33FF00", nom : "Menhir Gaulois"},
+		{frequenceTir: 200, vitesse: 10, force: 30, aire: 75, prix: 50, image : TourelleRomaine, couleur : "red", nom : "Tour Romaine"},
+		{frequenceTir: 50, vitesse: 10, force: 125, aire: 150, prix: 50, image : TourelleViking, couleur : "blue", nom : "Drakar Viking"},
+		{frequenceTir: 150, vitesse: 10, force: 250, aire: 100, prix: 200, image : TourelleEgyptienne, couleur : "#ffd60c", nom : "Pyramide Egyptienne"}
 	];
 
 	var tourelles = new Vue({
