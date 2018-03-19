@@ -279,5 +279,10 @@ td{
 	}
 	.social-container{
 		width: 100%;
+		white-space: nowrap;
+	}
+
+	.social{
+		display: inline-block;
 	}
 }
