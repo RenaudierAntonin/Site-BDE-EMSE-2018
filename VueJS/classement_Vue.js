@@ -30,14 +30,10 @@ axios.get("https://minesperium.herokuapp.com/api/users/ranking").then(function(r
 			break;
 
 			case "Viking":
-<<<<<<< HEAD
 				users[i].couleur = "#5e97f2";
-=======
-				users[i].couleur = "#007fff";
->>>>>>> 5d82c7b6559c91788cf0a02865f0e5d79664327c
 			break;
+
 			case "Minesperium" :
-			case "Mine'sperium":
 				users[i].couleur = "#ff8402";
 			break;
 
@@ -84,12 +80,9 @@ axios.get("https://minesperium.herokuapp.com/api/users/civilisationranking").the
 			break;
 
 			case "Viking":
-<<<<<<< HEAD
 				Civilisations[i].couleur = "#5e97f2";
-=======
-				Civilisations[i].couleur = "#007fff";
->>>>>>> 5d82c7b6559c91788cf0a02865f0e5d79664327c
 			break;
+			
 			case "Minesperium" :
 				Civilisations[i].couleur = "#ff8402";
 			break;

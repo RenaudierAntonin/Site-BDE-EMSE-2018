@@ -28,7 +28,8 @@
 	?>
 	<div id = "infoConnect">
 		<span class='hello'> Bonjour {{pseudo}} </span> <br>
-		<span class="hello"> Votre rang : {{rang}}</span>
+		<span class="hello"> Votre rang : {{rang}}  </span> <br>
+		<span class="hello"> Score : {{score}} </span>
 	</div>
 
 	<a href="index.php?deconnexion=true"><button>Deconnexion</button></a>

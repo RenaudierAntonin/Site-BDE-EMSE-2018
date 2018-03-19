@@ -11,22 +11,24 @@ function run(){
 	var finGeneration = genererMonstre();
 
 	if (finGeneration && (terrain.monstres.length == 0)){
-
-		lvl++;
+		
+		play_pause();
+		
+		axios.post("https://minesperium.herokuapp.com/api/scores/addscore/" + login + "/TowerDefense/" + joueur.score);
 
 		if (lvl < lvlMax){
  
-			if (confirm("Niveau terminé, voulez vous aller au niveau suivant")){
-			
+			if (confirm("Niveau terminé, voulez vous aller au niveau suivant ? ")){
+				
+				lvl++;
 				Niveau.innerText = lvl;
-				initialisation();
-				play_pause();
-				//transformer l'image du bouton jeu
+				initialisationTerrain();
+
 			} 
 		}
 		else {
 
-			alert("Bravo ! Vous avez terminé le jeu épique de Mines'perium, vous pouvez passer au survival pour ameliorer votre score");
+			alert("Bravo ! Vous avez terminé le jeu épique de Mines'perium, repassez une prochaine fois pour plus de niveau");
 		}
 		
 	}
@@ -118,7 +120,7 @@ function sourisPos(e) {
 function selectionnerTourelle(n){
 
 	if (jeu){
-		console.log(n);
+
 		var t = Tourelles[n];
 		var emplacement = findCase(souris);
 		tourelleSelectionnee = new Tourelle(t.frequenceTir,
@@ -127,6 +129,7 @@ function selectionnerTourelle(n){
 											emplacement, 
 											t.aire, 
 											t.prix, 
+											t.image,
 											t.couleur);
 	}
 }
@@ -143,11 +146,6 @@ function genererMonstre(){
 			type++;
 			alert("Attention ! Une vague de " + Monstres[type].nom + " en approche ! ");
 			monstre = Monstres[type];
-
-			var lienImg = monstre.nom.split(' ').join('_') + ".png";
-			monstre.image = new Image();
-			monstre.image.src = "graphisme/monstre/" + lienImg;
-	
 			compteur = monstre.attenteVague;	
 		}
 
@@ -183,4 +181,32 @@ function play_pause(){
 
 		jeu = setInterval(run, time);
 	}
+}
+
+function Perdre(){
+	
+	play_pause();
+	axios.post("https://minesperium.herokuapp.com/api/scores/addscore/" + login + "/TowerDefense/" + joueur.score);
+	
+	var recommencer = confirm("Perdu ! Expeliar'mines vous a tué, voulez vous recommencer une partie ?");
+
+	if (recommencer){
+		
+		initialisationJeu();
+		initialisationTerrain();
+
+	}
+}
+function Gain(valeurXP, valeurMoney){
+
+			joueur.money += valeurMoney;
+			joueur.score += valeurXP;
+			Money.innerText = joueur.money;
+			Score.innerText = joueur.score;
+
+			if(joueur.score > joueur.meilleurScore){
+
+				joueur.meilleurScore = joueur.score;
+				MeilleurScore.innerText = joueur.meilleurScore;
+			}
 }

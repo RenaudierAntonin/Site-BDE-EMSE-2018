@@ -60,7 +60,8 @@ var infoConnect = new Vue({
 
 	data : {
 		pseudo : login,
-		rang : 0
+		rang : '',
+		score : ''
 	},
 
 	mounted : function(){
@@ -70,11 +71,14 @@ var infoConnect = new Vue({
 			var i = 0;
 			while (i < reponse.data.length && (infoConnect.rang == 0)){
 
-				user = reponse.data[i];
+				var user = reponse.data[i];
+
 				if (user.pseudo == infoConnect.pseudo){
 					infoConnect.rang = i+1;
+					infoConnect.score = user.value;
 				}
 				i++;
+				
 			}
 		})
 	}

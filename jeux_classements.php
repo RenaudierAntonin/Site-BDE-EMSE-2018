@@ -16,18 +16,6 @@
 		</div>
 		<div><a class="jeu" href=""><img class="logo" src="img/logo_minesperium_transparent.png">Jeu 2</a></div> -->	
 	</div>
-	<table id="classementJoueurs">
-		<tr>
-			<td >Pseudo</td>
-			<td>Score</td>	
-			<td>Rang</td>
-		</tr>
-		<tr v-for="user in users" v-bind:style="{ backgroundColor: user.couleur}" >
-			<td>{{user.pseudo}}</td> 
-			<td>{{user.value}}</td>
-			<td>{{user.rang}}</td>
-		</tr>
-	</table>
 
 	<table id="classementCivilisations">
 		<tr>
@@ -42,7 +30,22 @@
 			<td>{{Civilisation.rang}}</td>
 		</tr>
 	</table>
-	<script src="VueJS/classement_Vue.js"></script>
+
+	<table id="classementJoueurs">
+		<tr>
+			<td >Pseudo</td>
+			<td>Score</td>	
+			<td>Rang</td>
+		</tr>
+		<tr v-for="user in users" v-bind:style="{ backgroundColor: user.couleur}" >
+			<td>{{user.pseudo}}</td> 
+			<td>{{user.value}}</td>
+			<td>{{user.rang}}</td>
+		</tr>
+	</table>
+
+	
+	<?php echo "<script src = \"VueJS/classement_Vue.js?".time()."\"></script>" ?>
 	
 	<?php include("reseaux_sociaux.php"); ?>
 	<?php include("partenaires.php"); ?>

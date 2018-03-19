@@ -1,4 +1,4 @@
-function initialisation(){
+function initialisationTerrain(){
 
 	terrain  = new Terrain();
 	type = 0;
@@ -24,6 +24,8 @@ function initialisation(){
 
 		case 2: 
 
+			joueur.money += 100;
+			Money.innerText = joueur.money;
 			proba = 0.03;
 			terrain.chemin = new Chemin({i : 1, j: 0}, ['b','b','b','b','b','d','d','d','d','d','b','b','d','d','d','d','d','d','b','b','d','d','d','b','b','b']);
 			depart = {x : (terrain.chemin.debut.i - terrain.chemin.parselles[0].x + 0.5) * Taille_Cases, y : (terrain.chemin.debut.j - terrain.chemin.parselles[0].y + 0.5) * Taille_Cases}; 
@@ -37,6 +39,8 @@ function initialisation(){
 
 		case 3: 
 
+			joueur.money += 200;
+			Money.innerText = joueur.money;
 			proba = 0.07;
 			terrain.chemin = new Chemin({i : 1, j: 0}, ['b','b','b','b','b','b','b','b','b','d','d','d','d','d','d','d','d','h','h','h','g','g','g','g','h','h','h','d','d','d','d','d','d','d','d','d','b','b','b','b','b','b','b','b','b']);
 			depart = {x : (terrain.chemin.debut.i - terrain.chemin.parselles[0].x + 0.5) * Taille_Cases, y : (terrain.chemin.debut.j - terrain.chemin.parselles[0].y + 0.5) * Taille_Cases}; 
@@ -46,13 +50,54 @@ function initialisation(){
 						 { nb : 20, vitesse : 4, force : 1, vie : 450, valeurXP : 3, valeurMoney : 5, coordonnees : {x : depart.x, y : depart.y}, nom : "Jean Manuel Cabrillana", attenteVague : 200 },
 						 { nb : 2, vitesse : 2, force : 5, vie : 12000, valeurXP : 300, valeurMoney : 200, coordonnees : {x : depart.x, y : depart.y}, nom : "Francois Herve", attenteVague : 200 } ];
 		break;
-			
+		
+		default: 
+
+			alert('Ce niveau n\'a pas encore été créé, revenez plus tard pour améliorer votre score');
 	}	
 
+	for(var i = 0; i < Monstres.length; i++){
 
-	monstre = Monstres[type];
-	var lienImg = monstre.nom.split(' ').join('_') + ".png";
-	monstre.image = new Image();
-	monstre.image.src = "graphisme/monstre/" + lienImg;
+		var M = Monstres[i]
+		var lienImg = M.nom.split(' ').join('_') + ".png";
+		M.image = new Image();
+		M.image.src = "graphisme/monstre/" + lienImg;
+		
+	}
+
+	monstre = Monstres[0];
 	terrain.dessiner();
+}
+
+function initialisationJeu(){
+
+	jeu = false;
+	lvl = 1; // niveau actuel
+	joueur = {vie : 20, money : 40, score : 0, meilleurScore: 0, rang : 0};
+
+	if (login){
+
+		axios.get("https://minesperium.herokuapp.com/api/users/ranking/game/TowerDefense").then(function(reponse){
+
+			users = reponse.data;
+			var i = 0;
+
+			while (i < users.length && (joueur.rang == 0)){
+
+				var user = users[i];
+
+				if (user.pseudo == login){
+
+					joueur.meilleurScore = user.value;
+					joueur.rang = i+1;
+				}
+
+			}
+		})
+	}
+	
+	Vie.innerText = joueur.vie;
+	Money.innerText = joueur.money;
+	Score.innerText = joueur.score;
+	Niveau.innerText = lvl;
 }
