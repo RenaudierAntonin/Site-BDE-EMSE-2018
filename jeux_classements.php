@@ -12,8 +12,8 @@
 	<?php include("menu.php"); ?>
 
 	<div class="game-container">
-		<!--<div class="jeu"><a  href="Tower_defense/Tower_defense_main.html" ><img class="logo" src="img/logo_minesperium_transparent.png">Tower Defense</a>
-		</div>
+		<div class="jeu"><a  href="Tower_defense/Tower_defense_main.html" ><img class="logo" src="img/tower.png">Tower Defense</a>
+		</div><!--
 		<div><a class="jeu" href=""><img class="logo" src="img/logo_minesperium_transparent.png">Jeu 2</a></div> -->	
 	</div>
 
