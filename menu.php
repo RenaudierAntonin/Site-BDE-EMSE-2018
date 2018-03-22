@@ -61,25 +61,27 @@
 
 <?php echo "<script src = \"VueJS/connexion_Vue.js?".time()."\"></script>" ?>
 
-<div class="menu-container">
+<div class="menucontainer" id="myTopnav">
+	<a href="membres.php">Membres</a>
+	<a href="allos.php">Allo ?</a></li>
+	<a href="planning.php">Planning</a></li>
+	<a href="jeux_classements.php">Jeux et classements</a></li>
+	<?php if (isset($_SESSION['login']) && (($_SESSION['login'] == "Sim's") || ($_SESSION['login'] == "Ramos"))){
 
-	<ul class="menu">
-
-		<li><a href="membres.php">Membres</a></li>
-
-		<li><a href="allos.php">Allo ?</a></li>
-
-		<li><a href="planning.php">Planning</a></li>
-
-		<li><a href="jeux_classements.php">Jeux et classements</a></li>
-
-		<?php if (isset($_SESSION['login']) && (($_SESSION['login'] == "Sim's") || ($_SESSION['login'] == "Ramos"))){
-
-			echo "<li><a href='ajout_point.php'>Ajout Points</a></li>";
+			echo "<a href='ajout_point.php'>Ajout Points</a>";
 		}?>
 
 		<!--<li><a href="medias.php">Photos/Vidéos</a></li>-->
-
-	</ul>
-
+	<a href="javascript:void(0);" class="icon" onclick="funcMenu()">&#9776</a>
 </div>
+
+<script>
+	function funcMenu(){
+		var x = document.getElementById("myTopnav");
+	    if (x.className === "menucontainer") {
+	        x.className += " responsive";
+	    } else {
+	        x.className = "menucontainer";
+	    }
+	}
+</script>
