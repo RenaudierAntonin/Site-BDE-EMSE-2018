@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 	<link rel="stylesheet" type="text/css" href="style/style_membres.css">
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -18,12 +19,7 @@
 		<a href="bureau.php"><rect x="480" y="590" fill="transparent" width="330" height="200" /></a>
 		<a href="romains.php"><rect x="900" y="230" fill="transparent" width="290" height="220"/></a>
 		<a href="egyptiens.php"><rect x="890" y="470" fill="transparent" width="300" height="320"/></a>
-	</svg>
-
-	<!--map name="membermap">
-		<area shape="rect" coords="20,200 380,450" href="vikings.html">
-	</map>-->
-	
+	</svg>	
 	<?php include("reseaux_sociaux.php"); ?>
 	<?php include("partenaires.php"); ?>
 </body>
