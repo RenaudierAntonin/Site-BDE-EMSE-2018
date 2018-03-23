@@ -272,9 +272,11 @@ td{
 		right: 0;
 		top: 0;
 	}
-	.menucontainer.responsive a{
+	.menucontainer.responsive a:not(:last-child){
+		margin-left: 0;
 		float: none;
 		display: block;
+		width: 70%;
 		text-align:left;
 	}
 }
