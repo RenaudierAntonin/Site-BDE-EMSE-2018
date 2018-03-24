@@ -13,22 +13,25 @@ function run(){
 	if (finGeneration && (terrain.monstres.length == 0)){
 		
 		play_pause();
-		
-		axios.post("https://minesperium.herokuapp.com/api/scores/addscore/" + login + "/TowerDefense/" + joueur.score);
+
+		axios.post("https://minesperium.herokuapp.com/api/scores/addscore/" + id + "/TowerDefense/" + joueur.score);
 
 		if (lvl < lvlMax){
- 
-			if (confirm("Niveau terminé, voulez vous aller au niveau suivant ? ")){
-				
-				lvl++;
-				Niveau.innerText = lvl;
-				initialisationTerrain();
 
-			} 
+			alert("Bravo, vous passez au niveau suivant");
+ 			lvl++;
+			Niveau.innerText = lvl;
+			initialisationTerrain();
+
+		 
 		}
 		else {
 
-			alert("Bravo ! Vous avez terminé le jeu épique de Mines'perium, repassez une prochaine fois pour plus de niveau");
+			alert("Bravo ! Vous avez terminé le jeu épique de Mines'perium, repassez une prochaine fois pour plus de niveaux")
+
+				bouton_play.innerText = "Recommencer";
+				initialisationJeu();
+				initialisationTerrain();
 		}
 		
 	}
@@ -144,7 +147,7 @@ function genererMonstre(){
 		if (Monstres[type].nb <= 0){
 			
 			type++;
-			alert("Attention ! Une vague de " + Monstres[type].nom + " en approche ! ");
+			Message.innerText = "Attention ! Une vague de " + Monstres[type].nom + " en approche ! ";
 			monstre = Monstres[type];
 			compteur = monstre.attenteVague;	
 		}
@@ -166,7 +169,7 @@ function genererMonstre(){
 	return(true);
 }
 
-function play_pause(){
+function play_pause(e,nextLvl){
 
 	if (jeu){
 			
@@ -181,21 +184,21 @@ function play_pause(){
 
 		jeu = setInterval(run, time);
 	}
+	if(nextLvl){
+
+		bouton_play.innerText = "Niveau suivant";
+	}
 }
 
 function Perdre(){
 	
 	play_pause();
-	axios.post("https://minesperium.herokuapp.com/api/scores/addscore/" + login + "/TowerDefense/" + joueur.score);
-	
-	var recommencer = confirm("Perdu ! Expeliar'mines vous a tué, voulez vous recommencer une partie ?");
+	axios.post("https://minesperium.herokuapp.com/api/scores/addscore/" + id + "/TowerDefense/" + joueur.score);
 
-	if (recommencer){
-		
-		initialisationJeu();
-		initialisationTerrain();
+	alert("Perdu ! Expelliar'mines vous a tué");
 
-	}
+	initialisationJeu();
+	initialisationTerrain();
 }
 function Gain(valeurXP, valeurMoney){
 

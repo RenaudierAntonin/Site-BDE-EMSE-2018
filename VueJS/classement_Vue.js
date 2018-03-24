@@ -4,7 +4,8 @@ var classementJoueurs = new Vue({
 
 	data : {
 
-		users : []
+		users : [],
+
 	}
 
 });
@@ -12,36 +13,48 @@ var classementJoueurs = new Vue({
 axios.get("https://minesperium.herokuapp.com/api/users/ranking").then(function(reponse){
 
 	var users = reponse.data;
+	var k = 0;
+	var user;
 
 	for(var i=0; i < users.length; i++){
-		users[i].rang = i+1;
-		switch(users[i].civilisation){
 
-			case "Romaine":
-				users[i].couleur = "#ce0404";
-			break;
+		user = users[i];
 
-			case "Egyptienne":
-				users[i].couleur = "#ffd60c";
-			break;
+		if(user.civilisation != "Minesperium"){
 
-			case "Gauloise":
-				users[i].couleur = "#299b15";
-			break;
+			k++;
 
-			case "Viking":
-				users[i].couleur = "#5e97f2";
-			break;
+			switch(user.civilisation){
 
-			case "Minesperium" :
-				users[i].couleur = "#ff8402";
-			break;
+				case "Romaine":
+					user.couleur = "#ce0404";
+				break;
 
+				case "Egyptienne":
+					user.couleur = "#ffd60c";
+				break;
 
+				case "Gauloise":
+					user.couleur = "#299b15";
+				break;
+
+				case "Viking":
+					user.couleur = "#5e97f2";
+				break;
+
+				case "Minesperium" :
+					user.couleur = "#ff8402";
+				break;
+
+			}
+			
+			user.rang = k;
+			classementJoueurs.users.push(user);
 		}
+		
 	}
 
-	classementJoueurs.users = users;
+	
 
 });
 

@@ -20,17 +20,23 @@
 		}
 		</style>
 	</head>
-	<?php session_start();?>
+
+	<?php session_start();
+
+		if((strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox') == FALSE) || (strpos($_SERVER['HTTP_USER_AGENT'], 'Linux') !== FALSE)){
+
+	?>
 	
 	<body>
 
 		<script type='text/javascript'> login = '' </script>
 
-		<?php if (isset($_SESSION['login'])){
+		<?php if(isset($_SESSION['login'])){
 
-		echo '<script type=\'text/javascript\'> login = "'.$_SESSION['login'].'" </script>';
+			echo '<script type=\'text/javascript\'> login = "'.$_SESSION['login'].'" </script>';
 
 	}
+
 
 	?>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
@@ -77,13 +83,38 @@
 		<button id="Play_Pause">Play</button>
 
 		<br>
+		<br>
 
-		Meilleur Score : <span id = "MeilleurScore"> 0 </span>
+		Meilleur Score : <span id = "MeilleurScore"> ? </span>
+		<br>
+		Rang Tower Defense : <span id = "rang"> ? </span>
 
-		<script src="Tower_defense_classes.js"></script>
-		<script src="Tower_defense_fonctions.js"></script>
-		<script src="Tower_defense_script.js"></script>
-		<script src="Tower_defense_init.js"></script>
+		<br><br>
+
+		<?php if (!isset($_SESSION['login'])){
+
+				echo "Vous n'êtes pas connecté";
+			}
+			else{
+				echo "A vous de jouer ".$_SESSION['login'];
+			}
+
+		}
+			else{
+
+				echo "Pour des raisons inconnues, Ce navigateur plante le jeu, il faut en prendre un autre... déso";
+			}
+		?>
+
+		<br><br><br>
+
+		<span id ="Message"> </span>
+		
+
+		<?php echo "<script src = \"Tower_defense_classes.js?".time()."\"></script>" ?>
+		<?php echo "<script src = \"Tower_defense_fonctions.js?".time()."\"></script>" ?>
+		<?php echo "<script src = \"Tower_defense_script.js?".time()."\"></script>" ?>
+		<?php echo "<script src = \"Tower_defense_init.js?".time()."\"></script>" ?>
 	</body>
 	
 </html>

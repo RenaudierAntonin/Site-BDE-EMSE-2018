@@ -21,9 +21,10 @@
 
 	}
 	echo "<script type=\"text/javascript\"> login = '' </script>";
-	if (isset($_SESSION['login']) ){
 
-		echo "<script type=\"text/javascript\"> login = '".$_SESSION['login']."' </script>"
+	if (isset($_SESSION['login'])){
+
+		echo '<script type=\'text/javascript\'> login = "'.$_SESSION['login'].'" </script>';
 
 	?>
 	<div id = "infoConnect">
@@ -41,17 +42,17 @@
 
 			<div class="connection-container" id="connexion">
 
-			<form class="connection" action = "index.php" method = "post">
+		<form class="connection" action = "index.php" method = "post" id = "connexionForm">
 				<span v-if="login.displayMessage">{{login.message}}</span> 
-				<input placeholder="Pseudo ou email" type="text" name="login" v-model="login.entree" v-on:input="autentification(); verification();" v-on:blur="autentification()" >
+				<input placeholder="Pseudo ou email" type="text" name="login" v-model="login.entree" >
 				<span v-if="mdp.displayMessage">{{mdp.message}}</span> 
-				<input placeholder="Mot de passe" type="password" name="mdp" v-model="mdp.entree" v-on:input="verification()" v-on:blur="verification()">
+				<input placeholder="Mot de passe" type="password" name="mdp" v-model="mdp.entree">
 
-				<input type="submit" value = "connexion" v-if="mdp.valide">
+				<input type="button" value="Connexion" v-on:click="verification(); autentification(); "> 
 
-			</form>
+			</form> 
 
-			<a href = "inscription.php">S'inscrire</a>
+			<a href = "inscription.php">S'inscrire</a> 
 
 			</div>
 
@@ -63,16 +64,17 @@
 
 <div class="menucontainer" id="myTopnav">
 	<a href="membres.php">Membres</a>
-	<a href="allos.php">Allo ?</a></li>
-	<a href="planning.php">Planning</a></li>
-	<a href="jeux_classements.php">Jeux et classements</a></li>
+	<a href="allos.php">Allo ?</a>
+	<a href="planning.php">Planning</a>
+	<a href="jeux_classements.php">Jeux et classements</a>
+	
 	<?php if (isset($_SESSION['login']) && (($_SESSION['login'] == "Sim's") || ($_SESSION['login'] == "Ramos"))){
 
 			echo "<a href='ajout_point.php'>Ajout Points</a>";
 		}?>
 
 		<!--<li><a href="medias.php">Photos/Vidéos</a></li>-->
-	<a href="javascript:void(0);" class="icon" onclick="funcMenu()">&#9776</a>
+	<a href="javascript:void(0);" class="icon" onclick="funcMenu()">&#9776;</a>
 </div>
 
 <script>

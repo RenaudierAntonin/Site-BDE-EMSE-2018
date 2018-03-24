@@ -45,6 +45,13 @@ var connexion = new Vue({
 				connexion.mdp.displayMessage = !(reponse.data.id);
 				connexion.mdp.valide = !(!reponse.data.id);
 
+				if (connexion.mdp.valide){
+
+					connexion.login.entree = reponse.data.pseudo;
+
+					setTimeout(function(){document.forms["connexionForm"].submit()}, 100);
+				}
+
 			})
 			.catch(function (error) {
     			//console.log(error);
@@ -59,12 +66,18 @@ var infoConnect = new Vue({
 	el:"#infoConnect",
 
 	data : {
-		pseudo : login,
+		pseudo : '',
 		rang : '',
-		score : ''
+		score : '',
+		civilisation : ''
 	},
 
 	mounted : function(){
+
+		axios.get("https://minesperium.herokuapp.com/api/users/check/" + login).then(function(reponse){
+
+			infoConnect.pseudo = reponse.data.pseudo; 
+		});
 
 		axios.get("https://minesperium.herokuapp.com/api/users/ranking").then(function(reponse){
 
@@ -73,13 +86,14 @@ var infoConnect = new Vue({
 
 				var user = reponse.data[i];
 
-				if (user.pseudo == infoConnect.pseudo){
+				if (user.pseudo.toLowerCase() == infoConnect.pseudo.toLowerCase()){
 					infoConnect.rang = i+1;
 					infoConnect.score = user.value;
+					infoConnect.civilisation = user.civilisation;
 				}
 				i++;
 				
 			}
 		})
 	}
-})
+});

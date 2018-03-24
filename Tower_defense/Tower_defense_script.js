@@ -1,8 +1,12 @@
-window.onload = Tower_defense_script;
+
 
 // penser a creer un super pouvoir, qui genere une tete de edme parcourant le chemin a lenvert pour buter tout les monstres, ou les viking qui glacent, les romain qui brulent
 
 // transformer les boutons des tourelle, ajouter des jauges au lieu de chiffres
+
+
+	window.onload = Tower_defense_script;
+	
 
 function Tower_defense_script(){
 
@@ -15,6 +19,8 @@ function Tower_defense_script(){
 	MeilleurScore = document.getElementById("MeilleurScore");
 	Niveau = document.getElementById("niveau");
 	bouton_play = document.getElementById("Play_Pause");
+	Rang = document.getElementById("rang");
+	Message = document.getElementById("Message");
 	
 	lvlMax = 3;
 	souris = { x : 0, y : 0}; // position de la souris
@@ -58,10 +64,10 @@ function Tower_defense_script(){
 
 
 	Tourelles = [
-		{frequenceTir: 100, vitesse: 10, force: 20, aire: 100, prix: 20, image : TourelleGauloise, couleur : "#33FF00", nom : "Menhir Gaulois"},
-		{frequenceTir: 200, vitesse: 10, force: 30, aire: 75, prix: 50, image : TourelleRomaine, couleur : "red", nom : "Tour Romaine"},
-		{frequenceTir: 50, vitesse: 10, force: 125, aire: 150, prix: 50, image : TourelleViking, couleur : "blue", nom : "Drakar Viking"},
-		{frequenceTir: 150, vitesse: 10, force: 250, aire: 100, prix: 200, image : TourelleEgyptienne, couleur : "#ffd60c", nom : "Pyramide Egyptienne"}
+		{frequenceTir: 100, vitesse: 10, force: 40, aire: 100, prix: 20, image : TourelleGauloise, couleur : "#33FF00", nom : "Menhir Gaulois"},
+		{frequenceTir: 180, vitesse: 20, force: 25, aire: 200, prix: 70, image : TourelleRomaine, couleur : "red", nom : "Tour Romaine"},
+		{frequenceTir: 70, vitesse: 10, force: 125, aire: 100, prix: 100, image : TourelleViking, couleur : "blue", nom : "Drakar Viking"},
+		{frequenceTir: 150, vitesse: 20, force: 250, aire: 200, prix: 500, image : TourelleEgyptienne, couleur : "#ffd60c", nom : "Pyramide Egyptienne"}
 	];
 
 	var tourelles = new Vue({
@@ -99,7 +105,7 @@ function Tower_defense_script(){
 		}
 });
 
-	canvas.addEventListener('mousemove', sourisPos, false); 
+	canvas.addEventListener('mousemove', sourisPos); 
 
-	bouton_play.addEventListener('click',play_pause);
+	bouton_play.addEventListener('click',play_pause, false);
 }
