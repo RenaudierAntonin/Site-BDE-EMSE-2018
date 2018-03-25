@@ -1,11 +1,11 @@
 
 
-// penser a creer un super pouvoir, qui genere une tete de edme parcourant le chemin a lenvert pour buter tout les monstres, ou les viking qui glacent, les romain qui brulent
+// penser a creer un super pouvoir, qui genere une tete de edme parcourant le chemin a lenvert pour buter tout les monstres, ou les viking qui glacent, les romains qui brulent
 
 // transformer les boutons des tourelle, ajouter des jauges au lieu de chiffres
 
 
-	window.onload = Tower_defense_script;
+window.onload = Tower_defense_script;
 	
 
 function Tower_defense_script(){
@@ -62,7 +62,6 @@ function Tower_defense_script(){
 	initialisationTerrain();
 
 
-
 	Tourelles = [
 		{frequenceTir: 100, vitesse: 10, force: 40, aire: 100, prix: 20, image : TourelleGauloise, couleur : "#33FF00", nom : "Menhir Gaulois"},
 		{frequenceTir: 180, vitesse: 20, force: 25, aire: 200, prix: 70, image : TourelleRomaine, couleur : "red", nom : "Tour Romaine"},
@@ -108,4 +107,5 @@ function Tower_defense_script(){
 	canvas.addEventListener('mousemove', sourisPos); 
 
 	bouton_play.addEventListener('click',play_pause, false);
+
 }

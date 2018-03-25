@@ -172,6 +172,8 @@ function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees, 
 	this.vie = vie;
 	this.direction = terrain.chemin.parselles[0];
 	this.avancement = {parselle : 0, av : 0}; // le numéro de parselle et l'avancement en pixel sur celle ci
+	this.compteur = null;
+
 
 	this.avancer = function(){ // le monstre avance sur la parselle sur laqelle il se trouve avec une certaine vitesse, disjonction de cas selon le sens de la parselle
 				
@@ -208,13 +210,30 @@ function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees, 
 
 		this.vie -= projectile.degat; 
 
+		if(projectile.tourelle.couleur == "red"){
+
+			this.compteur = 5 * FPS; // en secondes
+		}
+
 		if (this.vie <= 0){ // quand le monstre n'a plus de vie
 
 			projectile.tourelle.setXP(valeurXP); // et on donne ses xp à la tourelle qui l'a tué
 
 			Gain(valeurXP, valeurMoney);
 			
-			projectile.tourelle.cible = false;
+			this.supprimer();// on le tue c'est à dire on le supprime du tableau des monstres, PROBLEME ! le for dans l'update risque de buger
+
+		}
+	}
+
+	this.bruler = function(degat){
+
+		this.vie -= degat;
+
+		if (this.vie <= 0){ // quand le monstre n'a plus de vie
+
+			Gain(valeurXP, valeurMoney);
+			
 			this.supprimer();// on le tue c'est à dire on le supprime du tableau des monstres, PROBLEME ! le for dans l'update risque de buger
 
 		}
@@ -323,21 +342,23 @@ function Terrain(){ // l'objet qui contient tous les autres, le plan quoi
 				tourelle.cibler() 
 			}
 		}
-
+		var monstre;
 		for(var i = 0; i<this.monstres.length; i++){
+			
+			monstre = this.monstres[i];
+			monstre.avancer();
+			
+			if(monstre.compteur && monstre.compteur > 0){
 
-			this.monstres[i].avancer();
+				monstre.bruler(Tourelles[1].force/FPS);
+				monstre.compteur--;
+			}
 		}
+
 
 		for(var i = 0; i<this.projectiles.length; i++){
 
 			this.projectiles[i].avancer();
-
-			/*if(projectil.colision){
-				projectiles.splice(i,1).supprimer
-				i--
-				j--
-			} */
 		}
 
 	}

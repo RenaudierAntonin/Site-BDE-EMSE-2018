@@ -79,7 +79,7 @@ function initialisationJeu(){
 
 	jeu = false;
 	lvl = 1; // niveau actuel
-	var joueur = {vie : 5, money : 40, score : 0, meilleurScore: 0, rang : 0};
+	joueur = {vie : 5, money : 40, score : 0, meilleurScore: 0, rang : 0};
 
 	if (login){
 
@@ -113,9 +113,4 @@ function initialisationJeu(){
 	Money.innerText = joueur.money;
 	Score.innerText = joueur.score;
 	Niveau.innerText = lvl;
-
-	ajoutScore = (function(j){
-
-		j.score++;
-	})(joueur);
 }

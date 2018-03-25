@@ -200,6 +200,7 @@ function Perdre(){
 	initialisationJeu();
 	initialisationTerrain();
 }
+
 function Gain(valeurXP, valeurMoney){
 
 			joueur.money += valeurMoney;
