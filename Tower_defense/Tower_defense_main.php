@@ -55,7 +55,7 @@
 					<br>
 					Puissance:  {{Tourelle.force}}
 					<br>
-					Cadence:  {{Tourelle.frequenceTir}}
+					Cadence:  {{Tourelle.frequenceTir / FPS}} 
 					<br>
 					Prix:  {{Tourelle.prix}}
 				</button>

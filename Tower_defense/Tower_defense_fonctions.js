@@ -14,7 +14,7 @@ function run(){
 		
 		play_pause();
 
-		axios.post("https://minesperium.herokuapp.com/api/scores/addscore/" + id + "/TowerDefense/" + joueur.score);
+		axios.post("https://minesperium.herokuapp.com/api/scores/addscore/" + pseudo + "/TowerDefense/" + joueur.score);
 
 		if (lvl < lvlMax){
 
@@ -159,7 +159,7 @@ function genererMonstre(){
 			if (r < proba){
 
 				compteur = Taille_Cases / (4 * monstre.vitesse); // permet de definir le compteur de façon à ne pas produire un monstre avant que le dernier sorti ai parcouru une case
-				terrain.monstres.push(new Monstre(monstre.vitesse, monstre.force, monstre.type, monstre.vie, monstre.valeurXP, monstre.valeurMoney, {x : monstre.coordonnees.x, y : monstre.coordonnees.y}, monstre.image));
+				terrain.monstres.push(new Monstre(monstre.vitesse, monstre.force, monstre.vie, monstre.valeurXP, monstre.valeurMoney, {x : monstre.coordonnees.x, y : monstre.coordonnees.y}, monstre.image));
 				monstre.nb--;
 			}
 
@@ -193,7 +193,7 @@ function play_pause(e,nextLvl){
 function Perdre(){
 	
 	play_pause();
-	axios.post("https://minesperium.herokuapp.com/api/scores/addscore/" + id + "/TowerDefense/" + joueur.score);
+	axios.post("https://minesperium.herokuapp.com/api/scores/addscore/" + pseudo + "/TowerDefense/" + joueur.score);
 
 	alert("Perdu ! Expelliar'mines vous a tué");
 

@@ -1,13 +1,12 @@
 
 function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, image, couleur){
 	
-	var comptInit = 1000 / frequenceTir; // a modifier lorsqu'on modifiera la frequence de tir
+	var comptInit = (1000*FPS) / frequenceTir /*vitesseJeu*/; // a modifier lorsqu'on modifiera la frequence de tir
 	this.compteur = 0; // frequence est le nb de tir par sec
-	this.vitesse  = vitesse; // vitesse absolue des balles
+	this.vitesse  = vitesse /* /FPS */; // vitesse absolue des balles
 	this.force = force;
 	this.cible = false; // le monstre cible
 	this.emplacement = emplacement; // c'est sa case
-	this.niveau = 1;
 	this.xp = 0;
 	this.aire = aire; // aire de détéction de la tourelle, elle ne peut rien viser au dela
 	this.direction = {x: 1, y: 0};
@@ -15,6 +14,7 @@ function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, image, 
 	this.prix = prix;
 	this.image = image
 	this.couleur = couleur;
+	this.active = false;
 
 	this.cibler = function(){
 
@@ -28,6 +28,7 @@ function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, image, 
 			if (d < distance && d < this.aire){
 		
 				this.cible = monstre;
+				monstre.tourelles.push(this);
 				distance = d;
 			}
 		}
@@ -54,28 +55,6 @@ function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, image, 
 			this.cible = false;
 		}
 	} 
-
-	
-	this.setXP = function(xp){
-
-		this.xp += xp;
-		
-		if (this.xp > this.niveau.xp){ //lorsqu'on dépasse la valeur seuil du passage de niveau de la tourelle
-
-			this.niveau.next();
-			this.evoluer(this.niveau.force, this.niveau.vitesse, this.niveau.frequence);
-		}
-	}
-
-	this.evoluer = function(forceGagnee, vitesseGagnee, frequenceGagnee){ // fait évoluer la tourelle lorsqu'elle a assez de xp pour le niveau suivant
-
-		this.niveau++;
-		this.xp = 0;
-		this.force += forceGagnee;
-		this.vitesse += vitesseGagnee;
-		this.frequence += frequenceGagnee;
-		
-	}
 
 	this.dessiner = function(){
 		
@@ -126,7 +105,7 @@ function Projectile(tourelle, vitesse, cible){
 			var d = Norme(this.coordonnees, this.cible.coordonnees); // c'est simplement la distance entre la tourelle et la cible
 			var dx = (this.cible.coordonnees.x - this.coordonnees.x)/ d;
 			var dy = (this.cible.coordonnees.y - this.coordonnees.y)/ d;
-			this.vitesse.x =  this.v * dx
+			this.vitesse.x =  this.v * dx; 
 			this.vitesse.y = this.v * dy;// calcul des coordonnées de vitesse pour la balle en fonction de la position du monstre
 		}
 
@@ -163,23 +142,24 @@ function Projectile(tourelle, vitesse, cible){
 
 
 
-function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees, image){
+function Monstre(vitesse, force, vie, valeurXP, valeurMoney, coordonnees, image){
 
 	this.vitesse = vitesse;
 	this.force = force;
 	this.coordonnees = coordonnees;
-	this.type = type;
 	this.vie = vie;
 	this.direction = terrain.chemin.parselles[0];
 	this.avancement = {parselle : 0, av : 0}; // le numéro de parselle et l'avancement en pixel sur celle ci
-	this.compteur = null;
+	this.compteurFeu = null;
+	this.compteurGlace = null;
+	this.tourelles = [];
 
 
 	this.avancer = function(){ // le monstre avance sur la parselle sur laqelle il se trouve avec une certaine vitesse, disjonction de cas selon le sens de la parselle
 				
-		this.coordonnees.x += vitesse * this.direction.x;
-		this.coordonnees.y += vitesse * this.direction.y;
-		this.avancement.av += vitesse;
+		this.coordonnees.x += this.vitesse * this.direction.x;
+		this.coordonnees.y += this.vitesse * this.direction.y;
+		this.avancement.av += this.vitesse;
 
 		if (this.avancement.av > Taille_Cases){
 
@@ -210,14 +190,17 @@ function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees, 
 
 		this.vie -= projectile.degat; 
 
-		if(projectile.tourelle.couleur == "red"){
+		if(projectile.tourelle.couleur == "red" && lvl > 3){
 
-			this.compteur = 5 * FPS; // en secondes
+			this.compteurFeu = 5 * FPS; // en secondes
+		}
+		else if(projectile.tourelle.couleur == "blue" && lvl > 3){
+
+			this.compteurGlace = 5 * FPS;
+			this.vitesse = vitesse / 2;
 		}
 
 		if (this.vie <= 0){ // quand le monstre n'a plus de vie
-
-			projectile.tourelle.setXP(valeurXP); // et on donne ses xp à la tourelle qui l'a tué
 
 			Gain(valeurXP, valeurMoney);
 			
@@ -239,8 +222,13 @@ function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees, 
 		}
 	}
 
-	this.dessiner = function(){
+	this.deglacer =function(){
 
+		this.vitesse = vitesse;
+		this.compteurGlace = null;
+	}
+
+	this.dessiner = function(){
 
 		context.drawImage(image, this.coordonnees.x - Taille_Monstres, this.coordonnees.y - Taille_Monstres, 2 * Taille_Monstres, 2 * Taille_Monstres);
 		context.beginPath(); // dessin du monstre
@@ -249,19 +237,15 @@ function Monstre(vitesse, force, type, vie, valeurXP, valeurMoney, coordonnees, 
 		context.fillStyle = "red";
 		context.fillRect(this.coordonnees.x + Taille_Monstres, this.coordonnees.y + Taille_Monstres + 4, 2 * Taille_Monstres * ((this.vie/vie)-1),4);
 		context.closePath();
-
-		// ajouter une fonction qui rajoute la barre de vie
 	}
 
 	this.supprimer = function(){
 
-		for(var k = 0; k< terrain.tourelles.length; k++){
+		for(var k = 0; k< this.tourelles.length; k++){
 
-			if(this === terrain.tourelles[k].cible){
-
-				terrain.tourelles[k].cible = false;
-			}
+				this.tourelles[k].cible = false;
 		}
+
 		var i = terrain.monstres.indexOf(this);
 
 		terrain.monstres.splice(i,1);
@@ -348,10 +332,17 @@ function Terrain(){ // l'objet qui contient tous les autres, le plan quoi
 			monstre = this.monstres[i];
 			monstre.avancer();
 			
-			if(monstre.compteur && monstre.compteur > 0){
+			if(monstre.compteurFeu && monstre.compteurGlace > 0){
 
 				monstre.bruler(Tourelles[1].force/FPS);
-				monstre.compteur--;
+				monstre.compteurFeu--;
+			}
+
+			if(monstre.compteurGlace){
+				monstre.compteurGlace--;
+				if(monstre.compteurGlace <= 0)
+					monstre.deglacer();
+
 			}
 		}
 
@@ -382,12 +373,6 @@ function Case(coordonnees){ // on découpe le plan en carrés de taille egale su
 
 };
 
-
-
-function Niveau(){
-
-};
-
 function Chemin(debut, construction){ // c'est le chemin sur lequel vont avancer les monstres
 
 	this.parselles = Convertir_chemin(construction); // on va essayer de contruire un chemin assez simplement avec une suite d'instructions : va à droite en au en bas...
@@ -411,3 +396,10 @@ function Chemin(debut, construction){ // c'est le chemin sur lequel vont avancer
 		}
 	}
 };
+
+function Edmoune(){
+	this.base = Monstre.
+	this.base(-10, force, 0, 0, 0, coordonnees, Edme);
+};
+
+Edmoune.prototype = new Monstre;
