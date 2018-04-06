@@ -40,7 +40,7 @@
 
 	?>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
-		<script src = "https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.min.js"></script>
+		<script src = "https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.min.js"></script> 
 		
 		<canvas id="canvas" class='canvas' width="1000" height="600" style="border: 1px solid black;"></canvas>
 
@@ -62,10 +62,17 @@
 			<br>
 			</div>
 
+
 			
 
 		</div>
+		<br>
+		<div id = "Edmoune" v-if= "EdmouneActivated">
+			<button v-if="afficheBouton" v-on:click='ajoutEdmoune();'> Super Edmoune </button>
+			<span v-if = "!afficheBouton">{{Math.ceil(compteurEdmoune / FPS)}}</span>
+		</div>
 
+		<br>
 		<br>
 
 		<div> 
@@ -81,6 +88,8 @@
 		<br>
 
 		<button id="Play_Pause">Play</button>
+
+		<button id = "Accelerer_Ralentir"> Accelerer</button>
 
 		<br>
 		<br>
@@ -111,10 +120,12 @@
 		<span id ="Message"> </span>
 		
 
-		<?php echo "<script src = \"Tower_defense_classes.js?".time()."\"></script>" ?>
-		<?php echo "<script src = \"Tower_defense_fonctions.js?".time()."\"></script>" ?>
 		<?php echo "<script src = \"Tower_defense_script.js?".time()."\"></script>" ?>
 		<?php echo "<script src = \"Tower_defense_init.js?".time()."\"></script>" ?>
+		<?php echo "<script src = \"Tower_defense_fonctions.js?".time()."\"></script>" ?>
+		<?php echo "<script src = \"Tower_defense_classes.js?".time()."\"></script>" ?>
+
+
 	</body>
 	
 </html>

@@ -2,10 +2,17 @@ function run(){
 
 	terrain.update();
 	terrain.dessiner();
+	EdmeVue.compteurEdmoune -= vitesseJeu;
 
 	if (tourelleSelectionnee){
 
 		tourelleSelectionnee.dessiner(); 
+	}
+
+	if(terrain.Edmoune){
+	
+		terrain.Edmoune.dessiner();
+		terrain.Edmoune.avancer();
 	}
 
 	var finGeneration = genererMonstre();
@@ -22,6 +29,12 @@ function run(){
  			lvl++;
 			Niveau.innerText = lvl;
 			initialisationTerrain();
+			if(lvl > 3){
+
+				EdmeVue.EdmouneActivated = true;
+				alert("Vous passez une nouvelle étape de l'aventure ! Découvrez vos nouveau pouvoir, désormais : la Tour Romaine brûle ses ennemis, le Drakar Viking les gêle, et les égyptiens ont invoqué une divinité très puissante. Bonne chance !");
+			}
+			
 
 		 
 		}
@@ -34,6 +47,11 @@ function run(){
 				initialisationTerrain();
 		}
 		
+	}
+
+	if(EdmeVue.compteurEdmoune < 0 && !EdmeVue.afficheBouton){
+
+		EdmeVue.afficheBouton = true;
 	}
 }
 
@@ -142,14 +160,14 @@ function genererMonstre(){
 
 	if (type < Monstres.length){ 
 
-		compteur--;
+		compteur-= vitesseJeu;
 
 		if (Monstres[type].nb <= 0){
 			
 			type++;
 			Message.innerText = "Attention ! Une vague de " + Monstres[type].nom + " en approche ! ";
 			monstre = Monstres[type];
-			compteur = monstre.attenteVague;	
+			compteur = monstre.attenteVague * FPS ;	
 		}
 
 		if (compteur < 0){
@@ -158,7 +176,7 @@ function genererMonstre(){
 
 			if (r < proba){
 
-				compteur = Taille_Cases / (4 * monstre.vitesse); // permet de definir le compteur de façon à ne pas produire un monstre avant que le dernier sorti ai parcouru une case
+				compteur = FPS * Taille_Cases / (80 * monstre.vitesse); // permet de definir le compteur de façon à ne pas produire un monstre avant que le dernier sorti ai parcouru une case
 				terrain.monstres.push(new Monstre(monstre.vitesse, monstre.force, monstre.vie, monstre.valeurXP, monstre.valeurMoney, {x : monstre.coordonnees.x, y : monstre.coordonnees.y}, monstre.image));
 				monstre.nb--;
 			}
@@ -190,6 +208,21 @@ function play_pause(e,nextLvl){
 	}
 }
 
+function changeVitesse(){
+
+	if(vitesseJeu == 1){
+
+		bouton_vitesse.innerText = "Ralentir";
+		vitesseJeu = 2;
+	}
+
+	else{
+
+		bouton_vitesse.innerText = "Accelerer";
+		vitesseJeu = 1;
+	}
+}
+
 function Perdre(){
 	
 	play_pause();
@@ -214,3 +247,11 @@ function Gain(valeurXP, valeurMoney){
 				MeilleurScore.innerText = joueur.meilleurScore;
 			}
 }
+
+function ajoutEdmoune(){
+	
+	terrain.Edmoune = new Edmoune(terrain.cases[terrain.chemin.fin.i][terrain.chemin.fin.j].coordonnees);
+	EdmeVue.afficheBouton = false;
+	EdmeVue.compteurEdmoune = compteurEdmouneInit;
+		
+} 

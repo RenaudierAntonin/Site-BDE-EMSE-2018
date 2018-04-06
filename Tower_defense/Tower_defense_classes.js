@@ -1,9 +1,9 @@
 
 function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, image, couleur){
 	
-	var comptInit = (1000*FPS) / frequenceTir /*vitesseJeu*/; // a modifier lorsqu'on modifiera la frequence de tir
+	var comptInit = (1000*FPS) / frequenceTir; // a modifier lorsqu'on modifiera la frequence de tir
 	this.compteur = 0; // frequence est le nb de tir par sec
-	this.vitesse  = vitesse /* /FPS */; // vitesse absolue des balles
+	this.vitesse  = vitesse / FPS; // vitesse absolue des balles
 	this.force = force;
 	this.cible = false; // le monstre cible
 	this.emplacement = emplacement; // c'est sa case
@@ -48,7 +48,7 @@ function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, image, 
 			this.compteur = comptInit;
  		}
 
-		this.compteur--;
+		this.compteur-= vitesseJeu;
 
 		if (d > this.aire){ // on verifie que le monstre est bien dans la zone de tir avant le prochain tir
 
@@ -76,13 +76,8 @@ function Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, image, 
 	
 	this.copie = function(){
 	
-	var vitesse = this.vitesse; // vitesse absolue des balles
-	var force = this.force;
 	var emplacement = findCase({ x : this.emplacement.coordonnees.x, y : this.emplacement.coordonnees.y});
-	var aire = this.aire; 
-	var prix = this.prix;
-	var image = this.image;
-	var couleur = this.couleur
+
 	return (new Tourelle(frequenceTir, vitesse, force, emplacement, aire, prix, image, couleur));
 	}
 };
@@ -109,8 +104,8 @@ function Projectile(tourelle, vitesse, cible){
 			this.vitesse.y = this.v * dy;// calcul des coordonnées de vitesse pour la balle en fonction de la position du monstre
 		}
 
-		this.coordonnees.x += vitesse.x; // on ajoute directement les coordonnées de vitesse
-		this.coordonnees.y += vitesse.y; // il faut imaginer que c'est en fait Vx*t commen en physique, mais on à pas de temps ici, ce sera des boucles d'execution donc dans notre monde dt est un entier vala
+		this.coordonnees.x += vitesseJeu * this.vitesse.x; // on ajoute directement les coordonnées de vitesse
+		this.coordonnees.y += vitesseJeu * this.vitesse.y; // il faut imaginer que c'est en fait Vx*t commen en physique, mais on à pas de temps ici, ce sera des boucles d'execution donc dans notre monde dt est un entier vala
 	
 		if (this.coordonnees.x > canvas.width || this.coordonnees.x < 0 || this.coordonnees.y > canvas.height || this.coordonnees.y < 0){// il faut l'effacer lorsqu'il touche un monstre ou sort du canvas, et blesser le monstre
 		
@@ -129,6 +124,7 @@ function Projectile(tourelle, vitesse, cible){
 		context.arc(this.coordonnees.x, this.coordonnees.y, 5, 0, Math.PI*2, false);
 		context.fillStyle  = tourelle.couleur;
 		context.fill();
+		context.closePath();
 	}
 
 	this.supprimer = function(){
@@ -144,9 +140,9 @@ function Projectile(tourelle, vitesse, cible){
 
 function Monstre(vitesse, force, vie, valeurXP, valeurMoney, coordonnees, image){
 
-	this.vitesse = vitesse;
+	this.vitesse = vitesse / FPS;
 	this.force = force;
-	this.coordonnees = coordonnees;
+	this.coordonnees = {x : coordonnees.x, y : coordonnees.y};
 	this.vie = vie;
 	this.direction = terrain.chemin.parselles[0];
 	this.avancement = {parselle : 0, av : 0}; // le numéro de parselle et l'avancement en pixel sur celle ci
@@ -157,31 +153,31 @@ function Monstre(vitesse, force, vie, valeurXP, valeurMoney, coordonnees, image)
 
 	this.avancer = function(){ // le monstre avance sur la parselle sur laqelle il se trouve avec une certaine vitesse, disjonction de cas selon le sens de la parselle
 				
-		this.coordonnees.x += this.vitesse * this.direction.x;
-		this.coordonnees.y += this.vitesse * this.direction.y;
-		this.avancement.av += this.vitesse;
+		this.coordonnees.x += vitesseJeu * this.vitesse * this.direction.x;
+		this.coordonnees.y += vitesseJeu * this.vitesse * this.direction.y;
+		this.avancement.av += vitesseJeu * this.vitesse;
 
 		if (this.avancement.av > Taille_Cases){
-
+		
 			this.avancement.parselle++;
 
 			if (this.avancement.parselle >= terrain.chemin.parselles.length){ // si le chemin est terminé, on réduit la vie du joueur
 
-					joueur.vie -= this.force;
-					Vie.innerText = joueur.vie;
+				joueur.vie -= this.force;
+				Vie.innerText = joueur.vie;
+				this.supprimer();
 
-					if (joueur.vie <= 0){
+				if (joueur.vie <= 0){
 
-						Perdre();
-					}
-
-					this.supprimer();
+					Perdre();
+				}
 
 			}
 			else{ 
 
-				this.avancement.av -= Taille_Cases;
+				this.avancement.av -= Taille_Cases; // si on fait = 0 on ne prend pas en compte l'avance effectué lors du depassement
 				this.direction = terrain.chemin.parselles[this.avancement.parselle];
+
 			}
 		}	
 	}
@@ -247,7 +243,6 @@ function Monstre(vitesse, force, vie, valeurXP, valeurMoney, coordonnees, image)
 		}
 
 		var i = terrain.monstres.indexOf(this);
-
 		terrain.monstres.splice(i,1);
 		delete (this);
 	}
@@ -262,6 +257,7 @@ function Terrain(){ // l'objet qui contient tous les autres, le plan quoi
 	this.chemin;
 	this.cases = [] ;
 	this.projectiles = [];
+	this.Edmoune = null;
 
 	var n = nbCasesLargeur;
 	var m = (n * canvas.width) / canvas.height;
@@ -283,7 +279,6 @@ function Terrain(){ // l'objet qui contient tous les autres, le plan quoi
 	this.dessiner = function(){ // on dessine chaque élément, l'ordre est important ! on ne va pas dessiner le chemin par dessus le monstre par exemple
 		
 		context.beginPath();
-		
 		var pattern = context.createPattern(herbe, 'repeat');
         context.fillStyle = pattern;
         context.fillRect(0, 0, canvas.width, canvas.height);
@@ -306,6 +301,7 @@ function Terrain(){ // l'objet qui contient tous les autres, le plan quoi
 
 			this.projectiles[i].dessiner();
 		}
+
 	}
 
 	this.update = function(){ // fait avancer les monstres, les projectiles, tirer ou cibler les tourelles
@@ -327,6 +323,7 @@ function Terrain(){ // l'objet qui contient tous les autres, le plan quoi
 			}
 		}
 		var monstre;
+
 		for(var i = 0; i<this.monstres.length; i++){
 			
 			monstre = this.monstres[i];
@@ -335,13 +332,17 @@ function Terrain(){ // l'objet qui contient tous les autres, le plan quoi
 			if(monstre.compteurFeu && monstre.compteurGlace > 0){
 
 				monstre.bruler(Tourelles[1].force/FPS);
-				monstre.compteurFeu--;
+				monstre.compteurFeu-= vitesseJeu;
 			}
 
 			if(monstre.compteurGlace){
-				monstre.compteurGlace--;
-				if(monstre.compteurGlace <= 0)
+
+				monstre.compteurGlace-= vitesseJeu;
+
+				if(monstre.compteurGlace <= 0){
+					
 					monstre.deglacer();
+				}
 
 			}
 		}
@@ -360,7 +361,6 @@ function Case(coordonnees){ // on découpe le plan en carrés de taille egale su
 
 	this.coordonnees = coordonnees;
 	this.disponible = true; //booléen qui indique si on peut y placer une tourelle ou non
-	this.type; // pour le dessin de la case, herbe, roche, eau, parselle ...
 
 	this.dessiner = function(image){
 
@@ -386,7 +386,8 @@ function Chemin(debut, construction){ // c'est le chemin sur lequel vont avancer
 		this.cases.push(terrain.cases[debut.i][debut.j]);	
 		terrain.cases[debut.i][debut.j].disponible = false;
 				
-		}
+	}
+	this.fin = { i : debut.i, j : debut.j};
 
 	this.dessiner = function(){
 
@@ -397,9 +398,48 @@ function Chemin(debut, construction){ // c'est le chemin sur lequel vont avancer
 	}
 };
 
-function Edmoune(){
-	this.base = Monstre.
-	this.base(-10, force, 0, 0, 0, coordonnees, Edme);
+function Edmoune(coordonnees){
+
+	this.base = Monstre;
+	this.base(-150, 500, 0, 0, 0, coordonnees, Edme);
+	this.avancement.parselle = terrain.chemin.parselles.length - 1;
+
+	this.avancer = function(){ // le monstre avance sur la parselle sur laqelle il se trouve avec une certaine vitesse, disjonction de cas selon le sens de la parselle
+				
+		this.coordonnees.x += vitesseJeu * this.vitesse * this.direction.x;
+		this.coordonnees.y += vitesseJeu * this.vitesse * this.direction.y;
+		this.avancement.av += vitesseJeu * this.vitesse;
+		this.attaquer();
+
+		if ( - this.avancement.av > Taille_Cases){
+
+			this.avancement.parselle--;
+
+			if (this.avancement.parselle < 0 ){ // si le chemin est terminé, on réduit la vie du joueur
+
+				terrain.Edmoune = false;
+
+			}
+			else{ 
+
+				this.avancement.av += Taille_Cases; // si on fait = 0 on ne prend pas en compte l'avance effectué lors du depassement
+				this.direction = terrain.chemin.parselles[this.avancement.parselle];
+			}
+		}	
+	}
+
+	this.attaquer = function(){
+
+		for(var i= 0; i < terrain.monstres.length; i++){
+
+			var monstre = terrain.monstres[i];
+
+			if(Norme(monstre.coordonnees,this.coordonnees)< Taille_Cases){
+
+				terrain.monstres[i].bruler(this.force * vitesseJeu);
+			}
+		} 
+	}
 };
 
 Edmoune.prototype = new Monstre;
