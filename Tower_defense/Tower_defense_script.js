@@ -2,7 +2,7 @@
 
 
 window.onload = Tower_defense_script;
-	
+
 
 function Tower_defense_script(){
 
@@ -20,15 +20,15 @@ function Tower_defense_script(){
 	Rang = document.getElementById("rang");
 	Message = document.getElementById("Message");
 
-	
-	lvlMax = 3;
+
+	lvlMax = 6;
 	souris = { x : 0, y : 0}; // position de la souris
 
 
 	FPS = 20;
 	vitesseJeu = 1;
 	nbCasesLargeur = 20;
-	Taille_Cases = canvas.width / nbCasesLargeur; 
+	Taille_Cases = canvas.width / nbCasesLargeur;
 	Taille_Monstres = 0.45 * Taille_Cases;
 	time = Math.floor(1000/FPS);
 	compteurEdmouneInit = 60  * FPS;
@@ -59,7 +59,7 @@ function Tower_defense_script(){
     	chemin.width = Taille_Cases;
     	chemin.height = Taille_Cases;  //pk ca fait rien ?
     }
-*/ 
+*/
 
 	tourelleSelectionnee = false;
 	SuperEdmoune = false;
@@ -105,13 +105,13 @@ function Tower_defense_script(){
 			}
 
 			else{
-				
+
 				if(tourelleSelectionnee.emplacement.disponible) {
 
     				terrain.tourelles.push(tourelleSelectionnee.copie());
     				joueur.money -= tourelleSelectionnee.prix;
     				Money.innerText = joueur.money;
-    				tourelleSelectionnee.emplacement.disponible = false; 
+    				tourelleSelectionnee.emplacement.disponible = false;
     				tourelleSelectionnee = false;
 
   				}
@@ -119,9 +119,9 @@ function Tower_defense_script(){
 		}
 });
 
-	canvas.addEventListener('mousemove', sourisPos); 
+	canvas.addEventListener('mousemove', sourisPos);
 
 	bouton_play.addEventListener('click',play_pause, false);
-	bouton_vitesse.addEventListener('click', changeVitesse); 
+	bouton_vitesse.addEventListener('click', changeVitesse);
 
 }
