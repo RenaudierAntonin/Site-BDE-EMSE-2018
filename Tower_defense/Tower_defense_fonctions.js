@@ -29,6 +29,7 @@ function run(){
  			lvl++;
 			Niveau.innerText = lvl;
 			initialisationTerrain();
+			
 			if(lvl > 3){
 
 				EdmeVue.EdmouneActivated = true;
