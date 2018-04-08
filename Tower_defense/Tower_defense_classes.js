@@ -193,7 +193,7 @@ function Monstre(vitesse, force, vie, valeurXP, valeurMoney, coordonnees, image)
 		else if(projectile.tourelle.couleur == "blue" && lvl > 0){
 
 			this.compteurGlace = 5 * FPS;
-			this.vitesse = vitesse / 2;
+			this.vitesse /= 2;
 		}
 
 		if (this.vie <= 0){ // quand le monstre n'a plus de vie
@@ -220,7 +220,7 @@ function Monstre(vitesse, force, vie, valeurXP, valeurMoney, coordonnees, image)
 
 	this.deglacer =function(){
 
-		this.vitesse = vitesse;
+		this.vitesse = vitesse/FPS ;
 		this.compteurGlace = null;
 	}
 
